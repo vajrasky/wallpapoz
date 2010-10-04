@@ -1,0 +1,4 @@
+../../src/wallpapoz
+../wallpapoz/lib/xml_processing.py
+../wallpapoz/glade/wallpapoz.glade
+../../setup.py

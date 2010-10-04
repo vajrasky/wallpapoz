@@ -1,0 +1,474 @@
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appversion "0.4">
+  <!ENTITY manrevision "0.1">
+  <!ENTITY date "2007年 4月">
+  <!ENTITY app "<application>Wallpapoz</application>">
+  <!ENTITY appname "Wallpapoz">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+  
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="en">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo> 
+    <title>&appname;のマニュアル</title>
+
+    <copyright> 
+      <year>2007</year> 
+      <holder>Vajrasky Akbar Kok</holder> 
+    </copyright> 
+
+  <copyright>
+   <year>2007</year>
+   <holder>Mamoru Tasaka (Japanese translation)</holder>
+  </copyright>
+
+<!-- An address can be added to the publisher information.  If a role is 
+     not specified, the publisher/author is the same for all versions of the 
+     document.  -->
+    <publisher> 
+      <publishername> Vajrasky Akbar Kok </publishername> 
+    </publisher> 
+
+   &legal;
+   <!-- This file  contains link to license for the documentation (GNU FDL), and 
+        other legal stuff such as "NO WARRANTY" statement. Please do not change 
+	any of this. -->
+   <authorgroup>
+   <author> 
+	<firstname>Vajrasky Akbar</firstname> 
+	<surname>Kok</surname> 
+	<email>akbarhome@gmail.com</email> 
+   </author>
+<!-- This is appropriate place for other contributors: translators,
+      maintainers,  etc. Commented out by default.  -->
+       <othercredit role="translator">
+	<firstname>Mamoru</firstname> 
+	<surname>Tasaka</surname> 
+	  <email>mtasaka@ioa.s.u-tokyo.ac.jp</email> 
+	<affiliation> 
+	</affiliation>
+	<contrib>Japanese translation</contrib>
+      </othercredit>
+<!-- -->
+    </authorgroup>
+ 
+    <revhistory>
+    <revision> 
+		<revnumber>Wallpapoz ユーザーガイド</revnumber> 
+		<date>2007</date> 
+		<revdescription> 
+	  		<para role="author">Vajrasky Akbar Kok
+	    		  <email>akbarhome@gmail.com</email>
+	  		</para>
+	  		<para role="publisher">Vajrasky Akbar Kok</para>
+		</revdescription> 
+      </revision> 
+    </revhistory> 
+    <releaseinfo>このマニュアルは、バージョン &appversion; の &appname; を説明しています。
+    </releaseinfo> 
+    <legalnotice> 
+      <title>フィードバック</title> 
+      <para> &appname; やこの文書に関してバグや要望がありましたら、作者までメールを出していただきたく思います。 
+      </para>
+<!-- Translators may also add here feedback address for translations -->
+      <para>日本語訳については、日本語訳担当までメールを出していただきたく思います。
+      </para>
+    </legalnotice> 
+  </articleinfo> 
+
+  <indexterm>
+    <primary>Wallpapoz</primary> 
+  </indexterm> 
+
+<!-- ============= Document Body ============================= -->
+
+<!-- ============= Introduction ============================== -->
+<sect1 id="wallpapoz-introduction">
+  <title>イントロダクション</title>
+  <para>　&app; は、Gnomeデスクトップ環境の壁紙を、独自の方法で設定することが出来ます。
+&app; を使うと、一定の時間がたつたびにGnomeデスクトップの壁紙を変えることが出来ます。 
+又、最も重要な特徴として、ワークスペースを変えると壁紙を変えることが出来る点があります。 
+これは、&app; がワークスペース毎に壁紙をグループ化することが出来る、ということです。
+これによって、今あなたがどこのワークスペースにいるかが分かりやすくなります。
+&app; では、最初のワークスペースでは、最初のワークスペース用の壁紙のグループの中から
+一つの壁紙を選んで表示するように、又２番目のワークスペースではそのワークスペース用のグループの中から
+選ぶように設定することが出来ます。 よって、例えば次のようなことが出来ます。 
+あなたは３番目のワークスペースではマンガの壁紙を表示するように、４番目のワークスペースでは
+印象派の絵画が書かれた壁紙を表示するよう設定することが出来ます。同様に、
+指定された一定の時間がたてば壁紙を変える一方で、ワークスペースが変わっても壁紙を変えないように
+設定することも出来ます。 
+  </para>
+
+  <sect2 id="wallpapoz-tostartapp">
+    <title>&appname;の起動</title>
+    <para>以下の方法で&app; は起動出来ます：</para>
+    <itemizedlist>
+      <listitem>
+	<para><guimenu>アプリケーション</guimenu>メニューから
+	<menuchoice><guimenu>アクセサリ</guimenu>
+	<guimenuitem>Wallpapoz</guimenuitem></menuchoice>
+	を選択</para>
+      </listitem>
+      <listitem>
+	<para><application>gnome-terminal</application>などのターミナル、
+	もしくは<application>アプリケーションの実行</application>ダイアログで
+	<command>wallpapoz</command>とタイプする
+	</para>
+      </listitem>
+    </itemizedlist>
+  </sect2>
+
+  <sect2 id="wallpapoz-closeapp">
+    <title>&appname;を閉じる</title>
+    <para>&app; を閉じるには、ウィンドウ上で<menuchoice><guimenu>ファイル</guimenu>
+    <guimenuitem>終了</guimenuitem></menuchoice>を選択するか、もしくは
+    <keycombo><keycap>Ctrl</keycap><keycap>Q</keycap></keycombo>を押してください。
+    これで&app; は終了します。</para>
+  </sect2>
+
+  <sect2 id="wallpapoz-features">
+    <title>&appname; の特徴</title>
+    <para>&app; には、Gnomeデスクトップの壁紙を扱うための様々な機能があります。 
+      ワークスペースを変えるとデスクトップの壁紙を変えたり、又  
+      一定時間毎に壁紙を変えたりするよう設定することが出来ます。
+      </para>
+
+    <para>&app; にはGnomeによるデスクトップの背景の設定より多くのが出来ます。
+      &app; では、ワークスペース毎に壁紙をグループ化出来ます。よって、ワークスペースが
+      変わった時に壁紙を変えるよう設定すると、
+      ワークスペースを変える毎にそのワークスペース用に設定された壁紙のグループの中から
+     壁紙が選択されます。</para>
+
+    <para>&app; ではワークスペース毎に壁紙のグループ化が簡単に出来ます。
+      複数のファイルや、（画像ファイルのある）ディレクトリをワークスペースに追加出来ます。
+      又、壁紙をランダムな順番で表示するかを選択出来ます。
+     更に、&app; では壁紙を表示するモデルを選択出来ます。
+     </para>
+
+  </sect2>
+</sect1>
+
+<!--============== When You Start ===========-->
+<sect1 id="wallpapoz-whenyoustart">
+  <title>はじめに</title>
+  <para>&app; ウィンドウには次の部分があります：</para>
+  <variablelist>
+	<varlistentry>
+  	  <term>メニューバー</term>
+ 	  <listitem>
+	    <para>メニューバーにあるメニューには、&app; で扱う全てのコマンドが含まれています。</para>
+	  </listitem>
+ 	</varlistentry>
+	<varlistentry>
+	  <term>ボタンツールバー</term>
+	  <listitem>
+	    <para>ボタンツールバーには、メニューバーにあるコマンドのうちのいくつかがあります。</para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>表示エリア</term>
+	  <listitem>
+ 	    <para>表示エリアには、ツリービューで選択された壁紙が縮小されて表示されます。</para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>ツリービュー</term>
+	  <listitem>
+	    <para>ツリービューには、あなたが設定した壁紙のリストが表示されます。</para>
+	  </listitem>
+	</varlistentry>
+  </variablelist>
+  <para>&app; におけるコマンドのうちの多くには、いくつか異なる実行の方法があります。例えば、
+  次のどの方法でも壁紙を追加出来ます：</para>
+  <itemizedlist>
+    <listitem><para><menuchoice><guimenu>ファイル</guimenu>
+    <guimenuitem>ファイルを壁紙に追加</guimenuitem></menuchoice>を選択し、
+    <application>壁紙を選択</application> のダイアログで一枚、あるいは
+    複数の画像を選択する。</para></listitem>
+    <listitem><para>ボタンツールバーにある<guibutton>ファイルを追加</guibutton>ボタンを押し、
+    <application>壁紙を選択</application>の
+    ダイアログで一枚、あるいは複数の画像を選択する。</para></listitem>
+    <listitem><para><keycombo><keycap>Ctrl</keycap><keycap>F</keycap>
+    </keycombo>を押し、<application>壁紙を選択</application>のダイアログで一枚、あるいは複数の画像を選択する。</para></listitem>
+  </itemizedlist>
+</sect1>
+
+
+<!-- ============= Adding Wallpapers ============================== -->
+<sect1 id="wallpapoz-add">
+	<title>壁紙の追加</title>
+
+	<sect2 id="wallpapoz-files">
+	<title>ファイルの追加</title>
+	<para>以下のようにして、ファイルを壁紙に追加出来ます。</para>
+	<orderedlist>
+	  <listitem>
+	    <para>
+	      <menuchoice> <guimenu>ファイル</guimenu><guimenuitem>ファイルを壁紙に追加</guimenuitem> </menuchoice>を選択する、あるいはボタンツールバーにある<guibutton>ファイルを追加</guibutton>ボタンを押す、もしくは<keycombo> <keycap>Ctrl</keycap><keycap>F</keycap> </keycombo>を押す。  </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      <guilabel>壁紙を選択</guilabel>のダイアログで、追加したい壁紙を選択する。
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      <guibutton>OK</guibutton>ボタンを押す。
+	    </para>
+	  </listitem>
+	</orderedlist>
+	</sect2>
+
+	<sect2 id="wallpapoz-directory">
+	<title>ディレクトリの追加</title>
+	<para>ファイルを追加する代わりに、以下のようにして、ディレクトリを追加出来ます。</para>
+	<orderedlist>
+	  <listitem>
+	    <para>
+	      <menuchoice> <guimenu>ファイル</guimenu><guimenuitem>ディレクトリを壁紙に追加</guimenuitem> </menuchoice>を選択する、あるいはボタンツールバーにある<guibutton>ディレクトリを追加</guibutton>ボタンを押す、もしくは<keycombo> <keycap>Ctrl</keycap><keycap>D</keycap> </keycombo>を押す。  </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      <guilabel>ディレクトリを選択</guilabel>のダイアログで、追加したいディレクトリを選択する。
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      <guibutton>OK</guibutton>ボタンを押す。
+	    </para>
+	  </listitem>
+	</orderedlist>
+	<para>
+	   <guilabel>ディレクトリを選択</guilabel>のダイアログには、左下に「再帰的に追加」というオプションがあります。このオプションを選択すると、
+	   選択されたディレクトリの下位にあるディレクトリも再帰的に調べ、壁紙を追加します。このオプションを選択しなければ、 
+	   選択されたディレクトリのみを調べ、壁紙を追加します。
+	</para>
+	</sect2>
+
+	<para>壁紙をリストに追加することが出来ます。 
+	  壁紙はツリービューであなたが選択した項目の下に追加されます。</para>
+
+</sect1>
+
+<!-- ============= Editing List of Wallpapers ============================== -->
+<sect1 id="wallpapoz-edit">
+	<title>壁紙のリストの編集</title>
+
+	<para>&app; の左側に壁紙のリストがツリービュー表示されます。このリストは編集出来ます。 
+	  変更はメモリ上に記録されますが、「設定を保存」した時はじめて設定ファイルに変更が反映されます。
+	  (<xref linkend="wallpapoz-save">設定の保存</xref>を参照してください).
+	</para>
+
+	<!--============ To Cut Wallpapers ======================= -->
+	<sect2 id="wallpapoz-cut">
+		<title>壁紙の切り取り</title>
+		<para>リストにある壁紙を切り取るには、ツリービューで壁紙を選択し、そこで
+		<menuchoice>
+		<guimenu>編集</guimenu>
+		<guimenuitem>切り取り</guimenuitem>
+		</menuchoice>を選択する、あるいはツリービューで右クリックを押し、ポップアップメニューから<guimenuitem>切り取り</guimenuitem> 
+		を選択する、もしくは<keycombo> <keycap>Ctrl</keycap><keycap>X</keycap> </keycombo>を押してください。</para>
+	</sect2>
+
+	<!--============ To Copy Wallpapers ======================= -->
+	<sect2 id="wallpapoz-copy">
+		<title>壁紙のコピー</title>
+		<para>リストにある壁紙をコピーするには、ツリービューにある壁紙を選択し、そこで
+		<menuchoice>
+		<guimenu>編集</guimenu>
+		<guimenuitem>コピー</guimenuitem>
+		</menuchoice>を選択する、あるいはツリービューで右クリックを押し、ポップアップメニューから<guimenuitem>コピー</guimenuitem> 
+		を選択する、もしくは<keycombo> <keycap>Ctrl</keycap><keycap>C</keycap> </keycombo>を押してください。</para>
+	</sect2>
+
+	<!--============ To Paste Wallpapers ======================= -->
+	<sect2 id="wallpapoz-paste">
+		<title>壁紙の貼り付け</title>
+		<para>リストにある壁紙を貼り付けるには、はじめに壁紙の切り取りか、あるいはコピーを選択する必要があります。その上で、 
+		  ツリービューにあるツリーノードを選択し、そこで 
+		<menuchoice>
+		<guimenu>編集</guimenu>
+		<guimenuitem>貼り付け</guimenuitem>
+		</menuchoice>を選択する、あるいはツリービューで右クリックを押し、ポップアップメニューから<guimenuitem>貼り付け</guimenuitem> 
+		を選択する、もしくは<keycombo><keycap>Ctrl</keycap><keycap>P</keycap> </keycombo>を押してください。</para>
+	</sect2>
+
+	<!--============ To Rename Workspace ======================= -->
+	<sect2 id="wallpapoz-rename">
+		<title>ワークスペース名の変更</title>
+		<para>（ワークスペースを変更したとき壁紙を変更するオプションを選択した時）ワークスペース名を変更するには、
+		  ツリービューでツリーノードの一番上に表示されているワークスペースを選択し、そこで
+		<menuchoice>
+		<guimenu>編集</guimenu>
+		<guimenuitem>ワークスペース名を編集</guimenuitem>
+		</menuchoice>を選択する、あるいはツリービューの中のツリーノードの一番上で右クリックを押し、ポップアップメニューから<guimenuitem>ワークスペース名を変更</guimenuitem>
+		を選択する、もしくは<keycombo> <keycap>Ctrl</keycap><keycap>E</keycap> </keycombo>を押してください。
+	        ワークスペースを示していたツリーノードはテキストの入力フィールドになりますので、新たなワークスペース名を入力してください。 変更を保存するには、
+	        <keycap>Enter</keycap>キーを押してください。</para>
+	</sect2>
+
+	<!--============ To Change Wallpaper ======================== -->
+	<sect2 id="wallpapoz-change">
+		<title>壁紙の変更</title>
+		<para>壁紙を変更するには、ツリービューで一つの壁紙を選択し、そこで
+			<menuchoice>
+			<guimenu>編集</guimenu>
+			<guisubmenu>壁紙を変更</guisubmenu>
+			</menuchoice>を選択する、あるいはツリービューで右クリックを押し、ポップアップメニューから<guimenuitem>壁紙を変更</guimenuitem>
+			を選択する、もしくは<keycombo> <keycap>Ctrl</keycap><keycap>H</keycap> </keycombo>を押してください。
+			<guilabel>壁紙を選択</guilabel> のダイアログで、代わりに利用したい壁紙を選択し、
+			<guibutton>変更</guibutton>ボタンを押してください。</para>
+	</sect2>
+
+	<!--============ To Delete Wallpapers ======================== -->
+	<sect2 id="wallpapoz-delete">
+		<title>壁紙の削除</title>
+		<para>壁紙を削除するには、ツリービューで壁紙を選択し、そこで 
+			<menuchoice>
+			<guimenu>編集</guimenu>
+			<guisubmenu>壁紙を削除</guisubmenu>
+			</menuchoice>を選択する、あるいはツリービューで右クリックを押し、ポップアップメニューから<guimenuitem>壁紙を削除</guimenuitem>
+			を選択する、もしくは<keycap>Delete</keycap>キーを押してください。</para>
+	</sect2>
+
+	<!--============ To Move Up Wallpapers ======================== -->
+	<sect2 id="wallpapoz-moveup">
+		<title>壁紙の順番を上に移動</title>
+		<para>壁紙の順番を上に動かすには、ツリービューで壁紙（ツリーノード）を選択し、そこで
+			<menuchoice>
+			<guimenu>編集</guimenu>
+			<guisubmenu>上に移動</guisubmenu>
+			</menuchoice>を選択する、あるいはツリービューで右クリックを押し、ポップアップメニューから<guimenuitem>上に移動</guimenuitem>
+			を選択する、もしくは<keycap>Page Up</keycap>キーを押してください。選択された壁紙は一つ上に移動されます。
+		       　</para>
+	</sect2>
+
+	<!--============ To Move Down Wallpapers ======================== -->
+	<sect2 id="wallpapoz-movedown">
+		<title>壁紙の順番を下に移動</title>
+		<para>壁紙の順番を下に動かすには、ツリービューで壁紙（ツリーノード）を選択し、そこで 
+			<menuchoice>
+			<guimenu>編集</guimenu>
+			<guisubmenu>下に移動</guisubmenu>
+			</menuchoice>を選択する、 あるいはツリービューで右クリックを押し、ポップアップメニューから<guimenuitem>下に移動</guimenuitem>
+			を選択する、もしくは<keycap>Page Down</keycap>キーを押してください。選択された壁紙は一つ下に移動されます。
+		        </para>
+	</sect2>
+</sect1> 
+
+<!-- ============= Saving ============================== -->
+<sect1 id="wallpapoz-save">
+	<title>設定の保存</title>
+
+	<para> 
+	  壁紙のリストを設定ファイルに保存するには、
+	      <menuchoice>
+	      <guimenu>ファイル</guimenu>
+	      <guisubmenu>保存</guisubmenu>
+	    　 </menuchoice>を選択する、あるいはボタンツールバーにある<guilabel>保存</guilabel>ボタンを押す、もしくは
+	    <keycombo> <keycap>Ctrl</keycap><keycap>S</keycap> </keycombo>を押してください。
+	</para>
+</sect1>
+
+<!-- ============= Preferences ============================== -->
+<sect1 id="wallpapoz-prefs">
+	<title>設定</title>
+	<para>設定は、<menuchoice><guimenu>編集</guimenu><guimenuitem>設定</guimenuitem></menuchoice>を選択する、あるいはボタンツールバーにある<guilabel>設定</guilabel>ボタンを押す、もしくは<keycombo> <keycap>Ctrl</keycap><keycap>P</keycap> </keycombo>を押すと変更出来ます。以下のオプションが変更出来ます。</para>
+
+	<variablelist>
+	<varlistentry>
+		<term>壁紙を変える時間の間隔</term>
+		<listitem>
+		<para><guilabel>壁紙を次の間隔で変更</guilabel>のボックスで、デスクトップの壁紙がリストから選択された次の壁紙に変わるまでの時間を指定出来ます。</para>
+		</listitem>
+	</varlistentry>
+
+	<varlistentry>
+		<term>壁紙の順番</term>
+		<listitem>
+		<para><guilabel>ランダムな順番に壁紙を変更する</guilabel> オプションを選択すると、ランダムな順番に壁紙が表示されます。 このオプションを選択しなければ、&app; はリストの順番に壁紙を表示します。</para>
+		</listitem>
+	</varlistentry>		
+
+	<varlistentry>
+		<term>ワークスペース毎に壁紙を変更するか</term>
+		<listitem>
+		<para><guilabel>ワークスペースを移動する時壁紙を変更する</guilabel>オプションを選択すると、ワークスペースを変えた時に壁紙も変わります。このオプションを選択しなければ、ワークスペースが変わっても&app; は壁紙を変えません。</para>
+		</listitem>
+	</varlistentry>		
+
+	<varlistentry>
+		<term>スタイル</term>
+		<listitem>
+		<para><guilabel>スタイル</guilabel>ボックスでは、&app; が壁紙の表示にどのスタイルを用いるかを設定出来ます。「中央に表示」「全画面表示」「スケールを調整して表示」「ズーム表示」「タイル表示」の中から選択出来ます。この機能は、Gnomeデスクトップ環境の背景設定と同じものです。</para>
+		</listitem>
+	</varlistentry>		
+	</variablelist>
+		
+</sect1>
+
+<!-- ============= Daemon ============================== -->
+<sect1 id="wallpapoz-daemon">
+	<title>デーモン</title>
+
+	<para> 
+	  &app; には２つのプログラムがあります。一つは壁紙のリストを設定するGUIのツールです。もう一つのプログラムは
+	  デスクトップを継続的にモニターするためのものです。このプログラムは、ワークスペースが変わった時、あるいは一定の時間がたった時、
+	  あなたがGUIツールを使って作った設定ファイルに従って壁紙を変更します。
+	  GUIツールには&app; 、デーモンの方には<application>Daemon Wallpapoz</application>という名前がついています。
+	  <application>Daemon Wallpapoz</application> デーモンは、GUIツール上から起動、あるいは停止出来ます。
+	</para>
+
+	<note>
+	  <para>
+	    （設定ファイルに従って）ワークスペースが変わった時や一定時間たった時Gnomeデスクトップの
+            壁紙を変えるのは<application>Daemon Wallpapoz</application> デーモンです。
+	     &app; プログラムは設定ファイルの編集のみを行います。
+	  </para>
+	</note>
+
+	<sect2 id="wallpapoz-restart">
+	<title>デーモンの起動、及び再起動</title>
+	<para> 
+	  <application>Daemon Wallpapoz</application> デーモンを起動、あるいは再起動するには、
+	      <menuchoice>
+	      <guimenu>デーモン</guimenu>
+	      <guisubmenu>再起動</guisubmenu>
+	    </menuchoice>を選択する、あるいはボタンツールバーにある<guilabel>再起動</guilabel>ボタンを押す、もしくは 
+	    <keycombo> <keycap>Ctrl</keycap><keycap>R</keycap> </keycombo>を押してください。
+	    <application>gnome-terminal</application>などのターミナル、あるいは
+	    <application>アプリケーションの実行</application>ダイアログで<command>daemon_wallpapoz</command>
+            とタイプしても<application>Daemon Wallpapoz</application>を起動出来ます。
+	</para>
+	</sect2>
+
+	<sect2 id="wallpapoz-stop">
+	<title>デーモンの停止</title>
+	<para> 
+	  <application>Daemon Wallpapoz</application> デーモンを停止するには、
+	      <menuchoice>
+	      <guimenu>デーモン</guimenu>
+	      <guisubmenu>停止</guisubmenu>
+	    </menuchoice>を選択する、あるいはボタンツールバーにある<guilabel>停止</guilabel>ボタンを押す、もしくは 
+	    <keycap>Esc</keycap>キーを押してください。
+	    <application>gnome-terminal</application>などのターミナル、あるいは
+	    <application>アプリケーションの実行</application>ダイアログで<command>pkill daemon_wallpapoz</command>
+            とタイプしても停止出来ます。
+	</para>
+	</sect2>
+
+</sect1>
+
+</article>
+

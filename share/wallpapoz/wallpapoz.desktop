@@ -1,0 +1,24 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Wallpapoz
+GenericName=Wallpapers tool
+GenericName[id]=Alat gambar latar desktop
+GenericName[ja]=壁紙設定ツール
+GenericName[sv]=Skrivbordsbakgrund verktyg
+GenericName[de]=Wallpaper Tool
+GenericName[es]=Configurar la imagen del fondo
+GenericName[fr]=Outil pour les fonds d'écran
+GenericName[cs]=Nástroj pro střídání tapet
+Comment=Gnome Desktop Wallpapers Configuration Tool
+Comment[id]=Alat Konfigurasi Gambar Latar Desktop Gnome
+Comment[ja]=Gnomeデスクトップ環境の壁紙設定ツール
+Comment[sv]=Gnome Skrivbord Bakgrunds Konfiguerings Verktyg
+Comment[de]=Gnome Desktop-Hintergund Konfiguration
+Comment[es]=Herramienta para Configurar La Imagen Del Fondo Del Escritorio
+Comment[fr]=Outil de configuration des fonds d'écran pour Gnome
+Comment[cs]=Nástroj pro konfiguraci střídání tapet pracovní plochy Gnome
+Exec=wallpapoz
+Icon=wallpapoz.png
+Terminal=false
+Type=Application
+Categories=Utility;

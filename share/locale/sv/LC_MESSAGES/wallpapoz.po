@@ -1,0 +1,498 @@
+# Swedish translation for wallpapoz
+# Copyright (C) 2007 Free Software Foundation, Inc.
+# This file is distributed under the same license as the wallpapoz package.
+# Daniel Nylander <po@danielnylander.se>, 2007.
+# Daniel Holm <d.holmen@gmail.com>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: wallpapoz\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-04-01 00:51+0700\n"
+"PO-Revision-Date: 2007-06-01 12:54+0100\n"
+"Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
+"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../src/wallpapoz:133
+#: ../wallpapoz/glade/wallpapoz.glade:50
+#: ../wallpapoz/glade/wallpapoz.glade:900
+msgid "Add Wallpapers (Files)"
+msgstr "Lägg till bakgrundsbilder (filer)"
+
+#: ../../src/wallpapoz:134
+#: ../wallpapoz/glade/wallpapoz.glade:73
+#: ../wallpapoz/glade/wallpapoz.glade:1005
+msgid "Add Wallpapers (Directory)"
+msgstr "Lägg till bakgrundsbilder (katalog)"
+
+#: ../../src/wallpapoz:135
+msgid "Cut"
+msgstr "Klipp ut"
+
+#: ../../src/wallpapoz:136
+msgid "Copy"
+msgstr "Kopiera"
+
+#: ../../src/wallpapoz:137
+msgid "Paste"
+msgstr "Klistra in"
+
+#: ../../src/wallpapoz:138
+#: ../wallpapoz/glade/wallpapoz.glade:186
+msgid "Rename Workspace"
+msgstr "Byt namn på arbetsyta"
+
+#: ../../src/wallpapoz:139
+#: ../wallpapoz/glade/wallpapoz.glade:210
+msgid "Change Wallpaper"
+msgstr "Byt bakgrundsbild"
+
+#: ../../src/wallpapoz:140
+#: ../wallpapoz/glade/wallpapoz.glade:233
+msgid "Delete Wallpapers"
+msgstr "Ta bort bakgrundsbilder"
+
+#: ../../src/wallpapoz:141
+#: ../wallpapoz/glade/wallpapoz.glade:256
+msgid "Move Up"
+msgstr "Flytta uppåt"
+
+#: ../../src/wallpapoz:142
+#: ../wallpapoz/glade/wallpapoz.glade:279
+msgid "Move Down"
+msgstr "Flytta nedåt"
+
+#: ../../src/wallpapoz:224
+msgid "Please make your selections only in one workspace so Wallpapoz knows where to add wallpapers."
+msgstr "Gör endast dina markeringar i en arbetsyta så att Wallpapoz vet vart den ska lägga till bakgrundsbilder."
+
+#: ../../src/wallpapoz:226
+msgid "Please make your selections in one workspace so Wallpapoz knows where to paste wallpapers."
+msgstr "Gör endast dina markeringar i en arbetsyta så att Wallpapoz vet var den ska klistra in bakgrundsbilder."
+
+#: ../../src/wallpapoz:249
+msgid "You can not cut workspace."
+msgstr "Du kan inte klippa ut arbetsytan."
+
+#: ../../src/wallpapoz:251
+msgid "You can not copy workspace."
+msgstr "Du kan inte kopiera arbetsytan."
+
+#: ../../src/wallpapoz:253
+msgid "You can not delete workspace."
+msgstr "Du kan inte ta bort arbetsytan."
+
+#: ../../src/wallpapoz:280
+msgid "You can not move parent nodes and child nodes at the same time."
+msgstr "Du kan inte flytta föräldranoder och barnnoder samtidigt."
+
+#: ../../src/wallpapoz:286
+msgid "You can not move a discontiguous tree selection."
+msgstr "Du kan inte flytta en trädmarkering som inte angränsar."
+
+#: ../../src/wallpapoz:300
+msgid "You can change one wallpaper only at a time."
+msgstr "Du kan endast byta en bakgrundsbild åt gången."
+
+#: ../../src/wallpapoz:315
+msgid "Choose Wallpaper"
+msgstr "Välj bakgrundsbild"
+
+#: ../../src/wallpapoz:317
+msgid "Choose Wallpapers"
+msgstr "Välj bakgrundsbilder"
+
+#: ../../src/wallpapoz:325
+msgid "Change"
+msgstr "Byt"
+
+#: ../../src/wallpapoz:328
+msgid "Add wallpapers"
+msgstr "Lägg till bakgrundsbilder"
+
+#: ../../src/wallpapoz:346
+msgid "Images"
+msgstr "Bilder"
+
+#: ../../src/wallpapoz:352
+msgid "All files"
+msgstr "Alla filer"
+
+#: ../../src/wallpapoz:700
+msgid "Workspace"
+msgstr "Arbetsyta"
+
+#: ../../src/wallpapoz:720
+msgid "No."
+msgstr "Nr"
+
+#: ../../src/wallpapoz:743
+msgid "Wallpaper"
+msgstr "Bakgrundsbild"
+
+#: ../../src/wallpapoz:884
+#: ../../src/wallpapoz:897
+msgid "Every workspace must have at least one wallpaper."
+msgstr "Varje arbetsyta måste ha minst en bakgrundsbild."
+
+#: ../../src/wallpapoz:996
+msgid "You can not delete all wallpapers."
+msgstr "Du kan inte ta bort alla bakgrundsbilder."
+
+#: ../../src/wallpapoz:1161
+msgid "You must choose only image file."
+msgstr "Du kan endast välja bildfiler."
+
+#: ../wallpapoz/lib/xml_processing.py:65
+msgid "No configuration file. Use default configuration."
+msgstr "Ingen konfigurationsfil. Använd standardkonfiguration."
+
+#: ../wallpapoz/lib/xml_processing.py:76
+#: ../wallpapoz/lib/xml_processing.py:102
+msgid "The configuration file is corrupted. Remove it then create a new one again with Wallpapoz!"
+msgstr "Konfigurationsfilen är skadad. Ta bort den och skapa en ny med Wallpapoz!"
+
+#: ../wallpapoz/lib/xml_processing.py:271
+#: ../wallpapoz/lib/xml_processing.py:296
+msgid "rename this"
+msgstr "byt namn på denna"
+
+#: ../wallpapoz/glade/wallpapoz.glade:10
+msgid "Wallpapoz"
+msgstr "Wallpapoz"
+
+#: ../wallpapoz/glade/wallpapoz.glade:41
+msgid "_File"
+msgstr "_Arkiv"
+
+#: ../wallpapoz/glade/wallpapoz.glade:51
+msgid "Add Wallpapers (_Files)"
+msgstr "Lägg till bakgrundsbilder (_filer)"
+
+#: ../wallpapoz/glade/wallpapoz.glade:74
+msgid "Add Wallpapers (_Directory)"
+msgstr "Lägg till bakgrundsbilder (_katalog)"
+
+#: ../wallpapoz/glade/wallpapoz.glade:96
+msgid "Save to the Configuration File"
+msgstr "Spara till konfigurationsfilen"
+
+#: ../wallpapoz/glade/wallpapoz.glade:97
+msgid "_Save"
+msgstr "_Spara"
+
+#: ../wallpapoz/glade/wallpapoz.glade:125
+msgid "Quit"
+msgstr "Avsluta"
+
+#: ../wallpapoz/glade/wallpapoz.glade:140
+msgid "_Edit"
+msgstr "R_edigera"
+
+#: ../wallpapoz/glade/wallpapoz.glade:150
+msgid "Cut Wallpapers"
+msgstr "Klipp ut bakgrundsbilder"
+
+#: ../wallpapoz/glade/wallpapoz.glade:162
+msgid "Copy Wallpapers"
+msgstr "Kopiera bakgrundsbilder"
+
+#: ../wallpapoz/glade/wallpapoz.glade:174
+msgid "Paste Wallpapers"
+msgstr "Klistra in bakgrundsbilder"
+
+#: ../wallpapoz/glade/wallpapoz.glade:187
+msgid "_Rename Workspace"
+msgstr "_Byt namn på arbetsyta"
+
+#: ../wallpapoz/glade/wallpapoz.glade:211
+msgid "C_hange Wallpaper"
+msgstr "B_yt bakgrundsbild"
+
+#: ../wallpapoz/glade/wallpapoz.glade:234
+msgid "_Delete Wallpapers"
+msgstr "T_a bort bakgrundsbilder"
+
+#: ../wallpapoz/glade/wallpapoz.glade:257
+msgid "Move _Up"
+msgstr "Flytta _uppåt"
+
+#: ../wallpapoz/glade/wallpapoz.glade:280
+msgid "Move D_own"
+msgstr "Flytta n_edåt"
+
+#: ../wallpapoz/glade/wallpapoz.glade:302
+#: ../wallpapoz/glade/wallpapoz.glade:1496
+msgid "Manage Preferences of Wallpapoz"
+msgstr "Hantera inställningarna för Wallpapoz"
+
+#: ../wallpapoz/glade/wallpapoz.glade:303
+msgid "Prefere_nces"
+msgstr "Inställ_ningar"
+
+#: ../wallpapoz/glade/wallpapoz.glade:329
+msgid "_Daemon"
+msgstr "_Demon"
+
+#: ../wallpapoz/glade/wallpapoz.glade:338
+msgid "Run the Daemon"
+msgstr "Kör demonen"
+
+#: ../wallpapoz/glade/wallpapoz.glade:339
+msgid "_Restart"
+msgstr "_Starta om"
+
+#: ../wallpapoz/glade/wallpapoz.glade:361
+msgid "Stop the Daemon"
+msgstr "Stoppa demonen"
+
+#: ../wallpapoz/glade/wallpapoz.glade:362
+msgid "_Stop"
+msgstr "_Stoppa"
+
+#: ../wallpapoz/glade/wallpapoz.glade:388
+msgid "_Help"
+msgstr "_Hjälp"
+
+#: ../wallpapoz/glade/wallpapoz.glade:397
+msgid "Show Help"
+msgstr "Visa hjälp"
+
+#: ../wallpapoz/glade/wallpapoz.glade:398
+msgid "_Contents"
+msgstr "_Innehåll"
+
+#: ../wallpapoz/glade/wallpapoz.glade:426
+msgid "About the Author"
+msgstr "Om upphovsmannen"
+
+#: ../wallpapoz/glade/wallpapoz.glade:427
+msgid "_About"
+msgstr "_Om"
+
+#: ../wallpapoz/glade/wallpapoz.glade:850
+msgid "Add Wallpapers: "
+msgstr "Lägg till bakgrundsbilder: "
+
+#: ../wallpapoz/glade/wallpapoz.glade:944
+msgid "Add Files"
+msgstr "Lägg till filer"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1049
+msgid "Add Directory"
+msgstr "Lägg till katalog"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1173
+msgid "Daemon: "
+msgstr "Demon: "
+
+#: ../wallpapoz/glade/wallpapoz.glade:1223
+msgid "Restart Daemon"
+msgstr "Starta om demonen"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1267
+msgid "Restart"
+msgstr "Starta om"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1328
+msgid "Stop Daemon"
+msgstr "Stoppa demonen"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1372
+msgid "Stop"
+msgstr "Stoppa"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1540
+msgid "Preferences"
+msgstr "Inställningar"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1664
+msgid "Save the Configuration File"
+msgstr "Spara konfigurationsfilen"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1708
+msgid "Save"
+msgstr "Spara"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1825
+msgid "Gnome Desktop Wallpapers Configuration Tool"
+msgstr "Konfigurationsverktyg för bakgrundsbilder i GNOME"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2174
+msgid "Wallpapoz Website"
+msgstr "Webbsidan för Wallpapoz"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2177
+msgid "translator-credits"
+msgstr ""
+"Daniel Nylander <po@danielnylander.se>\n"
+"Daniel Holm <d.holmen@gmail.com>"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2185
+msgid "Choose Directory"
+msgstr "Välj katalog"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2380
+msgid "recursive"
+msgstr "rekursiv"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2537
+msgid "Preferences Dialog"
+msgstr "Inställningsdialog"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2663
+msgid "Change desktop wallpaper after"
+msgstr "Byt skrivbordsbakgrund efter"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2757
+msgid "minutes"
+msgstr "minuter"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2846
+msgid "Pick wallpaper in random order"
+msgstr "Välj bakgrundsbild slumpmässigt"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2928
+msgid "Change desktop wallpaper when changing workspace"
+msgstr "Byt bakgrundsbild vid växling av arbetsyta"
+
+#: ../wallpapoz/glade/wallpapoz.glade:3009
+msgid "Style:"
+msgstr "Stil:"
+
+#: ../wallpapoz/glade/wallpapoz.glade:3059
+msgid ""
+"Centered\n"
+"Fill Screen\n"
+"Scaled\n"
+"Zoom\n"
+"Tiled"
+msgstr ""
+"Centrerad\n"
+"Helskärm\n"
+"Skalad\n"
+"Zoomad\n"
+"Sida vid sida"
+
+#: ../../setup.py:20
+msgid ""
+"\n"
+"This script installs or uninstalls Wallpapoz on your system.\n"
+"If you encounter any bugs, please report them to akbarhome@gmail.com.\n"
+"\n"
+"--------------------------------------------------------------------------------\n"
+"\n"
+"Usage:\n"
+"\n"
+" ./setup.py install              ---      Install to /usr/local\n"
+"\n"
+" ./setup.py uninstall            ---      Uninstall from /usr/local\n"
+"\n"
+"--------------------------------------------------------------------------------\n"
+"\n"
+"Options:\n"
+"\n"
+" --installdir <directory>          ---      Install or uninstall in <directory>\n"
+"                                            instead of /usr/local\n"
+msgstr ""
+"\n"
+"Detta skript installerar eller avinstallerar Wallpapoz på ditt system.\n"
+"Om du påträffar ett fel, rapportera dem till akbarhome@gmai.com (på engelska!).\n"
+"\n"
+"--------------------------------------------------------------------------------\n"
+"\n"
+"Användning:\n"
+"\n"
+" ./setup.py install           ---      Installerar till /usr/local\n"
+"\n"
+" ./setup.py uninstall         ---      Avinstallerar från /usr/local\n"
+"\n"
+"--------------------------------------------------------------------------------\n"
+"\n"
+"Flaggor:\n"
+"\n"
+" --installdir <katalog>       ---      Installerar eller avinstallerar i <katalog>\n"
+"                                       istället för i /usr/local\n"
+
+#: ../../setup.py:52
+msgid "Installed"
+msgstr "Installerat"
+
+#: ../../setup.py:54
+msgid "Error while installing"
+msgstr "Fel vid installation"
+
+#: ../../setup.py:65
+msgid "Removed"
+msgstr "Borttaget"
+
+#: ../../setup.py:67
+msgid "Error while removing"
+msgstr "Fel vid borttagning"
+
+#: ../../setup.py:72
+msgid "Checking dependencies..."
+msgstr "Kontrollerar beroenden..."
+
+#: ../../setup.py:74
+msgid "Required dependencies:"
+msgstr "Nödvändiga beroenden:"
+
+#: ../../setup.py:82
+#: ../../setup.py:88
+#: ../../setup.py:94
+msgid "Not found"
+msgstr "Hittades inte"
+
+#: ../../setup.py:99
+msgid "Could not find all required dependencies!"
+msgstr "Kunde inte hitta alla nödvändiga beroenden!"
+
+#: ../../setup.py:100
+msgid "Please install them and try again."
+msgstr "Installera dem och försök igen."
+
+#: ../../setup.py:105
+msgid "Gnome Python is not found. Wallpapoz still could be used and it has been installed."
+msgstr "Gnome Python hittades inte. Wallpapoz kan fortfarande användas och har installerats."
+
+#: ../../setup.py:106
+msgid "But it means you can not access help documentation in your native language if it is available."
+msgstr "Men detta betyder att du inte kan komma åt dokumentationen på ditt språk om det finns tillgängligt."
+
+#: ../../setup.py:121
+msgid ""
+"\n"
+"*** Error:"
+msgstr ""
+"\n"
+"*** Fel:"
+
+#: ../../setup.py:121
+msgid "does not exist.\n"
+msgstr "finns inte.\n"
+
+#: ../../setup.py:126
+msgid "Installing Wallpapoz in"
+msgstr "Installerar Wallpapoz i"
+
+#: ../../setup.py:146
+msgid "Uninstalling Wallpapoz from"
+msgstr "Avinstallerar Wallpapoz från"
+
+#: ../../setup.py:162
+msgid ""
+"\n"
+"There might still be files in ~/.wallpapoz/ left on your system.\n"
+"Please remove that directory manually if you do not plan to\n"
+"install Wallpapoz again later.\n"
+msgstr ""
+"\n"
+"Det kan finnas några filer kvar i ~/.wallpapoz/ på ditt system.\n"
+"Ta bort katalogen manuellt om du inte planerar att\n"
+"installera Wallpapoz igen vid ett senare tillfälle.\n"
+

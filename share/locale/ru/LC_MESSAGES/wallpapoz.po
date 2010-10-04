@@ -1,0 +1,494 @@
+# Russian translations for wallpapoz package
+# Russian messages for wallpapoz.
+# Copyright (C) 2007 THE wallpapoz'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the wallpapoz package.
+# Yuri Myasoedov <omheader@gmail.com>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: wallpapoz 0.4.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-04-01 00:51+0700\n"
+"PO-Revision-Date: 2007-08-26 12:35+0300\n"
+"Last-Translator: Myasoedov Yuri <omerta13@yandex.ru>\n"
+"Language-Team: Russian <translation-team-de@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../src/wallpapoz:133
+#: ../wallpapoz/glade/wallpapoz.glade:50
+#: ../wallpapoz/glade/wallpapoz.glade:900
+msgid "Add Wallpapers (Files)"
+msgstr "Добавить фоновые изображения (файлы)"
+
+#: ../../src/wallpapoz:134
+#: ../wallpapoz/glade/wallpapoz.glade:73
+#: ../wallpapoz/glade/wallpapoz.glade:1005
+msgid "Add Wallpapers (Directory)"
+msgstr "Добавить фоновые изображения (каталог)"
+
+#: ../../src/wallpapoz:135
+msgid "Cut"
+msgstr "Вырезать"
+
+#: ../../src/wallpapoz:136
+msgid "Copy"
+msgstr "Копировать"
+
+#: ../../src/wallpapoz:137
+msgid "Paste"
+msgstr "Вставить"
+
+#: ../../src/wallpapoz:138
+#: ../wallpapoz/glade/wallpapoz.glade:186
+msgid "Rename Workspace"
+msgstr "Переименовать рабочее место"
+
+#: ../../src/wallpapoz:139
+#: ../wallpapoz/glade/wallpapoz.glade:210
+msgid "Change Wallpaper"
+msgstr "Изменить фоновое изображение"
+
+#: ../../src/wallpapoz:140
+#: ../wallpapoz/glade/wallpapoz.glade:233
+msgid "Delete Wallpapers"
+msgstr "Удалить фоновые изображения"
+
+#: ../../src/wallpapoz:141
+#: ../wallpapoz/glade/wallpapoz.glade:256
+msgid "Move Up"
+msgstr "Поднять вверх"
+
+#: ../../src/wallpapoz:142
+#: ../wallpapoz/glade/wallpapoz.glade:279
+msgid "Move Down"
+msgstr "Опустить вниз"
+
+#: ../../src/wallpapoz:224
+msgid "Please make your selections only in one workspace so Wallpapoz knows where to add wallpapers."
+msgstr "Пожалуйста, сделайте свой выбор только на одном рабочем месте, так Wallpapoz будет знать куда добавить фоновые изображения."
+
+#: ../../src/wallpapoz:226
+msgid "Please make your selections in one workspace so Wallpapoz knows where to paste wallpapers."
+msgstr "Пожалуйста, сделайте свой выбор только на одном рабочем месте, так Wallpapoz будет знать куда вставить фоновые изображения."
+
+#: ../../src/wallpapoz:249
+msgid "You can not cut workspace."
+msgstr "Вы не можете вырезать рабочее место."
+
+#: ../../src/wallpapoz:251
+msgid "You can not copy workspace."
+msgstr "Вы не можете копировать рабочее место"
+
+#: ../../src/wallpapoz:253
+msgid "You can not delete workspace."
+msgstr "Вы не можете удалить рабочее место"
+
+#: ../../src/wallpapoz:280
+msgid "You can not move parent nodes and child nodes at the same time."
+msgstr "Вы не можете передвигать родительские и дочерние узлы одновременно."
+
+#: ../../src/wallpapoz:286
+msgid "You can not move a discontiguous tree selection."
+msgstr ""
+
+#: ../../src/wallpapoz:300
+msgid "You can change one wallpaper only at a time."
+msgstr "Вы можете изменять только одно фоновое изображение в одно и тоже время."
+
+#: ../../src/wallpapoz:315
+msgid "Choose Wallpaper"
+msgstr "Выбрать фоновое изображение"
+
+#: ../../src/wallpapoz:317
+msgid "Choose Wallpapers"
+msgstr "Выбрать фоновые изображения"
+
+#: ../../src/wallpapoz:325
+msgid "Change"
+msgstr "Изменить"
+
+#: ../../src/wallpapoz:328
+msgid "Add wallpapers"
+msgstr "Добавить фоновые изображения"
+
+#: ../../src/wallpapoz:346
+msgid "Images"
+msgstr "Изображения"
+
+#: ../../src/wallpapoz:352
+msgid "All files"
+msgstr "Все файлы"
+
+#: ../../src/wallpapoz:700
+msgid "Workspace"
+msgstr "Рабочее место"
+
+#: ../../src/wallpapoz:720
+msgid "No."
+msgstr "Нет."
+
+#: ../../src/wallpapoz:743
+msgid "Wallpaper"
+msgstr "Фоновое изображение"
+
+#: ../../src/wallpapoz:884
+#: ../../src/wallpapoz:897
+msgid "Every workspace must have at least one wallpaper."
+msgstr "Каждое рабочее место должно содержать по крайней мере одно фоновое изображение."
+
+#: ../../src/wallpapoz:996
+msgid "You can not delete all wallpapers."
+msgstr "Вы не можете удалить все фоновые изображения."
+
+#: ../../src/wallpapoz:1161
+msgid "You must choose only image file."
+msgstr "Вы должны выбрать только файл с изображением."
+
+#: ../wallpapoz/lib/xml_processing.py:65
+msgid "No configuration file. Use default configuration."
+msgstr "Конфигурационный файл отсутствует. Используется конфигурация по умолчанию."
+
+#: ../wallpapoz/lib/xml_processing.py:76
+#: ../wallpapoz/lib/xml_processing.py:102
+msgid "The configuration file is corrupted. Remove it then create a new one again with Wallpapoz!"
+msgstr "Конфигурационный файл повреждён. Удалите его и создайте новый при помощи Wallpapoz!"
+
+#: ../wallpapoz/lib/xml_processing.py:271
+#: ../wallpapoz/lib/xml_processing.py:296
+msgid "rename this"
+msgstr "переименовать"
+
+#: ../wallpapoz/glade/wallpapoz.glade:10
+msgid "Wallpapoz"
+msgstr "Wallpapoz"
+
+#: ../wallpapoz/glade/wallpapoz.glade:41
+msgid "_File"
+msgstr "_Файл"
+
+#: ../wallpapoz/glade/wallpapoz.glade:51
+msgid "Add Wallpapers (_Files)"
+msgstr "Добавить фоновые изображения (_файлы)"
+
+#: ../wallpapoz/glade/wallpapoz.glade:74
+msgid "Add Wallpapers (_Directory)"
+msgstr "Добавить обои (_каталог)"
+
+#: ../wallpapoz/glade/wallpapoz.glade:96
+msgid "Save to the Configuration File"
+msgstr "Сохранить в конфигурационном файле"
+
+#: ../wallpapoz/glade/wallpapoz.glade:97
+msgid "_Save"
+msgstr "_Сохранить"
+
+#: ../wallpapoz/glade/wallpapoz.glade:125
+msgid "Quit"
+msgstr "Выход"
+
+#: ../wallpapoz/glade/wallpapoz.glade:140
+msgid "_Edit"
+msgstr "_Редактировать"
+
+#: ../wallpapoz/glade/wallpapoz.glade:150
+msgid "Cut Wallpapers"
+msgstr "Вырезать фоновые изображения"
+
+#: ../wallpapoz/glade/wallpapoz.glade:162
+msgid "Copy Wallpapers"
+msgstr "Копировать фоновые изображения"
+
+#: ../wallpapoz/glade/wallpapoz.glade:174
+msgid "Paste Wallpapers"
+msgstr "Вставить фоновые изображения"
+
+#: ../wallpapoz/glade/wallpapoz.glade:187
+msgid "_Rename Workspace"
+msgstr "_Переименовать рабочее место"
+
+#: ../wallpapoz/glade/wallpapoz.glade:211
+msgid "C_hange Wallpaper"
+msgstr "И_зменить фоновое изображение"
+
+#: ../wallpapoz/glade/wallpapoz.glade:234
+msgid "_Delete Wallpapers"
+msgstr "_Удалить фоновые изображения"
+
+#: ../wallpapoz/glade/wallpapoz.glade:257
+msgid "Move _Up"
+msgstr "Поднять _вверх"
+
+#: ../wallpapoz/glade/wallpapoz.glade:280
+msgid "Move D_own"
+msgstr "Опустить в_низ"
+
+#: ../wallpapoz/glade/wallpapoz.glade:302
+#: ../wallpapoz/glade/wallpapoz.glade:1496
+msgid "Manage Preferences of Wallpapoz"
+msgstr "Управление настройками Wallpapoz"
+
+#: ../wallpapoz/glade/wallpapoz.glade:303
+msgid "Prefere_nces"
+msgstr "Настр_ойки"
+
+#: ../wallpapoz/glade/wallpapoz.glade:329
+msgid "_Daemon"
+msgstr "_Служба"
+
+#: ../wallpapoz/glade/wallpapoz.glade:338
+msgid "Run the Daemon"
+msgstr "Запустить службу"
+
+#: ../wallpapoz/glade/wallpapoz.glade:339
+msgid "_Restart"
+msgstr "_Перезапустить"
+
+#: ../wallpapoz/glade/wallpapoz.glade:361
+msgid "Stop the Daemon"
+msgstr "Остановить службу"
+
+#: ../wallpapoz/glade/wallpapoz.glade:362
+msgid "_Stop"
+msgstr "_Остановить"
+
+#: ../wallpapoz/glade/wallpapoz.glade:388
+msgid "_Help"
+msgstr "_Помощь"
+
+#: ../wallpapoz/glade/wallpapoz.glade:397
+msgid "Show Help"
+msgstr "Показать помощь"
+
+#: ../wallpapoz/glade/wallpapoz.glade:398
+msgid "_Contents"
+msgstr "_Содержание"
+
+#: ../wallpapoz/glade/wallpapoz.glade:426
+msgid "About the Author"
+msgstr "Об авторе"
+
+#: ../wallpapoz/glade/wallpapoz.glade:427
+msgid "_About"
+msgstr "_О программе"
+
+#: ../wallpapoz/glade/wallpapoz.glade:850
+msgid "Add Wallpapers: "
+msgstr "Добавить фоновые изображения: "
+
+#: ../wallpapoz/glade/wallpapoz.glade:944
+msgid "Add Files"
+msgstr "Добавить файлы"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1049
+msgid "Add Directory"
+msgstr "Добавить каталог"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1173
+msgid "Daemon: "
+msgstr "Служба: "
+
+#: ../wallpapoz/glade/wallpapoz.glade:1223
+msgid "Restart Daemon"
+msgstr "Перезапустить службу"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1267
+msgid "Restart"
+msgstr "Перезапустить"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1328
+msgid "Stop Daemon"
+msgstr "Остановить службу"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1372
+msgid "Stop"
+msgstr "Остановить"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1540
+msgid "Preferences"
+msgstr "Настройки"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1664
+msgid "Save the Configuration File"
+msgstr "Сохранить в конфигурационный файл"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1708
+msgid "Save"
+msgstr "Сохранить"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1825
+msgid "Gnome Desktop Wallpapers Configuration Tool"
+msgstr "Инструмент управления фоновыми изображениями рабочего стола GNOME"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2174
+msgid "Wallpapoz Website"
+msgstr "Вебсайт Wallpapoz"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2177
+msgid "translator-credits"
+msgstr "Юрий Мясоедов <omerta13@yandex.ru>"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2185
+msgid "Choose Directory"
+msgstr "Выбрать каталог"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2380
+msgid "recursive"
+msgstr "рекурсивно"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2537
+msgid "Preferences Dialog"
+msgstr "Диалог настройки"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2663
+msgid "Change desktop wallpaper after"
+msgstr "Менять фоновое изображение через  каждые"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2757
+msgid "minutes"
+msgstr "мин"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2846
+msgid "Pick wallpaper in random order"
+msgstr "Показывать фоновые изображения в случайном порядке"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2928
+msgid "Change desktop wallpaper when changing workspace"
+msgstr "Менять фоновое изображение при смене рабочего места"
+
+#: ../wallpapoz/glade/wallpapoz.glade:3009
+msgid "Style:"
+msgstr "Стиль:"
+
+#: ../wallpapoz/glade/wallpapoz.glade:3059
+msgid ""
+"Centered\n"
+"Fill Screen\n"
+"Scaled\n"
+"Zoom\n"
+"Tiled"
+msgstr ""
+"По цетру\n"
+"На весь экран\n"
+"Масштаб\n"
+"Масштабировать\n"
+"Черепицей"
+
+#: ../../setup.py:20
+msgid ""
+"\n"
+"This script installs or uninstalls Wallpapoz on your system.\n"
+"If you encounter any bugs, please report them to akbarhome@gmail.com.\n"
+"\n"
+"--------------------------------------------------------------------------------\n"
+"\n"
+"Usage:\n"
+"\n"
+" ./setup.py install              ---      Install to /usr/local\n"
+"\n"
+" ./setup.py uninstall            ---      Uninstall from /usr/local\n"
+"\n"
+"--------------------------------------------------------------------------------\n"
+"\n"
+"Options:\n"
+"\n"
+" --installdir <directory>          ---      Install or uninstall in <directory>\n"
+"                                            instead of /usr/local\n"
+msgstr ""
+"\n"
+"Этот скрипт устанавливает и удаляет Wallpapoz в вашей системе.\n"
+"Если вы встретили ошибку, пожалуйста сообщите о ней akbarhome@gmail.com.\n"
+"\n"
+"--------------------------------------------------------------------------------\n"
+"\n"
+"Использование:\n"
+"\n"
+" ./setup.py install              ---      Установка в /usr/local\n"
+"\n"
+" ./setup.py uninstall            ---      Удаление из /usr/local\n"
+"\n"
+"--------------------------------------------------------------------------------\n"
+"\n"
+"Опции:\n"
+"\n"
+" --installdir <каталог>          ---      установка или удаление с использованием <каталога>\n"
+"                                            вместо /usr/local\n"
+
+#: ../../setup.py:52
+msgid "Installed"
+msgstr "Установлено"
+
+#: ../../setup.py:54
+msgid "Error while installing"
+msgstr "Возникла ошибка во время установки"
+
+#: ../../setup.py:65
+msgid "Removed"
+msgstr "Удалено"
+
+#: ../../setup.py:67
+msgid "Error while removing"
+msgstr "Возникла ошибка во время удаления"
+
+#: ../../setup.py:72
+msgid "Checking dependencies..."
+msgstr "Проверка зависимостей..."
+
+#: ../../setup.py:74
+msgid "Required dependencies:"
+msgstr "Необходимые зависимости:"
+
+#: ../../setup.py:82
+#: ../../setup.py:88
+#: ../../setup.py:94
+msgid "Not found"
+msgstr "Не найдено"
+
+#: ../../setup.py:99
+msgid "Could not find all required dependencies!"
+msgstr "Не могут быть найдены все необходимые зависимости!"
+
+#: ../../setup.py:100
+msgid "Please install them and try again."
+msgstr "Пожалуйста, установите их и попробуйте снова."
+
+#: ../../setup.py:105
+msgid "Gnome Python is not found. Wallpapoz still could be used and it has been installed."
+msgstr "Gnome Python на найден. Несмотря на это Wallpapoz был установлен и может использоваться."
+
+#: ../../setup.py:106
+msgid "But it means you can not access help documentation in your native language if it is available."
+msgstr "Это значит, что вы не можете получить доступ к справочной документации на вашем родном языке, даже если она доступна."
+
+#: ../../setup.py:121
+msgid ""
+"\n"
+"*** Error:"
+msgstr ""
+"\n"
+"*** Ошибка:"
+
+#: ../../setup.py:121
+msgid "does not exist.\n"
+msgstr "не существует.\n"
+
+#: ../../setup.py:126
+msgid "Installing Wallpapoz in"
+msgstr "Установка Wallpapoz в"
+
+#: ../../setup.py:146
+msgid "Uninstalling Wallpapoz from"
+msgstr "Удаление Wallpapoz из"
+
+#: ../../setup.py:162
+msgid ""
+"\n"
+"There might still be files in ~/.wallpapoz/ left on your system.\n"
+"Please remove that directory manually if you do not plan to\n"
+"install Wallpapoz again later.\n"
+msgstr ""
+"\n"
+"В каталоге ~/.wallpapoz могли остаться файлы.\n"
+"Пожалуйста, удалите этот каталог вручную, если вы не планируете использовать Wallpapoz в будущем снов.\n"
+

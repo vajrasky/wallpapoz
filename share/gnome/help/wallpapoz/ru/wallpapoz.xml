@@ -1,0 +1,451 @@
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appversion "0.4">
+  <!ENTITY manrevision "0.1">
+  <!ENTITY date "March 2007">
+  <!ENTITY app "<application>Wallpapoz</application>">
+  <!ENTITY appname "Wallpapoz">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+  
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="ru">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo> 
+    <title>Руководство &appname;</title>
+
+    <copyright> 
+      <year>2007</year> 
+      <holder>Vajrasky Akbar Kok</holder> 
+    </copyright> 
+
+
+  <copyright>
+   <year>2007</year>
+   <holder>Yuri Myasoedov (Russian translation)</holder>
+  </copyright>
+
+   
+<!-- An address can be added to the publisher information.  If a role is 
+     not specified, the publisher/author is the same for all versions of the 
+     document.  -->
+    <publisher> 
+      <publishername> Vajrasky Akbar Kok </publishername> 
+    </publisher> 
+
+   &legal;
+   <!-- This file  contains link to license for the documentation (GNU FDL), and 
+        other legal stuff such as "NO WARRANTY" statement. Please do not change 
+	any of this. -->
+   <authorgroup>
+   <author> 
+	<firstname>Vajrasky Akbar</firstname> 
+	<surname>Kok</surname> 
+	<email>akbarhome@gmail.com</email> 
+   </author>
+<!-- This is appropriate place for other contributors: translators,
+      maintainers,  etc. Commented out by default. -->
+       <othercredit role="translator">
+	<firstname>Yuri</firstname> 
+	<surname>Myasoedov</surname> 
+	<affiliation> 
+	  <email>omerta13@yandex.ru</email> 
+	</affiliation>
+	<contrib>Russian translation</contrib>
+      </othercredit>
+
+    </authorgroup>
+ 
+    <revhistory>
+    <revision> 
+		<revnumber>Руководство пользователя Wallpapoz</revnumber> 
+		<date>2007</date> 
+		<revdescription> 
+	  		<para role="author">Vajrasky Akbar Kok
+	    		  <email>akbarhome@gmail.com</email>
+	  		</para>
+	  		<para role="publisher">Vajrasky Akbar Kok</para>
+		</revdescription> 
+      </revision> 
+    </revhistory> 
+    <releaseinfo>Это руководство описывает версию &appversion; &appname;.
+    </releaseinfo> 
+    <legalnotice> 
+      <title>Обратная связь</title> 
+      <para>Чтобы сообщить об ошибке или предложить что-то касательно приложения &appname; или этого руководства пишите автору <email>akbarhome@gmail.com</email>. 
+      </para>
+<!-- Translators may also add here feedback address for translations -->
+    </legalnotice>
+  </articleinfo> 
+
+  <indexterm>
+    <primary>Wallpapoz</primary> 
+  </indexterm> 
+
+<!-- ============= Document Body ============================= -->
+
+<!-- ============= Introduction ============================== -->
+<sect1 id="wallpapoz-introduction">
+  <title>Введение</title>
+  <para>&app; позволяет вам особым образом управлять фоновыми изображениями рабочего стола GNOME. 
+Фоновые изображения могут сменять друг друга через определённые промежутки
+времени. Важной особенностью программы является возможность изменения фонового изображения рабочего стола
+при переходе на другое рабочее место. Это означает то, что вы можете группировать фоновые изображения на 
+рабочем месте, превращее каждое рабочее место в специфичное и 
+отличающееся от остальных. Это позволяет быстро соориентироваться и понять на каком
+рабочем месте вы находитесь в настоящий момент. Вы можете управлять этой возможностью таким
+образом, что когда вы переходите к первому рабочему месту фоновыми изображениями будут
+изображения сгруппированные только для данного рабочего места. Когда вы перейдёте на второе
+рабочее место, фоновыми изображениями будут изображения сгруппированные только для второго 
+рабочего места. Таким образом, каждое рабочее место можно наделить спецификой, например
+группируя для каждого из них свои особые изображения. Конечно эту возможность можно
+отключить, если вы хотите чтобы ваш рабочий стол просто менял фон через
+определённые (определённые вами) промежутки времени, и не изменялся при переходе с одного
+рабочего места на другое.
+  </para>
+
+  <sect2 id="wallpapoz-tostartapp">
+    <title>Начало</title>
+    <para>Вы можете запустить &app; следующими способами способами:</para>
+    <itemizedlist>
+      <listitem>
+	<para>Выберите <menuchoice><guimenu>Стандартные</guimenu>
+	<guimenuitem>Wallpapoz</guimenuitem></menuchoice>
+	из меню <guimenu>Приложения</guimenu>.</para>
+      </listitem>
+      <listitem>
+	<para>Напишите <command>wallpapoz</command> в командной строке терминала,
+	(например, в <application>Терминале среды GNOME</application>), или в диалоговом окне
+	<application>Запустить приложение</application>.</para>
+      </listitem>
+    </itemizedlist>
+  </sect2>
+
+  <sect2 id="wallpapoz-closeapp">
+    <title>Закрытие &appname;</title>
+    <para>Чтобы закрыть окно &app; выберите <menuchoice><guimenu>Файл</guimenu>
+    <guimenuitem>Выйти</guimenuitem></menuchoice>, или нажмите
+    <keycombo><keycap>Ctrl</keycap><keycap>Q</keycap></keycombo>.
+    Это закроет приложение.</para>
+  </sect2>
+
+  <sect2 id="wallpapoz-features">
+    <title>Возможности &appname;</title>
+    <para>&app; имеет различные возможности, помогающие вам в управлении 
+фоновыми изображениями рабочего стола GNOME. Вы можете настроить переключение фона
+при изменении рабочего места. Вы можете установить время, по истечении которого
+фоновое изображение сменится другим.</para>
+
+    <para>&app; умеет больше чем настройка фона рабочего стола GNOME.
+      &app; поддерживает группировку фоновых изображений для каждого рабочего места. То есть если
+      вы поменяете своё рабочее место, фон рабочего стола составят изображения сгруппированные 
+      для этого рабочего места.</para>
+
+    <para>&app; позволяет легко сгруппировать фоновые изображения для рабочих мест.
+      Вы можете добавлять как отдельные файлы так и целые каталоги с изображениями. 
+      &app; имеет опцию случайного выбора фонового изображения из группы. Кроме того &app; 
+      предлагает различные стили отображения фона.</para>
+
+  </sect2>
+</sect1>
+
+<!--============== When You Start ===========-->
+<sect1 id="wallpapoz-whenyoustart">
+  <title>Начало</title>
+  <para>Окна &app; содержит следующие элементы:</para>
+  <variablelist>
+	<varlistentry>
+  	  <term>Панель меню</term>
+ 	  <listitem>
+	    <para>Панель меню содержит всё что необходимо для работы с &app;.</para>
+	  </listitem>
+ 	</varlistentry>
+	<varlistentry>
+	  <term>Панель управления</term>
+	  <listitem>
+	    <para>Кнопки панели управления содержат команды, к которым можно получить доступ также через панель меню.</para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>Область изображения</term>
+	  <listitem>
+ 	    <para>Область изображения показывает уменьшенную копию фонового изображения, выбранного в дереве просмотра.</para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>Дерево просмотра</term>
+	  <listitem>
+	    <para>Дерево просмотра представляет собой список с фоновыми изображениями, которые вы выбрали.</para>
+	  </listitem>
+	</varlistentry>
+  </variablelist>
+  <para>Большинство действий в &app; могут быть выполнены несколькими способами. Например,
+  вы можете добавить фоновые изображения следующими способами:</para>
+  <itemizedlist>
+    <listitem><para>Выберите <menuchoice><guimenu>Файл</guimenu>
+    <guimenuitem>Добавить фоновые изображения (файлы)</guimenuitem></menuchoice> и выберите один или несколько файлов в диалоговом окне <application>Выбрать фоновые изображения</application>.</para></listitem>
+    <listitem><para>Нажмите кнопку <guibutton>Добавить файлы</guibutton> на панеле управления
+    и выберите один или несколько файлов в диалоговом окне <application>Выбрать фоновые изображения</application>.</para></listitem>
+    <listitem><para>Нажмите <keycombo><keycap>Ctrl</keycap><keycap>F</keycap>
+    </keycombo> и выберите один или несколько файлов в диалоговом окне <application>Выбрать фоновые изображения</application>.</para></listitem>
+  </itemizedlist>
+</sect1>
+
+
+<!-- ============= Adding Wallpapers ============================== -->
+<sect1 id="wallpapoz-add">
+	<title>Добавление фоновых изображений</title>
+
+	<sect2 id="wallpapoz-files">
+	<title>Добавление файлов</title>
+	<para>Чтобы добавить фоновые изображения (файлы), выполните следующие шаги:</para>
+	<orderedlist>
+	  <listitem>
+	    <para>
+	      Выберите <menuchoice> <guimenu>Файл</guimenu><guimenuitem>Добавить фоновые изображения (файлы)</guimenuitem> </menuchoice>, или нажмите кнопку <guibutton>Добавить файлы</guibutton> на панеле управления, или нажмите <keycombo> <keycap>Ctrl</keycap><keycap>F</keycap> </keycombo>.</para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      В диалоговом окне <guilabel>Выбрать фоновые изображения</guilabel>, выберите изображения, которые вы хотите добавить.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      Нажмите <guibutton>OK</guibutton>.
+	    </para>
+	  </listitem>
+	</orderedlist>
+	</sect2>
+
+	<sect2 id="wallpapoz-directory">
+	<title>Добавление каталогов</title>
+	<para>Вместо того, чтобы добавлять файлы по одному, вы можете добавлять каталоги с изображениями. Выполните следующие шаги:</para>
+	<orderedlist>
+	  <listitem>
+	    <para>
+	      Выберите <menuchoice> <guimenu>Файл</guimenu><guimenuitem>Добавить фоновые изображения (каталог)</guimenuitem> </menuchoice>, или нажмите кнопку <guibutton>Добавить каталог</guibutton> на панеле управления, или нажмите <keycombo> <keycap>Ctrl</keycap><keycap>D</keycap> </keycombo>.  </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      В диалоговом окне <guilabel>Выбрать каталог</guilabel>, выберите каталог с фоновыми изображениями, который вы хотите добавить.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      Нажмите <guibutton>OK</guibutton>.
+	    </para>
+	  </listitem>
+	</orderedlist>
+	<para>
+	   В диалоговом окне <guilabel>Выбрать каталог</guilabel> вы можете воспользовать опцией рекурсивного включения (с нижней левой стороны) всех подкаталогов, входящих в выбранный вами. Если вы выберите эту опцию вы получите фоновые изображения рекурсивно в каталоге, который вы выбрали. Если вы не выбрали эту опцию вы получите фоновые изображения только из выбранного каталога, исключая вложенные.
+	</para>
+	</sect2>
+
+	<para>Вы можете добавлять фоновые изображения в список. 
+	  Фоновые изображения, которые вы выберите, будут добавляться в дерево просмотра снизу вверх.</para>
+
+</sect1>
+
+<!-- ============= Editing List of Wallpapers ============================== -->
+<sect1 id="wallpapoz-edit">
+	<title>Редактирование списка фоновых изображений</title>
+
+	<para>Список изображений можно увидеть в дереве просмотра (в левой части окна &app;). Список является редактируемым, то есть его можно изменять. Все изменения будут применены и записаны в конфигурационный файл на диск только после сохранения конфигурационного файла (см. <xref linkend="wallpapoz-save">save</xref>).
+	</para>
+
+	<!--============ To Cut Wallpapers ======================= -->
+	<sect2 id="wallpapoz-cut">
+		<title>Чтобы вырезать фоновые изображения</title>
+		<para>Чтобы вырезать фоновые изображения в списке, выберите их в дереве просмотра, затем выберите 
+		<menuchoice>
+		<guimenu>Редактировать</guimenu>
+		<guimenuitem>Вырезать</guimenuitem>
+		</menuchoice>, или щёлкните правой кнопкой мыши в дереве просмотра и выберите <guimenuitem>Вырезать</guimenuitem> 
+		во всплывающем меню, или нажмите <keycombo> <keycap>Ctrl</keycap><keycap>X</keycap> </keycombo>.</para>
+	</sect2>
+
+	<!--============ To Copy Wallpapers ======================= -->
+	<sect2 id="wallpapoz-copy">
+		<title>Чтобы скопировать фоновые изображения</title>
+		<para>Чтобы скопировать фоновые изображения в списке, выберите их в дереве просмотра, затем выберите 
+		<menuchoice>
+		<guimenu>Редактировать</guimenu>
+		<guimenuitem>Копировать</guimenuitem>
+		</menuchoice>, или щёлкните правой кнопкой мыши в дереве просмотра и выберите <guimenuitem>Копировать</guimenuitem> 
+		во всплывающем меню, или нажмите <keycombo> <keycap>Ctrl</keycap><keycap>C</keycap> </keycombo>.</para>
+	</sect2>
+
+	<!--============ To Paste Wallpapers ======================= -->
+	<sect2 id="wallpapoz-paste">
+		<title>Чтобы вставить фоновые изображения</title>
+		<para>Чтобы вставить фоновые изображения в список (вы должны сперва скопировать или вырезать их), выберите узел в дереве просмотра, затем выберите
+		<menuchoice>
+		<guimenu>Редактировать</guimenu>
+		<guimenuitem>Вставить</guimenuitem>
+		</menuchoice>, или щёлкните правой кнопкой мыши в дереве просмотра и выберите <guimenuitem>Вставить</guimenuitem> 
+		во всплывающем меню, или нажмите <keycombo> <keycap>Ctrl</keycap><keycap>P</keycap> </keycombo>.</para>
+	</sect2>
+
+	<!--============ To Rename Workspace ======================= -->
+	<sect2 id="wallpapoz-rename">
+		<title>Чтобы переименовать рабочее место</title>
+		<para>Чтобы переименовать рабочее место (если вы установили опцию смены фоновых изображений при переходе с одного рабочего места на другое), выберите рабочее место (верхний узел) в дереве просмотра, затем выберите
+		<menuchoice>
+		<guimenu>Редактировать</guimenu>
+		<guimenuitem>Переименовать рабочее место</guimenuitem>
+		</menuchoice>, или щёлкните правой кнопкой мыши в дереве просмотра и выберите <guimenuitem>Переименовать рабочее место</guimenuitem>
+		во всплывающем меню, или нажмите <keycombo> <keycap>Ctrl</keycap><keycap>E</keycap> </keycombo>. После этого введите название рабочего места в текстовом поле и нажмите <keycap>Enter</keycap>.</para>
+	</sect2>
+
+	<!--============ To Change Wallpaper ======================== -->
+	<sect2 id="wallpapoz-change">
+		<title>Чтобы изменить фоновое изображение</title>
+		<para>Чтобы изменить фоновое изображение, выберите его в дереве просмотра, затем выберите 
+			<menuchoice>
+			<guimenu>Редактировать</guimenu>
+			<guisubmenu>Изменить</guisubmenu>
+			</menuchoice>, или щёлкните правой кнопкой мыши в дереве просмотра и выберите <guimenuitem>Изменить</guimenuitem>
+			во всплывающем меню, или нажмите <keycombo> <keycap>Ctrl</keycap><keycap>H</keycap> </keycombo>.
+			В диалоговом окне <guilabel>Выбрать фоновое изображение</guilabel>, выберите фоновое изображение, которым вы хотите заменить текущее.
+			Нажмите <guibutton>Изменить</guibutton>.</para>
+	</sect2>
+
+	<!--============ To Delete Wallpapers ======================== -->
+	<sect2 id="wallpapoz-delete">
+		<title>Чтобы удалить фоновые изображения</title>
+		<para>Чтобы удалить фоновые изображения, выберите их в дереве просмотра, затем выберите 
+			<menuchoice>
+			<guimenu>Редактировать</guimenu>
+			<guisubmenu>Удалить</guisubmenu>
+			</menuchoice>, или щёлкните правой кнопкой мыши в дереве просмотра и выберите <guimenuitem>Удалить</guimenuitem>
+			во всплывающем меню, или нажмите <keycap>Delete</keycap>. </para>
+	</sect2>
+
+	<!--============ To Move Up Wallpapers ======================== -->
+	<sect2 id="wallpapoz-moveup">
+		<title>Чтобы поднять фоновые изображения в списке</title>
+		<para>Чтобы поднять фоновые изображения в списке, выберите фоновые изображения (узлы) в дереве просмотра, затем выберите 
+			<menuchoice>
+			<guimenu>Редактировать</guimenu>
+			<guisubmenu>Поднять вверх</guisubmenu>
+			</menuchoice>, или щёлкните правой кнопкой мыши в дереве просмотра и выберите <guimenuitem>Поднять</guimenuitem>
+			во всплывающем меню, или нажмите <keycap>Page Up</keycap>. Выбранные фоновые изображения поднимутся вверх в списке на одну позицию.</para>
+	</sect2>
+
+	<!--============ To Move Down Wallpapers ======================== -->
+	<sect2 id="wallpapoz-movedown">
+		<title>Чтобы опустить фоновые изображения в списке</title>
+		<para>Чтобы опустить фоновые изображения в списке, выберите фоновые изображения (узлы) в дереве просмотра, затем выберите 
+			<menuchoice>
+			<guimenu>Редактировать</guimenu>
+			<guisubmenu>Опустить вниз</guisubmenu>
+			</menuchoice>, или щёлкните правой кнопкой мыши в дереве просмотра и выберите <guimenuitem>Опустить</guimenuitem>
+			во всплывающем меню, или нажмите <keycap>Page Down</keycap>. Выбранные фоновые изображения опустятся вниз в списке на одну позицию.</para>
+	</sect2>
+</sect1> 
+
+<!-- ============= Saving ============================== -->
+<sect1 id="wallpapoz-save">
+	<title>Сохранение</title>
+
+	<para> 
+	  Чтобы сохранить список фоновых изображений в конфигурационный файл, выберите
+	      <menuchoice>
+	      <guimenu>Файл</guimenu>
+	      <guisubmenu>Сохранить</guisubmenu>
+	    </menuchoice>, или нажмите кнопку <guilabel>Сохранить</guilabel> на панеле управления, или нижмите 
+	    <keycombo> <keycap>Ctrl</keycap><keycap>S</keycap> </keycombo>.
+	</para>
+</sect1>
+
+<!-- ============= Preferences ============================== -->
+<sect1 id="wallpapoz-prefs">
+	<title>Настройки</title>
+	<para>Чтобы изменить настройки программы выберите <menuchoice><guimenu>Редактировать</guimenu><guimenuitem>Настройки</guimenuitem></menuchoice>, или нажмите кнопку <guilabel>Настройки</guilabel> на панеле управления, или нажмите <keycombo> <keycap>Ctrl</keycap><keycap>P</keycap> </keycombo>. Вы можете управлять временем между переключениями фоновых изображений, порядком их отображений из списка, сменой фоновых изображений при смене рабочих мест, стилем использующимся для отображения фона.</para>
+
+	<variablelist>
+	<varlistentry>
+		<term>Время</term>
+		<listitem>
+		<para>Используйте <guilabel>Менять обои рабочего стола через ... мин</guilabel> чтобы задать время, через которое текущее фоновое изображение будет заменено следующим из списка.</para>
+		</listitem>
+	</varlistentry>
+
+	<varlistentry>
+		<term>Порядок отображения</term>
+		<listitem>
+		<para>Выберите опцию <guilabel>Выбирать фоновые изображения в случайном порядке</guilabel> чтобы фоновые изображения выбирались из списка случайном образом. Если вы не выберите эту опцию &app; будет выбирать фоновые изображения из списка по порядку.</para>
+		</listitem>
+	</varlistentry>		
+
+	<varlistentry>
+		<term>Рабочее место</term>
+		<listitem>
+		<para>Выберите опцию <guilabel>Менять фон рабочего стола при смене рабочего места</guilabel> чтобы фоновое изображение менялось при переходе от одного рабочего места к другому. если вы не выберите эту опцию &app; не будет изменять фоновое изображение при смене рабочих мест.</para>
+		</listitem>
+	</varlistentry>		
+
+	<varlistentry>
+		<term>Стиль</term>
+		<listitem>
+		<para>Используйте <guilabel>Стиль</guilabel> чтобы определить как &app; будет отображать фоновое изображение: по центру, на весь экран, масштабировать, масштаб, черепицей.</para>
+		</listitem>
+	</varlistentry>		
+	</variablelist>
+		
+</sect1>
+
+<!-- ============= Daemon ============================== -->
+<sect1 id="wallpapoz-daemon">
+	<title>Служба</title>
+
+	<para> 
+	  &app; состоит из двух программ. Первая программа использует графический интерфейс для редактирования списка фоновых изображений. Вторая программа непрерывно отображает рабочий стол. Когда вы меняете рабочее место или когда истекает установленное время она меняет фоновое изображение рабочего стола согласно конфигурационному файлу, который вы создаёте с помощью первой программы. Первая программа, имеющая графический интерфейс, называется &app;, а служба называется <application>Daemon Wallpapoz</application>. 
+	  Вы можете запустить службу <application>Daemon Wallpapoz</application> и остановить её из программы &app;.
+	</para>
+
+	<note>
+	  <para>
+	    Служба <application>Daemon Wallpapoz</application> меняет фоновые изображения при переключении рабочих мест или по истечении установленного времени (согласно вашему конфигурационному файлу), а программа &app; только создаёт конфигурационный файл.
+	  </para>
+	</note>
+
+	<sect2 id="wallpapoz-restart">
+	<title>Запуск/Перезапуск службы</title>
+	<para> 
+	  Чтобы запустить или перезапустить службу <application>Daemon Wallpapoz</application>, выберите
+	      <menuchoice>
+	      <guimenu>Служба</guimenu>
+	      <guisubmenu>Перезапустить</guisubmenu>
+	    </menuchoice>, или нажмите кнопку <guilabel>Перезапустить</guilabel> на панеле управления, или нажмите 
+	    <keycombo> <keycap>Ctrl</keycap><keycap>R</keycap> </keycombo>. 
+	    Другой способ: напишите <command>daemon_wallpapoz</command>
+	    в командной строке терминала (например, в <application>Терминале среды GNOME</application>), или в диалоговом окне <application>Запустить приложение</application>.
+	</para>
+	</sect2>
+
+	<sect2 id="wallpapoz-stop">
+	<title>Останов службы</title>
+	<para> 
+	  Чтобы остановить службу <application>Daemon Wallpapoz</application>, выберите
+	      <menuchoice>
+	      <guimenu>Служба</guimenu>
+	      <guisubmenu>Остановить</guisubmenu>
+	    </menuchoice>, или нажмите кнопку <guilabel>Остановить</guilabel> на панеле управления, или нажмите 
+	    <keycap>Esc</keycap>. Другой способ: набрать <command>pkill daemon_wallpapoz</command>
+	    в командной строке терминала (например, в <application>Терминале среды GNOME</application>), или в диалоговом окне <application>Запустить приложение</application>.
+	</para>
+	</sect2>
+
+</sect1>
+
+</article>

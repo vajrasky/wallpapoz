@@ -1,0 +1,507 @@
+# translation of pl.po to Polish
+# Piotr Drąg <piotrdrag@gmail.com>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: pl\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-08-23 13:56+0700\n"
+"PO-Revision-Date: 2008-04-12 15:13+0200\n"
+"Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
+"Language-Team: Polish <pl@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../src/wallpapoz:133 ../wallpapoz/glade/wallpapoz.glade:50
+#: ../wallpapoz/glade/wallpapoz.glade:900
+msgid "Add Wallpapers (Files)"
+msgstr "Dodaj tapety (pliki)"
+
+#: ../../src/wallpapoz:134 ../wallpapoz/glade/wallpapoz.glade:73
+#: ../wallpapoz/glade/wallpapoz.glade:1005
+msgid "Add Wallpapers (Directory)"
+msgstr "Dodaj tapety (folder)"
+
+#: ../../src/wallpapoz:135
+msgid "Cut"
+msgstr "Wytnij"
+
+#: ../../src/wallpapoz:136
+msgid "Copy"
+msgstr "Skopiuj"
+
+#: ../../src/wallpapoz:137
+msgid "Paste"
+msgstr "Wklej"
+
+#: ../../src/wallpapoz:138 ../wallpapoz/glade/wallpapoz.glade:186
+msgid "Rename Workspace"
+msgstr "Zmień nazwę obszaru roboczego"
+
+#: ../../src/wallpapoz:139 ../wallpapoz/glade/wallpapoz.glade:210
+msgid "Change Wallpaper"
+msgstr "Zmień tapetę"
+
+#: ../../src/wallpapoz:140 ../wallpapoz/glade/wallpapoz.glade:233
+msgid "Delete Wallpapers"
+msgstr "Usuń tapety"
+
+#: ../../src/wallpapoz:141 ../wallpapoz/glade/wallpapoz.glade:256
+msgid "Move Up"
+msgstr "W górę"
+
+#: ../../src/wallpapoz:142 ../wallpapoz/glade/wallpapoz.glade:279
+msgid "Move Down"
+msgstr "W dół"
+
+#: ../../src/wallpapoz:225
+msgid ""
+"Please make your selections only in one workspace so Wallpapoz knows where "
+"to add wallpapers."
+msgstr ""
+"Wybierz tylko w jednym obszarze roboczym, aby Wallpapoz wiedział, gdzie "
+"dodać tapety."
+
+#: ../../src/wallpapoz:227
+msgid ""
+"Please make your selections in one workspace so Wallpapoz knows where to "
+"paste wallpapers."
+msgstr ""
+"Wybierz tylko w jednym obszarze roboczym, aby Wallpapoz wiedział, gdzie "
+"wkleić tapety."
+
+#: ../../src/wallpapoz:250
+msgid "You can not cut workspace."
+msgstr "Nie można wyciąć obszaru roboczego."
+
+#: ../../src/wallpapoz:252
+msgid "You can not copy workspace."
+msgstr "Nie można skopiować obszaru roboczego."
+
+#: ../../src/wallpapoz:254
+msgid "You can not delete workspace."
+msgstr "Nie można usunąć obszaru roboczego."
+
+#: ../../src/wallpapoz:281
+msgid "You can not move parent nodes and child nodes at the same time."
+msgstr ""
+"Nie można przenieść węzłów nadrzędnych i podrzędnych w tym samym czasie."
+
+#: ../../src/wallpapoz:287
+msgid "You can not move a discontiguous tree selection."
+msgstr "Nie można przenieść wyboru niekompletnego drzewa."
+
+#: ../../src/wallpapoz:301
+msgid "You can change one wallpaper only at a time."
+msgstr "Można zmienić tylko jedną tapetę w tym samym czasie."
+
+#: ../../src/wallpapoz:316
+msgid "Choose Wallpaper"
+msgstr "Wybierz tapetę"
+
+#: ../../src/wallpapoz:318
+msgid "Choose Wallpapers"
+msgstr "Wybierz tapety"
+
+#: ../../src/wallpapoz:326
+msgid "Change"
+msgstr "Zmień"
+
+#: ../../src/wallpapoz:329
+msgid "Add wallpapers"
+msgstr "Dodaj tapety"
+
+#: ../../src/wallpapoz:347
+msgid "Images"
+msgstr "Obrazy"
+
+#: ../../src/wallpapoz:353
+msgid "All files"
+msgstr "Wszystkie pliki"
+
+#: ../../src/wallpapoz:701
+msgid "Workspace"
+msgstr "Obszar roboczy"
+
+#: ../../src/wallpapoz:721
+msgid "No."
+msgstr "Nie."
+
+#: ../../src/wallpapoz:744
+msgid "Wallpaper"
+msgstr "Tapeta"
+
+#: ../../src/wallpapoz:885 ../../src/wallpapoz:898
+msgid "Every workspace must have at least one wallpaper."
+msgstr "Każdy obszar roboczy musi posiadać co najmniej jedną tapetę."
+
+#: ../../src/wallpapoz:997
+msgid "You can not delete all wallpapers."
+msgstr "Nie można usunąć wszystkich tapet."
+
+#: ../../src/wallpapoz:1162
+msgid "You must choose only image file."
+msgstr "Musisz wybrać tylko jeden plik obrazu."
+
+#: ../wallpapoz/lib/xml_processing.py:62
+msgid "change this with picture file"
+msgstr "zmień to na plik obrazu"
+
+#: ../wallpapoz/lib/xml_processing.py:67
+msgid "No configuration file. Use default configuration."
+msgstr "Brak pliku konfiguracji. Użyj domyślnej konfiguracji."
+
+#: ../wallpapoz/lib/xml_processing.py:78
+#: ../wallpapoz/lib/xml_processing.py:104
+msgid ""
+"The configuration file is corrupted. Remove it then create a new one again "
+"with Wallpapoz!"
+msgstr ""
+"Plik konfiguracji jest uszkodzony. Usuń go i utwórz nowy za pomocą Wallpapoz!"
+
+#: ../wallpapoz/lib/xml_processing.py:273
+#: ../wallpapoz/lib/xml_processing.py:298
+msgid "rename this"
+msgstr "zmień nazwę"
+
+#: ../wallpapoz/glade/wallpapoz.glade:10
+msgid "Wallpapoz"
+msgstr "Wallpapoz"
+
+#: ../wallpapoz/glade/wallpapoz.glade:41
+msgid "_File"
+msgstr "_Plik"
+
+#: ../wallpapoz/glade/wallpapoz.glade:51
+msgid "Add Wallpapers (_Files)"
+msgstr "Dodaj tapety (p_liki)"
+
+#: ../wallpapoz/glade/wallpapoz.glade:74
+msgid "Add Wallpapers (_Directory)"
+msgstr "Dodaj tapety (f_older)"
+
+#: ../wallpapoz/glade/wallpapoz.glade:96
+msgid "Save to the Configuration File"
+msgstr "Zapisz plik konfiguracji"
+
+#: ../wallpapoz/glade/wallpapoz.glade:97
+msgid "_Save"
+msgstr "Zapi_sz"
+
+#: ../wallpapoz/glade/wallpapoz.glade:125
+msgid "Quit"
+msgstr "Zakończ"
+
+#: ../wallpapoz/glade/wallpapoz.glade:140
+msgid "_Edit"
+msgstr "_Edycja"
+
+#: ../wallpapoz/glade/wallpapoz.glade:150
+msgid "Cut Wallpapers"
+msgstr "Wytnij tapety"
+
+#: ../wallpapoz/glade/wallpapoz.glade:162
+msgid "Copy Wallpapers"
+msgstr "Skopiuj tapety"
+
+#: ../wallpapoz/glade/wallpapoz.glade:174
+msgid "Paste Wallpapers"
+msgstr "Wklej tapety"
+
+#: ../wallpapoz/glade/wallpapoz.glade:187
+msgid "_Rename Workspace"
+msgstr "Zmień nazwę obsza_ru roboczego"
+
+#: ../wallpapoz/glade/wallpapoz.glade:211
+msgid "C_hange Wallpaper"
+msgstr "_Zmień tapetę"
+
+#: ../wallpapoz/glade/wallpapoz.glade:234
+msgid "_Delete Wallpapers"
+msgstr "_Usuń tapety"
+
+#: ../wallpapoz/glade/wallpapoz.glade:257
+msgid "Move _Up"
+msgstr "_W górę"
+
+#: ../wallpapoz/glade/wallpapoz.glade:280
+msgid "Move D_own"
+msgstr "W _dół"
+
+#: ../wallpapoz/glade/wallpapoz.glade:302
+#: ../wallpapoz/glade/wallpapoz.glade:1496
+msgid "Manage Preferences of Wallpapoz"
+msgstr "Zarządzaj preferencjami Wallpapoz"
+
+#: ../wallpapoz/glade/wallpapoz.glade:303
+msgid "Prefere_nces"
+msgstr "Prefere_ncje"
+
+#: ../wallpapoz/glade/wallpapoz.glade:329
+msgid "_Daemon"
+msgstr "_Demon"
+
+#: ../wallpapoz/glade/wallpapoz.glade:338
+msgid "Run the Daemon"
+msgstr "Uruchom demona"
+
+#: ../wallpapoz/glade/wallpapoz.glade:339
+msgid "_Restart"
+msgstr "U_ruchom ponownie"
+
+#: ../wallpapoz/glade/wallpapoz.glade:361
+msgid "Stop the Daemon"
+msgstr "Zatrzymaj demona"
+
+#: ../wallpapoz/glade/wallpapoz.glade:362
+msgid "_Stop"
+msgstr "_Zatrzymaj"
+
+#: ../wallpapoz/glade/wallpapoz.glade:388
+msgid "_Help"
+msgstr "Pomo_c"
+
+#: ../wallpapoz/glade/wallpapoz.glade:397
+msgid "Show Help"
+msgstr "Wyświetl pomoc"
+
+#: ../wallpapoz/glade/wallpapoz.glade:398
+msgid "_Contents"
+msgstr "_Zawartość"
+
+#: ../wallpapoz/glade/wallpapoz.glade:426
+msgid "About the Author"
+msgstr "Informacje o autorze"
+
+#: ../wallpapoz/glade/wallpapoz.glade:427
+msgid "_About"
+msgstr "_Informacje o"
+
+#: ../wallpapoz/glade/wallpapoz.glade:850
+msgid "Add Wallpapers: "
+msgstr "Dodaj tapety: "
+
+#: ../wallpapoz/glade/wallpapoz.glade:944
+msgid "Add Files"
+msgstr "Dodaj pliki"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1049
+msgid "Add Directory"
+msgstr "Dodaj folder"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1173
+msgid "Daemon: "
+msgstr "Demon: "
+
+#: ../wallpapoz/glade/wallpapoz.glade:1223
+msgid "Restart Daemon"
+msgstr "Uruchom ponownie demona"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1267
+msgid "Restart"
+msgstr "Uruchom ponownie"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1328
+msgid "Stop Daemon"
+msgstr "Zatrzymaj demona"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1372
+msgid "Stop"
+msgstr "Zatrzymaj"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1540
+msgid "Preferences"
+msgstr "Preferencje"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1664
+msgid "Save the Configuration File"
+msgstr "Zapisz plik konfiguracji"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1708
+msgid "Save"
+msgstr "Zapisz"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1825
+msgid "Gnome Desktop Wallpapers Configuration Tool"
+msgstr "Narzędzie do konfiguracji tapet pulpitu GNOME"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2174
+msgid "Wallpapoz Website"
+msgstr "Strona WWW Wallpapoz"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2177
+msgid "translator-credits"
+msgstr "Piotr Drąg <piotrdrag@gmail.com>, 2008"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2185
+msgid "Choose Directory"
+msgstr "Zmień folder"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2380
+msgid "recursive"
+msgstr "rekursywnie"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2537
+msgid "Preferences Dialog"
+msgstr "Okno dialogowe preferencji"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2663
+msgid "Change desktop wallpaper after"
+msgstr "Zmień tapetę pulpitu po"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2757
+msgid "minutes"
+msgstr "minutach"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2846
+msgid "Pick wallpaper in random order"
+msgstr "Wybierz losową tapetę"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2928
+msgid "Change desktop wallpaper when changing workspace"
+msgstr "Zmień tapetę pulpitu podczas zmieniania obszaru roboczego"
+
+#: ../wallpapoz/glade/wallpapoz.glade:3009
+msgid "Style:"
+msgstr "Styl:"
+
+#: ../wallpapoz/glade/wallpapoz.glade:3059
+msgid ""
+"Centered\n"
+"Fill Screen\n"
+"Scaled\n"
+"Zoom\n"
+"Tiled"
+msgstr ""
+"Wyśrodkowanie\n"
+"Wypełnienie ekranu\n"
+"Skalowanie\n"
+"Przybliżenie\n"
+"Kafelkowanie"
+
+#: ../../setup.py:20
+msgid ""
+"\n"
+"This script installs or uninstalls Wallpapoz on your system.\n"
+"If you encounter any bugs, please report them to akbarhome@gmail.com.\n"
+"\n"
+"--------------------------------------------------------------------------------\n"
+"\n"
+"Usage:\n"
+"\n"
+" ./setup.py install              ---      Install to /usr/local\n"
+"\n"
+" ./setup.py uninstall            ---      Uninstall from /usr/local\n"
+"\n"
+"--------------------------------------------------------------------------------\n"
+"\n"
+"Options:\n"
+"\n"
+" --installdir <directory>          ---      Install or uninstall in "
+"<directory>\n"
+"                                            instead of /usr/local\n"
+msgstr ""
+"\n"
+"Ten skrypt instaluje lub usuwa Wallpapoz z systemu.\n"
+"Jeśli napotkasz jakiś błąd, zgłoś go do akbarhome@gmail.com.\n"
+"\n"
+"--------------------------------------------------------------------------------\n"
+"\n"
+"Użycie:\n"
+"\n"
+" ./setup.py install              ---      Instaluje do /usr/local\n"
+"\n"
+" ./setup.py uninstall            ---      Usuwa z /usr/local\n"
+"\n"
+"--------------------------------------------------------------------------------\n"
+"\n"
+"Opcje:\n"
+"\n"
+" --installdir <folder>           ---      Instaluje lub usuwa z <folderu>\n"
+"                                            zamiast z /usr/local\n"
+
+#: ../../setup.py:52
+msgid "Installed"
+msgstr "Zainstalowane"
+
+#: ../../setup.py:54
+msgid "Error while installing"
+msgstr "Błąd podczas instalowania"
+
+#: ../../setup.py:65
+msgid "Removed"
+msgstr "Usunięto"
+
+#: ../../setup.py:67
+msgid "Error while removing"
+msgstr "Błąd podczas usuwania"
+
+#: ../../setup.py:72
+msgid "Checking dependencies..."
+msgstr "Sprawdzanie zależności..."
+
+#: ../../setup.py:74
+msgid "Required dependencies:"
+msgstr "Wymagane zależności:"
+
+#: ../../setup.py:82 ../../setup.py:91 ../../setup.py:99 ../../setup.py:105
+#: ../../setup.py:111 ../../setup.py:115
+msgid "Not found"
+msgstr "Nie znaleziono"
+
+#: ../../setup.py:122
+msgid "Could not find all required dependencies!"
+msgstr "Nie można znaleźć wszystkich wymaganych zależności!"
+
+#: ../../setup.py:123
+msgid "Please install them and try again."
+msgstr "Należy zainstalować je i spróbować ponownie."
+
+#: ../../setup.py:128
+msgid ""
+"Gnome Python is not found. Wallpapoz still could be used and it has been "
+"installed."
+msgstr ""
+"Nie znaleziono Pythona GNOME. Wallpapoz ciągle może być używany i został "
+"zainstalowany."
+
+#: ../../setup.py:129
+msgid ""
+"But it means you can not access help documentation in your native language "
+"if it is available."
+msgstr ""
+"Ale oznacza to, że nie ma dostępu do dokumentacji pomocy w natywnym języku, "
+"jeśli jest dostępna."
+
+#: ../../setup.py:145
+msgid ""
+"\n"
+"*** Error:"
+msgstr ""
+"\n"
+"*** Błąd:"
+
+#: ../../setup.py:145
+msgid "does not exist.\n"
+msgstr "nie istnieje.\n"
+
+#: ../../setup.py:150
+msgid "Installing Wallpapoz in"
+msgstr "Instalowanie Wallpapoz w"
+
+#: ../../setup.py:171
+msgid "Uninstalling Wallpapoz from"
+msgstr "Usuwanie Wallpapoz z"
+
+#: ../../setup.py:188
+msgid ""
+"\n"
+"There might still be files in ~/.wallpapoz/ left on your system.\n"
+"Please remove that directory manually if you do not plan to\n"
+"install Wallpapoz again later.\n"
+msgstr ""
+"\n"
+"Mogą zostać w systemie pliki w ~/.wallpapoz/.\n"
+"Usuń ten folder ręcznie, jeśli nie planujesz\n"
+"zainstalowania Wallpapoz ponownie.\n"

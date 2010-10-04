@@ -1,0 +1,494 @@
+# Hungarian translations for wallpapoz package.
+# Copyright (C) 2007 THE wallpapoz'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the wallpapoz package.
+# Zoltán Nagy <zol.nagy@gmail.com>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: wallpapoz 0.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-04-01 00:51+0700\n"
+"PO-Revision-Date: 2009-06-26 10:08+0100\n"
+"Last-Translator: Zoltán Nagy <zol.nagy@gmail.com>\n"
+"Language-Team: Hungarian <zol.nagy@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../src/wallpapoz:133
+#: ../wallpapoz/glade/wallpapoz.glade:50
+#: ../wallpapoz/glade/wallpapoz.glade:900
+msgid "Add Wallpapers (Files)"
+msgstr "Háttérképek hozzáadása (Fájlok)"
+
+#: ../../src/wallpapoz:134
+#: ../wallpapoz/glade/wallpapoz.glade:73
+#: ../wallpapoz/glade/wallpapoz.glade:1005
+msgid "Add Wallpapers (Directory)"
+msgstr "Háttérképek hozzáadása (Mappa)"
+
+#: ../../src/wallpapoz:135
+msgid "Cut"
+msgstr "Kivágás"
+
+#: ../../src/wallpapoz:136
+msgid "Copy"
+msgstr "Másolás"
+
+#: ../../src/wallpapoz:137
+msgid "Paste"
+msgstr "Beillesztés"
+
+#: ../../src/wallpapoz:138
+#: ../wallpapoz/glade/wallpapoz.glade:186
+msgid "Rename Workspace"
+msgstr "Munkaterület átnevezése"
+
+#: ../../src/wallpapoz:139
+#: ../wallpapoz/glade/wallpapoz.glade:210
+msgid "Change Wallpaper"
+msgstr "Háttér megváltoztatása"
+
+#: ../../src/wallpapoz:140
+#: ../wallpapoz/glade/wallpapoz.glade:233
+msgid "Delete Wallpapers"
+msgstr "Hátterek törlése"
+
+#: ../../src/wallpapoz:141
+#: ../wallpapoz/glade/wallpapoz.glade:256
+msgid "Move Up"
+msgstr "Mozgatás fel"
+
+#: ../../src/wallpapoz:142
+#: ../wallpapoz/glade/wallpapoz.glade:279
+msgid "Move Down"
+msgstr "Mozgatás le"
+
+#: ../../src/wallpapoz:224
+msgid "Please make your selections only in one workspace so Wallpapoz knows where to add wallpapers."
+msgstr "Csak egy munkaterületet válassz, hogy a Wallpapoz hozzá tudja adni a háttereket."
+
+#: ../../src/wallpapoz:226
+msgid "Please make your selections in one workspace so Wallpapoz knows where to paste wallpapers."
+msgstr "Egy munkaterületen belül jelölj ki, hogy Wallpapoz be tudja illeszteni a háttereket."
+
+#: ../../src/wallpapoz:249
+msgid "You can not cut workspace."
+msgstr "Nem vághatsz ki munkaterületet."
+
+#: ../../src/wallpapoz:251
+msgid "You can not copy workspace."
+msgstr "Nem másolhatsz munkaterületet."
+
+#: ../../src/wallpapoz:253
+msgid "You can not delete workspace."
+msgstr "Nem törölhetsz munkaterületet."
+
+#: ../../src/wallpapoz:280
+msgid "You can not move parent nodes and child nodes at the same time."
+msgstr "Nem tudsz szülőt és utódot egyszerre mozgatni."
+
+#: ../../src/wallpapoz:286
+msgid "You can not move a discontiguous tree selection."
+msgstr "Nem mozgathatsz nem összefüggő kiválasztást."
+
+#: ../../src/wallpapoz:300
+msgid "You can change one wallpaper only at a time."
+msgstr "Egyszerre csak egy hátteret változtathatsz."
+
+#: ../../src/wallpapoz:315
+msgid "Choose Wallpaper"
+msgstr "Háttér kiválasztása"
+
+#: ../../src/wallpapoz:317
+msgid "Choose Wallpapers"
+msgstr "Hátterek kiválasztása"
+
+#: ../../src/wallpapoz:325
+msgid "Change"
+msgstr "Változtatás"
+
+#: ../../src/wallpapoz:328
+msgid "Add wallpapers"
+msgstr "Hátterek hozzáadása"
+
+#: ../../src/wallpapoz:346
+msgid "Images"
+msgstr "Képek"
+
+#: ../../src/wallpapoz:352
+msgid "All files"
+msgstr "Minden fájl"
+
+#: ../../src/wallpapoz:700
+msgid "Workspace"
+msgstr "Munkaterület"
+
+#: ../../src/wallpapoz:720
+msgid "No."
+msgstr "Szám"
+
+#: ../../src/wallpapoz:743
+msgid "Wallpaper"
+msgstr "Háttér"
+
+#: ../../src/wallpapoz:884
+#: ../../src/wallpapoz:897
+msgid "Every workspace must have at least one wallpaper."
+msgstr "Minden munkaterületen legalább egy háttérnek kell lenni."
+
+#: ../../src/wallpapoz:996
+msgid "You can not delete all wallpapers."
+msgstr "Nem törölheted az összes hátteret."
+
+#: ../../src/wallpapoz:1161
+msgid "You must choose only image file."
+msgstr "Csak képeket választhatsz."
+
+#: ../wallpapoz/lib/xml_processing.py:65
+msgid "No configuration file. Use default configuration."
+msgstr "Nincs konfigurációs állomány, az alapértelmezett kerül használatra."
+
+#: ../wallpapoz/lib/xml_processing.py:76
+#: ../wallpapoz/lib/xml_processing.py:102
+msgid "The configuration file is corrupted. Remove it then create a new one again with Wallpapoz!"
+msgstr "A konfigurációs állomány sérült. Távolítsd el és hozz létre egy újat a Wallpapozzal!"
+
+#: ../wallpapoz/lib/xml_processing.py:271
+#: ../wallpapoz/lib/xml_processing.py:296
+msgid "rename this"
+msgstr "Átnvezés"
+
+#: ../wallpapoz/glade/wallpapoz.glade:10
+msgid "Wallpapoz"
+msgstr "Wallpapoz"
+
+#: ../wallpapoz/glade/wallpapoz.glade:41
+msgid "_File"
+msgstr "_Fájl"
+
+#: ../wallpapoz/glade/wallpapoz.glade:51
+msgid "Add Wallpapers (_Files)"
+msgstr "Háttérképek hozzáadása (_Fájlok)"
+
+#: ../wallpapoz/glade/wallpapoz.glade:74
+msgid "Add Wallpapers (_Directory)"
+msgstr "Háttérképek hozzáadása (_Mappa)"
+
+#: ../wallpapoz/glade/wallpapoz.glade:96
+msgid "Save to the Configuration File"
+msgstr "Beállítások mentése"
+
+#: ../wallpapoz/glade/wallpapoz.glade:97
+msgid "_Save"
+msgstr "_Mentés"
+
+#: ../wallpapoz/glade/wallpapoz.glade:125
+msgid "Quit"
+msgstr "Kilépés"
+
+#: ../wallpapoz/glade/wallpapoz.glade:140
+msgid "_Edit"
+msgstr "_Szerkesztés"
+
+#: ../wallpapoz/glade/wallpapoz.glade:150
+msgid "Cut Wallpapers"
+msgstr "Hátterek kivágása"
+
+#: ../wallpapoz/glade/wallpapoz.glade:162
+msgid "Copy Wallpapers"
+msgstr "Hátterek másolása"
+
+#: ../wallpapoz/glade/wallpapoz.glade:174
+msgid "Paste Wallpapers"
+msgstr "Hátterek beillesztése"
+
+#: ../wallpapoz/glade/wallpapoz.glade:187
+msgid "_Rename Workspace"
+msgstr "Munkaterület _Átnevezése"
+
+#: ../wallpapoz/glade/wallpapoz.glade:211
+msgid "C_hange Wallpaper"
+msgstr "Háttér meg_változtatása"
+
+#: ../wallpapoz/glade/wallpapoz.glade:234
+msgid "_Delete Wallpapers"
+msgstr "Háttér _törlése"
+
+#: ../wallpapoz/glade/wallpapoz.glade:257
+msgid "Move _Up"
+msgstr "Mozgatás f_el"
+
+#: ../wallpapoz/glade/wallpapoz.glade:280
+msgid "Move D_own"
+msgstr "Mozgatás _le"
+
+#: ../wallpapoz/glade/wallpapoz.glade:302
+#: ../wallpapoz/glade/wallpapoz.glade:1496
+msgid "Manage Preferences of Wallpapoz"
+msgstr "Beállítások kezelése"
+
+#: ../wallpapoz/glade/wallpapoz.glade:303
+msgid "Prefere_nces"
+msgstr "_Beállítások"
+
+#: ../wallpapoz/glade/wallpapoz.glade:329
+msgid "_Daemon"
+msgstr "S_zolgáltatás"
+
+#: ../wallpapoz/glade/wallpapoz.glade:338
+msgid "Run the Daemon"
+msgstr "Szolgáltatás futtatása"
+
+#: ../wallpapoz/glade/wallpapoz.glade:339
+msgid "_Restart"
+msgstr "_Újraindítás"
+
+#: ../wallpapoz/glade/wallpapoz.glade:361
+msgid "Stop the Daemon"
+msgstr "Szolgáltatás leállítása"
+
+#: ../wallpapoz/glade/wallpapoz.glade:362
+msgid "_Stop"
+msgstr "_Stop"
+
+#: ../wallpapoz/glade/wallpapoz.glade:388
+msgid "_Help"
+msgstr "S_úgó"
+
+#: ../wallpapoz/glade/wallpapoz.glade:397
+msgid "Show Help"
+msgstr "Súgó megjelenítése"
+
+#: ../wallpapoz/glade/wallpapoz.glade:398
+msgid "_Contents"
+msgstr "_Tartalom"
+
+#: ../wallpapoz/glade/wallpapoz.glade:426
+msgid "About the Author"
+msgstr "A szerzőről"
+
+#: ../wallpapoz/glade/wallpapoz.glade:427
+msgid "_About"
+msgstr "_Névjegy"
+
+#: ../wallpapoz/glade/wallpapoz.glade:850
+msgid "Add Wallpapers: "
+msgstr "Hátterek hozzáadása:"
+
+#: ../wallpapoz/glade/wallpapoz.glade:944
+msgid "Add Files"
+msgstr "Fájlok hizzáadása"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1049
+msgid "Add Directory"
+msgstr "Mappa hozzáadása"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1173
+msgid "Daemon: "
+msgstr "Szolgáltatás:"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1223
+msgid "Restart Daemon"
+msgstr "Szolgáltatás újraindítása"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1267
+msgid "Restart"
+msgstr "Újraindítás"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1328
+msgid "Stop Daemon"
+msgstr "Szolgáltatás leállítása"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1372
+msgid "Stop"
+msgstr "Stop"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1540
+msgid "Preferences"
+msgstr "Beállítások"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1664
+msgid "Save the Configuration File"
+msgstr "Beállítások mentése"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1708
+msgid "Save"
+msgstr "Mentés"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1825
+msgid "Gnome Desktop Wallpapers Configuration Tool"
+msgstr "Gnome Asztal Háttérkép beállító eszköz"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2174
+msgid "Wallpapoz Website"
+msgstr "Wallpapoz honlap"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2177
+msgid "translator-credits"
+msgstr "fordító"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2185
+msgid "Choose Directory"
+msgstr "Mappa kiválasztása"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2380
+msgid "recursive"
+msgstr "rekurzív"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2537
+msgid "Preferences Dialog"
+msgstr "Beállítások panel"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2663
+msgid "Change desktop wallpaper after"
+msgstr "Háttérkép váltás"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2757
+msgid "minutes"
+msgstr "perc után"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2846
+msgid "Pick wallpaper in random order"
+msgstr "Véletlen sorrend"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2928
+msgid "Change desktop wallpaper when changing workspace"
+msgstr "Változzon a háttér munkaterület váltásakor"
+
+#: ../wallpapoz/glade/wallpapoz.glade:3009
+msgid "Style:"
+msgstr "Stílus:"
+
+#: ../wallpapoz/glade/wallpapoz.glade:3059
+msgid ""
+"Centered\n"
+"Fill Screen\n"
+"Scaled\n"
+"Zoom\n"
+"Tiled"
+msgstr ""
+"Középre\n"
+"Kitöltés\n"
+"Méretezés\n"
+"Nyújtás\n"
+"Mozaik"
+
+#: ../../setup.py:20
+msgid ""
+"\n"
+"This script installs or uninstalls Wallpapoz on your system.\n"
+"If you encounter any bugs, please report them to akbarhome@gmail.com.\n"
+"\n"
+"--------------------------------------------------------------------------------\n"
+"\n"
+"Usage:\n"
+"\n"
+" ./setup.py install              ---      Install to /usr/local\n"
+"\n"
+" ./setup.py uninstall            ---      Uninstall from /usr/local\n"
+"\n"
+"--------------------------------------------------------------------------------\n"
+"\n"
+"Options:\n"
+"\n"
+" --installdir <directory>          ---      Install or uninstall in <directory>\n"
+"                                            instead of /usr/local\n"
+msgstr ""
+"\n"
+"\"\"Ez a szkript telepíti vagy eltávolítja a Wallpapozt.\n"
+"\"\"Kérlek, a hibákról értesíts a következő cíymen: akbarhome@gmail.com.\n"
+"\"\"\n"
+"\"\"--------------------------------------------------------------------------------\n"
+"\"\"\n"
+"\"\"Használat:\n"
+"\"\"\n"
+"\"\" ./setup.py install              ---      Telepítés - /usr/local\n"
+"\"\"\n"
+"\"\" ./setup.py uninstall            ---      Eltávolítás - /usr/local\n"
+"\"\n"
+"--------------------------------------------------------------------------------\n"
+"\n"
+"Opciók:\n"
+"\n"
+" --installdir <directory>          ---      telepítés, eltávolítás <directory> mappa használatával\n"
+"                                            az /usr/local\\ helyett\n"
+
+#: ../../setup.py:52
+msgid "Installed"
+msgstr "Telepítve"
+
+#: ../../setup.py:54
+msgid "Error while installing"
+msgstr "Hiba a telepítés közben"
+
+#: ../../setup.py:65
+msgid "Removed"
+msgstr "Eltávolítva"
+
+#: ../../setup.py:67
+msgid "Error while removing"
+msgstr "Hiba az eltávolítás közben"
+
+#: ../../setup.py:72
+msgid "Checking dependencies..."
+msgstr "Függőségek ellenőrzése..."
+
+#: ../../setup.py:74
+msgid "Required dependencies:"
+msgstr "Szükséges függőségek:"
+
+#: ../../setup.py:82
+#: ../../setup.py:88
+#: ../../setup.py:94
+msgid "Not found"
+msgstr "Nem található"
+
+#: ../../setup.py:99
+msgid "Could not find all required dependencies!"
+msgstr "Nem található minden szükséges függőség!"
+
+#: ../../setup.py:100
+msgid "Please install them and try again."
+msgstr "Telepítsd és próbáld újra."
+
+#: ../../setup.py:105
+msgid "Gnome Python is not found. Wallpapoz still could be used and it has been installed."
+msgstr "Gnome Python nem található. Wallpapoz telepítve."
+
+#: ../../setup.py:106
+msgid "But it means you can not access help documentation in your native language if it is available."
+msgstr "De nem tudsz hozzáférni a saját nyelveden (ha létezik) elérhető dokumentációkhoz."
+
+#: ../../setup.py:121
+msgid ""
+"\n"
+"*** Error:"
+msgstr ""
+"\n"
+"*** Hiba:"
+
+#: ../../setup.py:121
+msgid "does not exist.\n"
+msgstr "Nem létezik.\n"
+
+#: ../../setup.py:126
+msgid "Installing Wallpapoz in"
+msgstr "Wallpapoz telepítése"
+
+#: ../../setup.py:146
+msgid "Uninstalling Wallpapoz from"
+msgstr "Walppapoz eltávolítása"
+
+#: ../../setup.py:162
+msgid ""
+"\n"
+"There might still be files in ~/.wallpapoz/ left on your system.\n"
+"Please remove that directory manually if you do not plan to\n"
+"install Wallpapoz again later.\n"
+msgstr ""
+"\n"
+"Lehetséges, hogy maradtak állományok a ~/.wallpapoz/ mappában.\n"
+"Távolítsd el ezt a mappát kézzel,\n"
+"ha nem tervezed újra telepíteni a Wallpapozt.\n"
+

@@ -1,0 +1,131 @@
+- Wallpapoz README -
+#=============================================================================
+#
+#    Readme 
+#    Copyright (C) 2007 Akbar <akbarhome@gmail.com>
+#
+#=============================================================================
+#
+#    This program is free software; you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation; either version 2 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program; if not, write to the Free Software
+#    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#
+#=============================================================================
+
+About
+--------------------------------------------------------------------------
+Wallpapoz application enables you to configure Gnome desktop wallpapers
+in unique way. You could have Gnome desktop wallpaper changes when 
+the specified time has passed. The most important feature is you could 
+have Gnome desktop wallpaper changes when you change workspace. It means 
+you could group your wallpapers into specific workspace. It offers
+quick orientation cues where you are. You can manage it so when you change 
+to first workspace, your desktop wallpaper will be picked from wallpapers 
+group for that workspace. When you change to second workspace, it will be
+picked from wallpapers group for second workspace. So you could have 
+situation like this. You change to third workspace and you will get cartoon
+desktop wallpaper (wallpapers group for that workspace consists of cartoon
+wallpapers only). You change to fourth workspace and you will get abstract
+desktop wallpaper (wallpapers group for that workspace consists of abstract
+wallpapers only). I think you get the idea. Off course you can disable this 
+feature if you just want your desktop wallpaper changes when the specified 
+time (specified by you) has passed and does not change when you change 
+workspace.
+
+Wallpapoz application consist of two programs. First is "wallpapoz". 
+"wallpapoz" is the program to make the configuration file. What wallpapers 
+do you want to use? It just like that. So before doing anything else, run
+this program first. The file configuration is located in $HOME/.wallpapoz/
+.wallpapoz.xml. Although you can edit the file with text editor, I don't
+recommend it. If the file is corrupted, then remove it first before run
+"wallpapoz" again. Don't run "wallpapoz" if the file is corrupted.
+
+"daemon_wallpapoz" is the "real" program it self. The program will read the
+configuration file and will change the wallpaper if you change the work-
+space or the specified time has passed (depended on your options in
+configuration file). 
+
+You can run the "daemon_wallpapoz" from "wallpapoz" program. 
+You can terminate it too from there.
+
+If you are happy enough, you can start automatically running this program 
+when you load the gnome desktop by adding "daemon_wallpapoz" to gnome session 
+start up program. 
+
+Dependencies
+-----------------------------------------------------------------------------
+If you run modern distro (released in 2005 year and above) with default Gnome 
+desktop installed, your dependencies should already be fulfilled. It needs 
+PyGtk, Python Glade, PIL (Python Imaging Library), and optionally Python Gnome to function.
+
+Installation
+-----------------------------------------------------------------------------
+Run "python setup.py install" as root to install Wallpapoz in /usr/local.
+To uninstall, simply run "python setup.py uninstall".
+
+If you wish to install Wallpapoz in another base directory, use the --installdir
+option. Example: "python setup.py install --installdir /usr".
+If you have installed with --installdir, do not forget to use the same option
+when uninstalling.
+
+Example installation:
+
+    $ tar -xzf wallpapoz-0.4.tar.gz
+    $ cd wallpapoz-0.4
+
+Depending on distro, the next steps could be this:
+    # su
+    # python setup.py install
+or this:
+    $ sudo python setup.py install
+
+You don't have to install Wallpapoz to run the application. 
+You can run Wallpapoz from its directory anywhere.
+
+    $ cd wallpapoz-0.4
+    $ cd src
+    $ ./wallpapoz
+
+You can put wallpapoz-0.4 directory in your home directory or anywhere.
+Someday if you want to get rid of Wallpapoz, just remove the directory.
+
+Credits and Thanks
+-----------------------------------------------------------------------------
+Translators: 
+My self (Indonesian), Mamoru Tasaka (Japanese), Zoltán Nagy (Hungarian),
+Nils Heymann (Deutsch), Daniel Holm (Swedish), Daniel Nylander (Swedish),
+Yuri Myasoedov (Russian), Ivan Virgili (Italian), Lukáš Macháček (Czech),
+Corentin Lemée (French), and Rene Garcia (Spanish and Portuguese).
+
+The graphic icon is created by Stu Murray <suchawato@gmail.com>.
+
+Ideas for improving professionalism of Wallpapoz project: 
+Mamoru Tasaka
+
+Leo von Klenze for fixing randomization bug.
+
+And many more who report bugs, ask features, give supports, etc. Thank you.
+
+Binary files license
+-----------------------------------------------------------------------------
+share/wallpapoz/glade/wallpapoz.png has the same license as the wallpapoz
+package.
+share/wallpapoz/wallpapoz.desktop has the same license as the wallpapoz
+package.
+
+Contact
+-----------------------------------------------------------------------------
+Vajrasky Akbar Kok <akbarhome@gmail.com>
+http://wallpapoz.akbarhome.com
+
+Don't hesitate to contact me with any questions, suggestions, and bugs reports.

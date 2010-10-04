@@ -1,0 +1,489 @@
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appversion "0.4">
+  <!ENTITY manrevision "0.1">
+  <!ENTITY date "March 2007">
+  <!ENTITY app "<application>Wallpapoz</application>">
+  <!ENTITY appname "Wallpapoz">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+  
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="en">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo> 
+    <title>Manual &appname;</title>
+
+    <copyright> 
+      <year>2007</year> 
+      <holder>Vajrasky Akbar Kok</holder> 
+    </copyright> 
+
+  <copyright>
+   <year>2007</year>
+   <holder>Vajrasky Akbar Kok (Indonesian translation)</holder>
+  </copyright>
+
+<!-- An address can be added to the publisher information.  If a role is 
+     not specified, the publisher/author is the same for all versions of the 
+     document.  -->
+    <publisher> 
+      <publishername> Vajrasky Akbar Kok </publishername> 
+    </publisher> 
+
+   &legal;
+   <!-- This file  contains link to license for the documentation (GNU FDL), and 
+        other legal stuff such as "NO WARRANTY" statement. Please do not change 
+	any of this. -->
+   <authorgroup>
+   <author> 
+	<firstname>Vajrasky Akbar</firstname> 
+	<surname>Kok</surname> 
+	<email>akbarhome@gmail.com</email> 
+   </author>
+<!-- This is appropriate place for other contributors: translators,
+      maintainers,  etc. Commented out by default.
+       <othercredit role="translator">
+	<firstname>Latin</firstname> 
+	<surname>Translator 1</surname> 
+	<affiliation> 
+	  <orgname>Latin Translation Team</orgname> 
+	  <email>translator@gnome.org</email> 
+	</affiliation>
+	<contrib>Latin translation</contrib>
+      </othercredit>
+-->
+    </authorgroup>
+ 
+    <revhistory>
+    <revision> 
+		<revnumber>Panduan Penggunaan Wallpapoz</revnumber> 
+		<date>2007</date> 
+		<revdescription> 
+	  		<para role="author">Vajrasky Akbar Kok
+	    		  <email>akbarhome@gmail.com</email>
+	  		</para>
+	  		<para role="publisher">Vajrasky Akbar Kok</para>
+		</revdescription> 
+      </revision> 
+    </revhistory> 
+    <releaseinfo>Manual ini menjelaskan versi &appversion; dari &appname;.
+    </releaseinfo> 
+    <legalnotice> 
+      <title>Feedback</title> 
+      <para>Untuk melaporkan bug atau memberi saran tentang aplikasi &appname; atau manual ini, kirim email ke pembuat aplikasi ini. 
+      </para>
+<!-- Translators may also add here feedback address for translations -->
+    </legalnotice> 
+  </articleinfo> 
+
+  <indexterm>
+    <primary>Wallpapoz</primary> 
+  </indexterm> 
+
+<!-- ============= Document Body ============================= -->
+
+<!-- ============= Pendahuluan ============================== -->
+<sect1 id="wallpapoz-introduction">
+  <title>Pendahuluan</title>
+  <para>Aplikasi &app; membuat Anda dapat mengatur gambar latar desktop Gnome
+    dengan cara yang unik. Anda dapat memiliki gambar latar desktop Gnome berubah
+    jika sejumlah waktu yang sudah ditentukan sudah berlalu. Fitur yang paling 
+    penting adalah Anda dapat memiliki gambar latar desktop Gnome berubah jika
+    area kerja Anda berubah. Ini berarti Anda dapat mengelompokkan gambar latar
+    desktop Anda ke area kerja tertentu. Anda dapat tahu dengan cepat area kerja
+    di mana Anda berada. Anda dapat mengaturnya sedemikian rupa sehingga ketika
+    Anda pergi ke area kerja pertama, maka gambar latar desktop Anda akan dipilih
+    dari kelompok gambar latar desktop untuk area kerja itu. Ketika Anda pergi ke
+    area kerja kedua, maka gambar latar desktop Anda akan dipilih dari kelompok
+    gambar latar desktop untuk area kerja kedua. Jadi Anda dapat memiliki situasi
+    seperti ini. Anda pergi ke area kerja ketiga dan Anda akan mendapatkan
+    gambar latar desktop bertema kartun (kelompok gambar latar desktop untuk area
+    kerja itu berisikan gambar latar desktop bertema kartun saja). Anda pergi ke
+    area kerja keempat dan Anda akan mendapatkan gambar latar desktop bertema
+    abstrak (kelompok gambar latar desktop untuk area kerja itu berisikan gambar
+    latar desktop bertema abstrak saja). Tentu saja Anda dapat memutuskan untuk
+    tidak menggunakan fitur ini jika Anda hanya ingin gambar latar desktop Anda
+    berubah jika sejumlah waktu (yang ditentukan oleh Anda) telah lewat dan tidak
+    berubah jika area kerja Anda berubah.
+  </para>
+
+  <sect2 id="wallpapoz-tostartapp">
+    <title>Menjalankan &appname;</title>
+    <para>Anda dapat menjalankan &app; dengan beberapa cara berikut:</para>
+    <itemizedlist>
+      <listitem>
+	<para>Pilih <menuchoice><guimenu>Aksesoris</guimenu>
+	<guimenuitem>Wallpapoz</guimenuitem></menuchoice>
+	dari menu <guimenu>Applications</guimenu> .</para>
+      </listitem>
+      <listitem>
+	<para>Jalankan <command>wallpapoz</command> pada prompt di terminal
+	seperti <application>gnome-terminal</application>, atau dari
+	dialog <application>Jalankan Aplikasi</application> .</para>
+      </listitem>
+    </itemizedlist>
+  </sect2>
+
+  <sect2 id="wallpapoz-closeapp">
+    <title>Menutup &appname;</title>
+    <para>Untuk menutup &app; pilih <menuchoice><guimenu>Berkas</guimenu>
+    <guimenuitem>Keluar</guimenuitem></menuchoice>, atau tekan 
+    <keycombo><keycap>Ctrl</keycap><keycap>Q</keycap></keycombo>.
+    Ini akan menutup aplikasi yang bersangkutan.</para>
+  </sect2>
+
+  <sect2 id="wallpapoz-features">
+    <title>Fitur &appname;</title>
+    <para>&app; mempunyai beberapa fitur untuk membantu Anda mengatur gambar latar
+      desktop Gnome. Anda dapat mengatur preferensi di mana ketika area kerja Anda
+      berubah, maka gambar latar desktop Gnome akan berubah juga.
+      Preferensi lain yang dapat diatur adalah ketika sejumlah waktu tertentu sudah 
+      lewat, maka gambar latar desktop Gnome akan berubah juga.</para>
+
+    <para>&app; melakukan lebih dari yang dilakukan oleh Pengaturan Gambar 
+      Latar Desktop. Aplikasi ini dapat mengelompokkan 
+      gambar latar desktop ke area kerja. Jadi jika preferensi mengubah
+      gambar latar desktop ketika area kerja berubah dipilih, maka
+      ketika area kerja Anda berubah, gambar latar desktop akan dipilih
+      dari kelompok gambar latar desktop untuk area kerja itu.
+    </para>
+
+    <para>&app; membuat menjadi mudah dalam mengelompokkan gambar latar
+      desktop ke area kerja. Anda dapat menambahkan berkas gambar yang
+      berjumlah lebih dari satu ke area kerja. &app; juga memiliki
+      pilihan digunakannya urutan acak dalam mengambil gambar latar desktop
+      dari daftar gambar latar desktop atau tidak. Selain itu &app; memiliki
+      pilihan model yang digunakan dalam menampilkan gambar latar desktop.</para>
+
+  </sect2>
+</sect1>
+
+<!--============== Ketika Anda Mulai ===========-->
+<sect1 id="wallpapoz-whenyoustart">
+  <title>Mulai Menggunakan</title>
+  <para>Jendela &app; berisikan elemen-elemen berikut:</para>
+  <variablelist>
+	<varlistentry>
+  	  <term>Menu Jendela</term>
+ 	  <listitem>
+	    <para>Menu-menu pada menu jendela berisikan semua fungsi yang Anda perlukan untuk bekerja dengan &app;.</para>
+	  </listitem>
+ 	</varlistentry>
+	<varlistentry>
+	  <term>Kotak Tombol</term>
+	  <listitem>
+	    <para>Kotak tombol berisikan sebagian fungsi yang dapat diakses oleh Anda dari menu jendela.</para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>Area Tampilan</term>
+	  <listitem>
+	    <para>Area tampilan menampilkan gambar latar desktop dalam versi mini ketika Anda memilihnya
+	      dari pohon.</para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>Pohon</term>
+	  <listitem>
+	    <para>Pohon mewakili daftar gambar latar desktop yang telah dipilih oleh Anda.</para>
+	  </listitem>
+	</varlistentry>
+  </variablelist>
+  <para>Beberapa aksi di &app; dapat dilakukan dengan beberapa cara. Sebagai contoh,
+    Anda dapat menambahkan gambar latar desktop dengan beberapa cara berikut:</para>
+  <itemizedlist>
+    <listitem><para>Pilih <menuchoice><guimenu>Berkas</guimenu>
+    <guimenuitem>Tambah Gambar Latar Desktop (Berkas)</guimenuitem></menuchoice> dan pilih sebuah berkas gambar
+    atau sejumlah berkas gambar di dialog <application>Pilih Gambar Latar Desktop</application>.</para></listitem>
+    <listitem><para>Klik tombol <guibutton>Tambah Berkas</guibutton> pada kotak tombol
+    dan pilih sebuah berkas gambar atau sejumlah berkas gambar di dialog 
+    <application>Pilih Gambar Latar Desktop</application>.</para></listitem>
+    <listitem><para>Tekan <keycombo><keycap>Ctrl</keycap><keycap>F</keycap>
+    </keycombo> dan pilih sebuah berkas gambar atau sejumlah berkas gambar di dialog <application>Pilih
+    Gambar Latar Desktop</application>.</para></listitem>
+  </itemizedlist>
+</sect1>
+
+
+<!-- ============= Menambahkan Gambar Latar Desktop ============================== -->
+<sect1 id="wallpapoz-add">
+	<title>Menambahkan Gambar Latar Desktop</title>
+
+	<sect2 id="wallpapoz-files">
+	<title>Menambahkan Berkas</title>
+	<para>Untuk menambahkan gambar latar desktop (berkas), lakukan beberapa langkah berikut:</para>
+	<orderedlist>
+	  <listitem>
+	    <para>
+	      Pilih <menuchoice> <guimenu>Berkas</guimenu><guimenuitem>Tambah Gambar Latar Desktop (Berkas)</guimenuitem> </menuchoice>, atau klik tombol <guibutton>Tambah Berkas</guibutton> di kotak tombol, atau tekan <keycombo> <keycap>Ctrl</keycap><keycap>F</keycap> </keycombo>.  </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      Pada dialog <guilabel>Pilih Gambar Latar Desktop</guilabel>, pilih gambar latar desktop yang ingin Anda tambah.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      Klik <guibutton>OK</guibutton>.
+	    </para>
+	  </listitem>
+	</orderedlist>
+	</sect2>
+
+	<sect2 id="wallpapoz-directory">
+	<title>Menambahkan Direktori</title>
+	<para>Alih-alih menambahkan berkas, Anda dapat menambahkan direktori berisikan gambar latar desktop. Lakukan beberapa langkah berikut:</para>
+	<orderedlist>
+	  <listitem>
+	    <para>
+	      Pilih <menuchoice> <guimenu>Berkas</guimenu><guimenuitem>Tambah Gambar Latar Desktop (Direktori)</guimenuitem> </menuchoice>, atau klik tombol <guibutton>Tambah Direktori</guibutton> di kotak tombol, atau tekan <keycombo> <keycap>Ctrl</keycap><keycap>D</keycap> </keycombo>.  </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      Pada dialog <guilabel>Pilih Direktori</guilabel>, pilih direktori yang berisikan gambar latar desktop yang ingin Anda tambah.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      Klik <guibutton>OK</guibutton>.
+	    </para>
+	  </listitem>
+	</orderedlist>
+	<para>
+	  Di dialog <guilabel>Pilih Direktori</guilabel> Anda memiliki pilihan rekursif yang terletak di kiri bawah. Jika Anda memilih pilihan ini,
+	  maka gambar latar desktop akan diambil secara rekursif dari direktori yang Anda pilih. Jika Anda tidak
+	  memilih pilihan ini, maka gambar latar desktop akan diambil dari tingkat paling atas dalam direktori 
+	  yang Anda pilih.
+	</para>
+	</sect2>
+
+	<para>
+	  Anda dapat menambahkan gambar latar desktop ke daftar gambar latar desktop. Gambar latar desktop yang Anda
+	  tambah akan ditaruh di bawah pilihan Anda pada pohon.
+	  </para>
+
+</sect1>
+
+<!-- ============= Mengubah Daftar Gambar Latar Desktop ============================== -->
+<sect1 id="wallpapoz-edit">
+	<title>Mengubah Daftar Gambar Latar Desktop</title>
+
+	<para>Anda dapat melihat daftar gambar latar desktop di pohon, sisi kiri dari &app;. Anda dapat
+	  memodifikasi daftar ini. Modifikasi ini dilakukan di memori dan mengubah berkas konfigurasi di 
+	  disk hanya jika berkas konfigurasi disimpan dengan fungsi simpan (lihat <xref linkend="wallpapoz-save">simpan</xref>).
+	</para>
+
+	<!--============ Memotong Gambar Latar Desktop ======================= -->
+	<sect2 id="wallpapoz-cut">
+		<title>Memotong Gambar Latar Desktop</title>
+		<para>Untuk memotong gambar latar desktop pada daftar gambar latar desktop, pilih gambar
+		  latar desktop di pohon, kemudian pilih
+		<menuchoice>
+		<guimenu>Ubah</guimenu>
+		<guimenuitem>Potong</guimenuitem>
+		</menuchoice>, atau klik kanan pada pohon dengan tetikus kemudian pilih <guimenuitem>Potong</guimenuitem> 
+		dari menu popup, atau tekan <keycombo> <keycap>Ctrl</keycap><keycap>X</keycap> </keycombo>.</para>
+	</sect2>
+
+	<!--============ Menyalin Gambar Latar Desktop ======================= -->
+	<sect2 id="wallpapoz-copy">
+		<title>Menyalin Gambar Latar Desktop</title>
+		<para>Untuk menyalin gambar latar desktop pada daftar gambar latar desktop, pilih gambar latar
+		  desktop pada pohon, kemudian pilih
+		<menuchoice>
+		<guimenu>Ubah</guimenu>
+		<guimenuitem>Salin</guimenuitem>
+		</menuchoice>, atau klik kanan pada pohon dengan tetikus kemudian pilih <guimenuitem>Salin</guimenuitem> 
+		dari menu popup, atau tekan <keycombo> <keycap>Ctrl</keycap><keycap>C</keycap> </keycombo>.</para>
+	</sect2>
+
+	<!--============ Menempel Gambar Latar Desktop ======================= -->
+	<sect2 id="wallpapoz-paste">
+		<title>Menempel Gambar Latar Desktop</title>
+		<para>Untuk menempel gambar latar desktop pada daftar gambar latar desktop (Anda harus menyalin atau
+		  memotong gambar latar desktop dulu), pilih cabang pada pohon, kemudian pilih
+		<menuchoice>
+		<guimenu>Ubah</guimenu>
+		<guimenuitem>Tempel</guimenuitem>
+		</menuchoice>, atau klik kanan dengan tetikus kemudian pilih <guimenuitem>Tempel</guimenuitem> 
+		dari menu popup, atau tekan <keycombo> <keycap>Ctrl</keycap><keycap>P</keycap> </keycombo>.</para>
+	</sect2>
+
+	<!--============ Mengubah Nama Area Kerja ======================= -->
+	<sect2 id="wallpapoz-rename">
+		<title>Mengubah Nama Area Kerja</title>
+		<para>Untuk mengubah nama area kerja (jika Anda telah memilih pilihan mengubah gambar latar desktop jika
+		  area kerja berubah), pilih area kerja (cabang tingkat atas) pada pohon, kemudian pilih
+		<menuchoice>
+		<guimenu>Ubah</guimenu>
+		<guimenuitem>Ubah Nama Area Kerja</guimenuitem>
+		</menuchoice>, atau klik kanan di atas cabang tingkat atas pada pohon dengan tetikus kemudian pilih 
+		<guimenuitem>Ubah Nama Area Kerja</guimenuitem>
+		dari menu popup, atau tekan <keycombo> <keycap>Ctrl</keycap><keycap>E</keycap> </keycombo>. Setelah itu 
+	        cabang yang mewakili area kerja akan menjadi isian teks. Anda dapat mengubah nilai di sana. Untuk menyimpan
+	        nilai yang baru itu Anda dapat menekan <keycap>Enter</keycap>.</para>
+	</sect2>
+
+	<!--============ Mengubah Gambar Latar Desktop ======================== -->
+	<sect2 id="wallpapoz-change">
+		<title>Mengubah Gambar Latar Desktop</title>
+		<para>Untuk mengubah gambar latar desktop, pilih satu gambar latar desktop pada pohon, kemudian pilih 
+			<menuchoice>
+			<guimenu>Ubah</guimenu>
+			<guisubmenu>Ubah Gambar Latar Desktop</guisubmenu>
+			</menuchoice>, atau klik kanan pada pohon dengan tetikus kemudian pilih <guimenuitem>Ubah Gambar Latar Desktop</guimenuitem>
+			dari menu popup, atau tekan <keycombo> <keycap>Ctrl</keycap><keycap>H</keycap> </keycombo>.
+			Pada dialog <guilabel>Pilih Gambar Latar Desktop</guilabel>, pilih gambar latar desktop yang Anda inginkan.
+			Klik <guibutton>Ubah</guibutton>.</para>
+	</sect2>
+
+	<!--============ Menghapus Gambar Latar Desktop ======================== -->
+	<sect2 id="wallpapoz-delete">
+		<title>Menghapus Gambar Latar Desktop</title>
+		<para>Untuk menghapus gambar latar desktop, pilih gambar latar desktop pada pohon, kemudian pilih
+			<menuchoice>
+			<guimenu>Ubah</guimenu>
+			<guisubmenu>Hapus</guisubmenu>
+			</menuchoice>, atau klik kanan pada pohon dengan tetikus kemudian pilih <guimenuitem>Hapus</guimenuitem>
+			dari menu popup, atau tekan <keycap>Delete</keycap>. </para>
+	</sect2>
+
+	<!--============ Memindahkan Gambar Latar Desktop ke Atas ======================== -->
+	<sect2 id="wallpapoz-moveup">
+		<title>Memindahkan Gambar Latar Desktop ke Atas</title>
+		<para>Untuk memindahkan gambar latar desktop ke atas, pilih gambar latar desktop pada pohon, kemudian pilih 
+			<menuchoice>
+			<guimenu>Ubah</guimenu>
+			<guisubmenu>Pindahkan ke Atas</guisubmenu>
+			</menuchoice>, atau klik kanan pada pohon dengan tetikus kemudian pilih <guimenuitem>Pindahkan ke Atas</guimenuitem>
+			dari menu popup, atau tekan <keycap>Page Up</keycap>. Pilihan gambar latar desktop Anda akan bergerak
+		        ke atas satu posisi.</para>
+	</sect2>
+
+	<!--============ Memindahkan Gambar Latar Desktop ke Bawah ======================== -->
+	<sect2 id="wallpapoz-movedown">
+		<title>Memindahkan Gambar Latar Desktop ke Bawah</title>
+		<para>Untuk memindahkan gambar latar desktop ke bawah, pilih gambar latar desktop pada pohon, kemudian pilih 
+			<menuchoice>
+			<guimenu>Ubah</guimenu>
+			<guisubmenu>Pindahkan ke Bawah</guisubmenu>
+			</menuchoice>, atau klik kanan pada pohon dengan tetikus kemudian pilih <guimenuitem>Pindahkan ke Bawah</guimenuitem>
+			dari menu popup, atau tekan <keycap>Page Down</keycap>. Pilihan gambar latar desktop Anda akan bergerak
+		        ke bawah satu posisi.</para>
+	</sect2>
+</sect1> 
+
+<!-- ============= Menyimpan ============================== -->
+<sect1 id="wallpapoz-save">
+	<title>Menyimpan</title>
+
+	<para> 
+	  Untuk menyimpan daftar gambar latar desktop ke berkas konfigurasi, pilih
+	      <menuchoice>
+	      <guimenu>Berkas</guimenu>
+	      <guisubmenu>Simpan</guisubmenu>
+	    </menuchoice>, atau klik tombol <guilabel>Simpan</guilabel> pada kotak tombol, atau tekan 
+	    <keycombo> <keycap>Ctrl</keycap><keycap>S</keycap> </keycombo>.
+	</para>
+</sect1>
+
+<!-- ============= Preferensi ============================== -->
+<sect1 id="wallpapoz-prefs">
+	<title>Preferensi</title>
+	<para>Preferensi dapat diubah dengan memilih <menuchoice><guimenu>Ubah</guimenu><guimenuitem>Preferensi</guimenuitem></menuchoice>, atau mengklik tombol <guilabel>Preferensi</guilabel> pada kotak tombol, atau mengklik <keycombo> <keycap>Ctrl</keycap><keycap>P</keycap> </keycombo>. Anda dapat mengubah pilihan waktu yang ditunggu sebelum mengganti gambar latar desktop, urutan pemilihan gambar latar desktop dari daftar gambar latar desktop, digantikannya gambar latar desktop ketika area kerja berubah atau tidak, dan model yang digunakan dalam menampilkan gambar latar desktop.</para>
+
+	<variablelist>
+	<varlistentry>
+		<term>Waktu</term>
+		<listitem>
+		<para>Gunakan kotak putar <guilabel>Ubah gambar latar desktop setelah ... menit</guilabel> untuk menentukan seberapa lama yang harus ditunggu sebelum gambar latar desktop diganti.</para>
+		</listitem>
+	</varlistentry>
+
+	<varlistentry>
+		<term>Urutan Pengambilan</term>
+		<listitem>
+		<para>Pilih pilihan <guilabel>Pilih gambar latar desktop dengan urutan acak</guilabel> untuk memilih gambar latar desktop dari daftar gambar latar desktop dengan urutan acak. Jika Anda tidak memilih pilihan ini, &app; akan memilih gambar latar desktop dari daftar gambar latar desktop dengan berurutan.</para>
+		</listitem>
+	</varlistentry>		
+
+	<varlistentry>
+		<term>Area Kerja</term>
+		<listitem>
+		<para>Pilih pilihan <guilabel>Ubah gambar latar desktop ketika area kerja berubah</guilabel> untuk mengubah gambar latar desktop ketika area kerja Anda berubah. Jika Anda tidak memilih pilihan ini, &app; tidak akan mengubah gambar latar desktop ketika area kerja Anda berubah.</para>
+		</listitem>
+	</varlistentry>		
+
+	<varlistentry>
+		<term>Model</term>
+		<listitem>
+		<para>Gunakan kotak kombo <guilabel>Model</guilabel> untuk menentukan model yang akan digunakan dalam menampilkan gambar latar desktop. Pilihannya adalah Tengah, Penuhi Layar, Skala, Perbesar, Pasang Ubin. Fitur ini sama dengan fitur di Pengaturan Gambar Latar Desktop.</para>
+		</listitem>
+	</varlistentry>		
+	</variablelist>
+		
+</sect1>
+
+<!-- ============= Jurik ============================== -->
+<sect1 id="wallpapoz-daemon">
+	<title>Jurik</title>
+
+	<para> 
+	  &app; berisikan dua program. Yang pertama adalah alat gui yang mengatur daftar gambar latar desktop. Yang kedua
+	  adalah program yang memonitor desktop Anda secara terus menerus. Ketika area kerja Anda berubah atau sejumlah
+	  waktu sudah berlalu, program ini akan mengubah gambar latar desktop berdasarkan berkas konfigurasi yang sudah 
+	  dibuat oleh Anda dengan alat gui. Alat gui ini disebut &app; dan juriknya disebut 
+	  <application>Daemon Wallpapoz</application>. Anda dapat menjalankan program 
+	  <application>Daemon Wallpapoz</application> dan menghentikannya dari alat gui yang bersangkutan.
+	</para>
+
+	<note>
+	  <para>
+	    Adalah program <application>Daemon Wallpapoz</application> yang membuat gambar latar desktop Gnome berubah
+	    ketika area kerja Anda berubah atau sejumlah waktu lewat (tergantung dari berkas konfigurasi Anda). Program &app;
+	    hanya membuat berkas konfigurasi saja.
+	  </para>
+	</note>
+
+	<sect2 id="wallpapoz-restart">
+	<title>Jalankan/Jalankan Ulang Jurik</title>
+	<para> 
+	  Untuk menjalankan atau menjalankan ulang program <application>Daemon Wallpapoz</application>, pilih
+	      <menuchoice>
+	      <guimenu>Jurik</guimenu>
+	      <guisubmenu>Jalankan Ulang</guisubmenu>
+	    </menuchoice>, atau klik tombol <guilabel>Jalankan Ulang</guilabel> pada kotak tombol, atau tekan 
+	    <keycombo> <keycap>Ctrl</keycap><keycap>R</keycap> </keycombo>. Untuk menjalankan program
+	    <application>Daemon Wallpapoz</application> dengan cara yang lain, jalankan 
+	    <command>daemon_wallpapoz</command> pada prompt di terminal seperti 
+	    <application>gnome-terminal</application>, atau dari dialog <application>Jalankan Aplikasi</application>.
+	</para>
+	</sect2>
+
+	<sect2 id="wallpapoz-stop">
+	<title>Hentikan Jurik</title>
+	<para> 
+	  Untuk menghentikan proram <application>Daemon Wallpapoz</application>, pilih
+	      <menuchoice>
+	      <guimenu>Jurik</guimenu>
+	      <guisubmenu>Hentikan</guisubmenu>
+	    </menuchoice>, atau klik tombol <guilabel>Hentikan</guilabel> pada kotak tombol, atau tekan 
+	    <keycap>Esc</keycap>. Cara lainnya adalah dengan menjalankan 
+	    <command>pkill daemon_wallpapoz</command> pada prompt di terminal seperti 
+	    <application>gnome-terminal</application>, atau dari dialog <application>Jalankan Aplikasi</application>.
+	</para>
+	</sect2>
+
+</sect1>
+
+</article>

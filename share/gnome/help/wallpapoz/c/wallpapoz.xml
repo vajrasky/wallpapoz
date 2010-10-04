@@ -1,0 +1,477 @@
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appversion "0.4">
+  <!ENTITY manrevision "0.1">
+  <!ENTITY date "March 2007">
+  <!ENTITY app "<application>Wallpapoz</application>">
+  <!ENTITY appname "Wallpapoz">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+  
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="en">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo> 
+    <title>&appname; Manual</title>
+
+    <copyright> 
+      <year>2007</year> 
+      <holder>Vajrasky Akbar Kok</holder> 
+    </copyright> 
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2003</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+<!-- An address can be added to the publisher information.  If a role is 
+     not specified, the publisher/author is the same for all versions of the 
+     document.  -->
+    <publisher> 
+      <publishername> Vajrasky Akbar Kok </publishername> 
+    </publisher> 
+
+   &legal;
+   <!-- This file  contains link to license for the documentation (GNU FDL), and 
+        other legal stuff such as "NO WARRANTY" statement. Please do not change 
+	any of this. -->
+   <authorgroup>
+   <author> 
+	<firstname>Vajrasky Akbar</firstname> 
+	<surname>Kok</surname> 
+	<email>akbarhome@gmail.com</email> 
+   </author>
+<!-- This is appropriate place for other contributors: translators,
+      maintainers,  etc. Commented out by default.
+       <othercredit role="translator">
+	<firstname>Latin</firstname> 
+	<surname>Translator 1</surname> 
+	<affiliation> 
+	  <orgname>Latin Translation Team</orgname> 
+	  <email>translator@gnome.org</email> 
+	</affiliation>
+	<contrib>Latin translation</contrib>
+      </othercredit>
+-->
+    </authorgroup>
+ 
+    <revhistory>
+    <revision> 
+		<revnumber>Wallpapoz User's Guide</revnumber> 
+		<date>2007</date> 
+		<revdescription> 
+	  		<para role="author">Vajrasky Akbar Kok
+	    		  <email>akbarhome@gmail.com</email>
+	  		</para>
+	  		<para role="publisher">Vajrasky Akbar Kok</para>
+		</revdescription> 
+      </revision> 
+    </revhistory> 
+    <releaseinfo>This manual describes version &appversion; of &appname;.
+    </releaseinfo> 
+    <legalnotice> 
+      <title>Feedback</title> 
+      <para>To report a bug or make a suggestion regarding the &appname; application or this manual, email the author. 
+      </para>
+<!-- Translators may also add here feedback address for translations -->
+    </legalnotice> 
+  </articleinfo> 
+
+  <indexterm>
+    <primary>Wallpapoz</primary> 
+  </indexterm> 
+
+<!-- ============= Document Body ============================= -->
+
+<!-- ============= Introduction ============================== -->
+<sect1 id="wallpapoz-introduction">
+  <title>Introduction</title>
+  <para>The &app; application enables you to configure Gnome desktop wallpapers
+in unique way. You could have Gnome desktop wallpaper changes when 
+the specified time has passed. The most important feature is you could 
+have Gnome desktop wallpaper changes when you change workspace. It means 
+you could group your wallpapers into spesific workspace. It offers
+quick orientation cues where you are. You can manage it so when you change 
+to first workspace, your desktop wallpaper will be picked from wallpapers 
+group for that workspace. When you change to second workspace, it will be
+picked from wallpapers group for second workspace. So you could have 
+situation like this. You change to third workspace and you will get cartoon
+desktop wallpaper (wallpapers group for that workspace consists of cartoon
+wallpapers only). You change to fourth workspace and you will get abstract
+desktop wallpaper (wallpapers group for that workspace consists of abstract
+wallpapers only). Off course you can disable this 
+feature if you just want your desktop wallpaper changes when the specified 
+time (specified by you) has passed and does not change when you change 
+workspace.
+  </para>
+
+  <sect2 id="wallpapoz-tostartapp">
+    <title>Starting &appname;</title>
+    <para>You can start &app; in the following ways:</para>
+    <itemizedlist>
+      <listitem>
+	<para>Choose <menuchoice><guimenu>Accessories</guimenu>
+	<guimenuitem>Wallpapoz</guimenuitem></menuchoice>
+	from the <guimenu>Applications</guimenu> menu.</para>
+      </listitem>
+      <listitem>
+	<para>Run <command>wallpapoz</command> at the prompt in a terminal
+	such as <application>gnome-terminal</application>, or from the
+	<application>Run Application</application> dialog.</para>
+      </listitem>
+    </itemizedlist>
+  </sect2>
+
+  <sect2 id="wallpapoz-closeapp">
+    <title>Closing &appname;</title>
+    <para>To close a &app; window choose <menuchoice><guimenu>File</guimenu>
+    <guimenuitem>Quit</guimenuitem></menuchoice>, or press
+    <keycombo><keycap>Ctrl</keycap><keycap>Q</keycap></keycombo>.
+    This will shut down the application.</para>
+  </sect2>
+
+  <sect2 id="wallpapoz-features">
+    <title>&appname; Features</title>
+    <para>&app; has a variety of features to help you manage your Gnome 
+      desktop wallpapers. You can set the preference so when you change 
+      workspace, your Gnome desktop wallpaper will change. Another 
+      preference that can be set is when the specified time has passed, 
+      your Gnome desktop wallpaper will change.</para>
+
+    <para>&app; does more than Gnome Desktop Background Preferences.
+      It supports grouping wallpapers into workspace. So if the preference
+      changing desktop wallpaper when changing workspace is set on, when
+      you change to a workspace, your wallpaper will be picked from 
+      wallpapers group for that workspace.</para>
+
+    <para>&app; makes it easy for grouping wallpapers into workspace.
+      You can add multiple image files or a directory of image files
+      into workspace. &app; has option whether picking wallpaper in random
+      order or not. Beside that &app; has model option for showing desktop
+      wallpaper.</para>
+
+  </sect2>
+</sect1>
+
+<!--============== When You Start ===========-->
+<sect1 id="wallpapoz-whenyoustart">
+  <title>Getting Started</title>
+  <para>The &app; window contains the following elements:</para>
+  <variablelist>
+	<varlistentry>
+  	  <term>Menubar</term>
+ 	  <listitem>
+	    <para>The menus on the menubar contain all of the commands that you need to work with &app;.</para>
+	  </listitem>
+ 	</varlistentry>
+	<varlistentry>
+	  <term>Buttons Toolbar</term>
+	  <listitem>
+	    <para>The buttons toolbar contains a subset of the commands that you can access from the menubar.</para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>Display area</term>
+	  <listitem>
+ 	    <para>The display area displays the wallpaper in mini version when you select it from the treeview.</para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>Treeview</term>
+	  <listitem>
+	    <para>The treeview represents the list of wallpapers that you have choosen.</para>
+	  </listitem>
+	</varlistentry>
+  </variablelist>
+  <para>Most actions in &app; can be performed several ways.  For example,
+  you can add wallpapers in the following ways:</para>
+  <itemizedlist>
+    <listitem><para>Choose <menuchoice><guimenu>File</guimenu>
+    <guimenuitem>Add Wallpapers (Files)</guimenuitem></menuchoice> and select an image file
+    or image files in the <application>Choose Wallpapers</application> dialog.</para></listitem>
+    <listitem><para>Click on the <guibutton>Add Files</guibutton> button in buttons toolbar
+    and select an image file or image files in the <application>Choose Wallpapers</application>
+    dialog.</para></listitem>
+    <listitem><para>Press <keycombo><keycap>Ctrl</keycap><keycap>F</keycap>
+    </keycombo> and select an image file or image files in the <application>Choose
+    Wallpapers</application> dialog.</para></listitem>
+  </itemizedlist>
+</sect1>
+
+
+<!-- ============= Adding Wallpapers ============================== -->
+<sect1 id="wallpapoz-add">
+	<title>Adding Wallpapers</title>
+
+	<sect2 id="wallpapoz-files">
+	<title>Adding Files</title>
+	<para>To add wallpapers (files), perform the following steps:</para>
+	<orderedlist>
+	  <listitem>
+	    <para>
+	      Choose <menuchoice> <guimenu>File</guimenu><guimenuitem>Add Wallpapers (Files)</guimenuitem> </menuchoice>, or click on the <guibutton>Add Files</guibutton> button in buttons toolbar, or press <keycombo> <keycap>Ctrl</keycap><keycap>F</keycap> </keycombo>.  </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      In the <guilabel>Choose Wallpapers</guilabel> dialog, select wallpapers you want to add.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      Click <guibutton>OK</guibutton>.
+	    </para>
+	  </listitem>
+	</orderedlist>
+	</sect2>
+
+	<sect2 id="wallpapoz-directory">
+	<title>Adding Directory</title>
+	<para>Instead adding files, you can add a directory of wallpapers. Perform the following steps:</para>
+	<orderedlist>
+	  <listitem>
+	    <para>
+	      Choose <menuchoice> <guimenu>File</guimenu><guimenuitem>Add Wallpapers (Directory)</guimenuitem> </menuchoice>, or click on the <guibutton>Add Directory</guibutton> button in buttons toolbar, or press <keycombo> <keycap>Ctrl</keycap><keycap>D</keycap> </keycombo>.  </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      In the <guilabel>Choose Directory</guilabel> dialog, select directory of wallpapers you want to add.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      Click <guibutton>OK</guibutton>.
+	    </para>
+	  </listitem>
+	</orderedlist>
+	<para>
+	   In <guilabel>Choose Directory</guilabel> dialog you have recursive option located on left bottom part. If you select this option,
+	   it will get wallpapers recursively inside the directory that you choose. If you do not select this option,
+	   it get wallpapers from top level of inside directory that you choose only.
+	</para>
+	</sect2>
+
+	<para>You can add wallpapers to the list of wallpapers. 
+	  Wallpapers that you add will be put below your selections in treeview.</para>
+
+</sect1>
+
+<!-- ============= Editing List of Wallpapers ============================== -->
+<sect1 id="wallpapoz-edit">
+	<title>Editing List of Wallpapers</title>
+
+	<para>You can see the list of wallpapers in treeview, the left side of &app;. You can modify this list. 
+	  The modifications are done in memory and alter the configuration file on disk only when the configuration file 
+	  are saved with the save function (see <xref linkend="wallpapoz-save">save</xref>).
+	</para>
+
+	<!--============ To Cut Wallpapers ======================= -->
+	<sect2 id="wallpapoz-cut">
+		<title>To Cut Wallpapers</title>
+		<para>To cut wallpapers in the list of wallpapers, select wallpapers in treeview, then choose 
+		<menuchoice>
+		<guimenu>Edit</guimenu>
+		<guimenuitem>Cut</guimenuitem>
+		</menuchoice>, or right click in treeview with mouse then choose <guimenuitem>Cut</guimenuitem> 
+		from popup menu, or press <keycombo> <keycap>Ctrl</keycap><keycap>X</keycap> </keycombo>.</para>
+	</sect2>
+
+	<!--============ To Copy Wallpapers ======================= -->
+	<sect2 id="wallpapoz-copy">
+		<title>To Copy Wallpapers</title>
+		<para>To copy wallpapers in the list of wallpapers, select wallpapers in treeview, then choose 
+		<menuchoice>
+		<guimenu>Edit</guimenu>
+		<guimenuitem>Copy</guimenuitem>
+		</menuchoice>, or right click in treeview with mouse then choose <guimenuitem>Copy</guimenuitem> 
+		from popup menu, or press <keycombo> <keycap>Ctrl</keycap><keycap>C</keycap> </keycombo>.</para>
+	</sect2>
+
+	<!--============ To Paste Wallpapers ======================= -->
+	<sect2 id="wallpapoz-paste">
+		<title>To Paste Wallpapers</title>
+		<para>To paste wallpapers in the list of wallpapers (you must copy or cut wallpapers first), 
+		  select treenode in treeview, then choose 
+		<menuchoice>
+		<guimenu>Edit</guimenu>
+		<guimenuitem>Paste</guimenuitem>
+		</menuchoice>, or right click in treeview with mouse then choose <guimenuitem>Paste</guimenuitem> 
+		from popup menu, or press <keycombo> <keycap>Ctrl</keycap><keycap>P</keycap> </keycombo>.</para>
+	</sect2>
+
+	<!--============ To Rename Workspace ======================= -->
+	<sect2 id="wallpapoz-rename">
+		<title>To Rename Workspace</title>
+		<para>To rename workspace (if you have set the option changing desktop wallpaper when changing 
+		  workspace on), select workspace (top level treenode) in treeview, then choose 
+		<menuchoice>
+		<guimenu>Edit</guimenu>
+		<guimenuitem>Rename Workspace</guimenuitem>
+		</menuchoice>, or right click on top level treenode in treeview with mouse then choose <guimenuitem>Rename Workspace</guimenuitem>
+		from popup menu, or press <keycombo> <keycap>Ctrl</keycap><keycap>E</keycap> </keycombo>. After that 
+	        the treenode representing workspace will become text field. You can change the value there. To commit it
+	        you can press <keycap>Enter</keycap>.</para>
+	</sect2>
+
+	<!--============ To Change Wallpaper ======================== -->
+	<sect2 id="wallpapoz-change">
+		<title>To Change Wallpaper</title>
+		<para>To change wallpaper, select single wallpaper in treeview, then choose 
+			<menuchoice>
+			<guimenu>Edit</guimenu>
+			<guisubmenu>Change</guisubmenu>
+			</menuchoice>, or right click in treeview with mouse then choose <guimenuitem>Change</guimenuitem>
+			from popup menu, or press <keycombo> <keycap>Ctrl</keycap><keycap>H</keycap> </keycombo>.
+			In the <guilabel>Choose Wallpaper</guilabel> dialog, select wallpaper that you want as replacement.
+			Click <guibutton>Change</guibutton>.</para>
+	</sect2>
+
+	<!--============ To Delete Wallpapers ======================== -->
+	<sect2 id="wallpapoz-delete">
+		<title>To Delete Wallpapers</title>
+		<para>To delete wallpapers, select wallpapers in treeview, then choose 
+			<menuchoice>
+			<guimenu>Edit</guimenu>
+			<guisubmenu>Delete</guisubmenu>
+			</menuchoice>, or right click in treeview with mouse then choose <guimenuitem>Delete</guimenuitem>
+			from popup menu, or press <keycap>Delete</keycap>. </para>
+	</sect2>
+
+	<!--============ To Move Up Wallpapers ======================== -->
+	<sect2 id="wallpapoz-moveup">
+		<title>To Move Up Wallpapers</title>
+		<para>To move up wallpapers, select wallpapers (treenodes) in treeview, then choose 
+			<menuchoice>
+			<guimenu>Edit</guimenu>
+			<guisubmenu>Move Up</guisubmenu>
+			</menuchoice>, or right click in treeview with mouse then choose <guimenuitem>Move Up</guimenuitem>
+			from popup menu, or press <keycap>Page Up</keycap>. Your selection of wallpapers will move up
+		        by one position.</para>
+	</sect2>
+
+	<!--============ To Move Down Wallpapers ======================== -->
+	<sect2 id="wallpapoz-movedown">
+		<title>To Move Down Wallpapers</title>
+		<para>To move down wallpapers, select wallpapers (treenodes) in treeview, then choose 
+			<menuchoice>
+			<guimenu>Edit</guimenu>
+			<guisubmenu>Move Down</guisubmenu>
+			</menuchoice>, or right click in treeview with mouse then choose <guimenuitem>Move Down</guimenuitem>
+			from popup menu, or press <keycap>Page Down</keycap>. Your selection of wallpapers will move down
+		        by one position.</para>
+	</sect2>
+</sect1> 
+
+<!-- ============= Saving ============================== -->
+<sect1 id="wallpapoz-save">
+	<title>Saving</title>
+
+	<para> 
+	  To save the list of wallpapers into configuration file, choose
+	      <menuchoice>
+	      <guimenu>File</guimenu>
+	      <guisubmenu>Save</guisubmenu>
+	    </menuchoice>, or click <guilabel>Save</guilabel> button in buttons toolbar, or press 
+	    <keycombo> <keycap>Ctrl</keycap><keycap>S</keycap> </keycombo>.
+	</para>
+</sect1>
+
+<!-- ============= Preferences ============================== -->
+<sect1 id="wallpapoz-prefs">
+	<title>Preferences</title>
+	<para>Preferences can be changed by going to <menuchoice><guimenu>Edit</guimenu><guimenuitem>Preferences</guimenuitem></menuchoice>, or click <guilabel>Preferences</guilabel> button in buttons toolbar, or press <keycombo> <keycap>Ctrl</keycap><keycap>P</keycap> </keycombo>. You will be able to change the options for time to be waited for before changing desktop wallpapers, whether picking wallpaper from the list of wallpapers in random order or not, whether changing desktop wallpaper when changing workspace or not, and style to be used for displaying desktop wallpaper.</para>
+
+	<variablelist>
+	<varlistentry>
+		<term>Time</term>
+		<listitem>
+		<para>Use the <guilabel>Change desktop wallpaper after ... minutes</guilabel> spinbox to specify how long before desktop wallpaper is changed to wallpaper that picked from the list of wallpapers.</para>
+		</listitem>
+	</varlistentry>
+
+	<varlistentry>
+		<term>Picking Order</term>
+		<listitem>
+		<para>Select the <guilabel>Pick wallpaper in random order</guilabel> option to pick wallpaper from the list of wallpapers in random order. If you do not select this option, &app; will pick wallpaper from the list of wallpapers in sequence order.</para>
+		</listitem>
+	</varlistentry>		
+
+	<varlistentry>
+		<term>Workspace</term>
+		<listitem>
+		<para>Select the <guilabel>Change desktop wallpaper when changing workspace</guilabel> option to change desktop wallpaper when you change workspace. If you do not select this option, &app; will not change desktop wallpaper when you change workspace.</para>
+		</listitem>
+	</varlistentry>		
+
+	<varlistentry>
+		<term>Style</term>
+		<listitem>
+		<para>Use the <guilabel>Style</guilabel> combobox to specify what style &app; should use to display desktop wallpaper. There are Centered, Filled Screen, Scaled, Zoom, Tiled options. This feature is same as in Gnome Desktop Background Preferences.</para>
+		</listitem>
+	</varlistentry>		
+	</variablelist>
+		
+</sect1>
+
+<!-- ============= Daemon ============================== -->
+<sect1 id="wallpapoz-daemon">
+	<title>Daemon</title>
+
+	<para> 
+	  &app; consists of two programs. The first is the gui tool configuring the list of wallpapers. The second is
+	  the program that monitors your desktop continously. When you change your workspace or the specified time has
+	  passed, it will change your desktop wallpaper based on configuration file that you have been created with
+	  the gui tool. The gui tool is called &app; and the daemon is called <application>Daemon Wallpapoz</application>. 
+	  You can call the <application>Daemon Wallpapoz</application> program and stop it from the gui tool.
+	</para>
+
+	<note>
+	  <para>
+	    It is the <application>Daemon Wallpapoz</application> program that enables you to have Gnome desktop
+	    wallpaper changing when you change workspace or the specified time has passed (based on your configuration
+	    file). &app; program just makes the configuration file only.
+	  </para>
+	</note>
+
+	<sect2 id="wallpapoz-restart">
+	<title>Run/Restart Daemon</title>
+	<para> 
+	  To run or restart the <application>Daemon Wallpapoz</application> program, choose
+	      <menuchoice>
+	      <guimenu>Daemon</guimenu>
+	      <guisubmenu>Restart</guisubmenu>
+	    </menuchoice>, or click <guilabel>Restart</guilabel> button in buttons toolbar, or press 
+	    <keycombo> <keycap>Ctrl</keycap><keycap>R</keycap> </keycombo>. 
+	    To run <application>Daemon Wallpapoz</application> in other way, run <command>daemon_wallpapoz</command>
+	    at the prompt in a terminal such as <application>gnome-terminal</application>, or from the
+	    <application>Run Application</application> dialog.
+	</para>
+	</sect2>
+
+	<sect2 id="wallpapoz-stop">
+	<title>Stop Daemon</title>
+	<para> 
+	  To stop the <application>Daemon Wallpapoz</application> program, choose
+	      <menuchoice>
+	      <guimenu>Daemon</guimenu>
+	      <guisubmenu>Stop</guisubmenu>
+	    </menuchoice>, or click <guilabel>Stop</guilabel> button in buttons toolbar, or press 
+	    <keycap>Esc</keycap>. The other way is to run <command>pkill daemon_wallpapoz</command>
+	    at the prompt in a terminal such as <application>gnome-terminal</application>, or from the
+	    <application>Run Application</application> dialog.
+	</para>
+	</sect2>
+
+</sect1>
+
+</article>

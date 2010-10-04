@@ -1,0 +1,1241 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+#=============================================================================
+#
+#    wallpapoz.py - Wallpapoz 
+#    Copyright (C) 2007 Akbar <akbarhome@gmail.com>
+#
+#=============================================================================
+#
+#    This program is free software; you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation; either version 2 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program; if not, write to the Free Software
+#    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#
+#=============================================================================
+
+## wallpapoz.py -- the gui tool for creating configuration file and
+# calling daemon program
+
+import pygtk
+pygtk.require('2.0')
+import gtk.glade
+import gobject
+import os
+import sys
+import stat
+import imghdr
+import gettext
+import Image
+
+try:
+  import gnome
+except ImportError:
+  pass
+
+# so we can call from anywhere
+pathname = os.path.dirname(sys.argv[0])
+os.chdir(os.path.abspath(pathname))
+
+sys.path.append("../share/wallpapoz/lib")
+from xml_processing import XMLProcessing
+from wallpapoz_system import WallpapozSystem
+
+# i18n
+APP = "wallpapoz"
+DIR = "../share/locale"
+gettext.bindtextdomain(APP, DIR)
+gettext.textdomain(APP)
+gtk.glade.bindtextdomain(APP, DIR)
+gtk.glade.textdomain(APP)
+_ = gettext.gettext
+
+# main class for the gui. This gui will contruct the configuration file that will be used by daemon
+class Wallpapoz:
+
+  # handling destroy event ( when you click close button of window or click quit button
+  def destroy(self, widget):
+    gtk.main_quit()
+
+  # the contructor
+  def __init__(self):
+    # wallpapoz glade file
+    self.wallpapoz_glade_file = "../share/wallpapoz/glade/wallpapoz.glade"
+
+    # call the xmlprocessing class to read it later on method related to treeview
+    self.wallpapozxml = XMLProcessing()
+
+    # Load the glade
+    self.main_window = gtk.glade.XML(self.wallpapoz_glade_file, "wallpapoz_window", APP)
+
+    # window widget
+    self.main_window_widget = self.main_window.get_widget("wallpapoz_window")
+
+    # treeview widget
+    self.treeview_widget = self.main_window.get_widget("treeview")
+
+    # image widget
+    self.image_widget = self.main_window.get_widget("wallpaper_image")
+
+    # image filename widget
+    self.wallpaper_filename = self.main_window.get_widget("wallpaper_name_label")
+
+    # create the pop up menu when we right click the treeview widget
+    self.set_up_popup_menu()
+
+    # our signal and who handle that signal
+    dic = { "on_wallpapoz_window_destroy" : self.destroy,
+            "on_treeview_cursor_changed" : self.treeview_selection_changed,
+            "on_save_button_clicked" : self.create_configuration_file,
+            "on_quit_activate" : self.destroy,
+	    "on_contents_activate" : self.display_help,
+	    "on_about_activate" : self.display_about,
+	    "on_add_wallpapers_files_button_clicked" : self.add_wallpapers_files,
+            "on_add_wallpapers_directory_button_clicked" : self.add_wallpapers_directory,
+	    "on_add_wallpapers_files_activate" : self.add_wallpapers_files,
+	    "on_add_wallpapers_directory_activate" : self.add_wallpapers_directory,
+	    "on_preferences_activate" : self.preferences_option,
+	    "on_preferences_button_clicked" : self.preferences_option,
+            "on_cut_activate" : self.cut_treenode,
+            "on_copy_activate" : self.copy_treenode,
+            "on_paste_activate" : self.paste_treenode, 
+            "on_rename_workspace_activate" : self.rename_workspace_parentnode,
+	    "on_restart_activate" : self.restart_daemon,
+	    "on_stop_activate" : self.stop_daemon,
+	    "on_restart_daemon_button_clicked" : self.restart_daemon,
+	    "on_stop_daemon_button_clicked" : self.stop_daemon,
+            "on_change_wallpaper_activate" : self.change_wallpaper,
+            "on_delete_wallpapers_activate" : self.delete_wallpaper,
+            "on_move_up_activate" : self.move_up_node,
+            "on_move_down_activate" : self.move_down_node,
+	    "on_treeview_button_press_event" : self.right_click_menu }
+    self.main_window.signal_autoconnect(dic)
+
+    # show treeview
+    self.load_treeview()
+
+    # variable hold last directory of filechooser
+    self.last_directory = None
+
+  # set up popup menu when we right click the treeview widget
+  def set_up_popup_menu(self):
+    self.popup_menu = gtk.Menu()
+    add_wallpapers_files_menu = gtk.MenuItem(_("Add Wallpapers (Files)"))
+    add_wallpapers_directory_menu = gtk.MenuItem(_("Add Wallpapers (Directory)"))
+    self.cut_menu = gtk.MenuItem(_("Cut"))
+    self.copy_menu = gtk.MenuItem(_("Copy"))
+    paste_menu = gtk.MenuItem(_("Paste"))
+    self.rename_workspace_menu = gtk.MenuItem(_("Rename Workspace"))
+    self.change_wallpaper_menu = gtk.MenuItem(_("Change Wallpaper"))
+    self.delete_wallpapers_menu = gtk.MenuItem(_("Delete Wallpapers"))
+    move_up_menu = gtk.MenuItem(_("Move Up"))
+    move_down_menu = gtk.MenuItem(_("Move Down"))
+    add_wallpapers_files_menu.connect("activate", self.add_wallpapers_files)
+    add_wallpapers_directory_menu.connect("activate", self.add_wallpapers_directory)
+    self.cut_menu.connect("activate", self.cut_treenode)
+    self.copy_menu.connect("activate", self.copy_treenode)
+    paste_menu.connect("activate", self.paste_treenode)
+    self.rename_workspace_menu.connect("activate", self.rename_workspace_parentnode)
+    self.change_wallpaper_menu.connect("activate", self.change_wallpaper)
+    self.delete_wallpapers_menu.connect("activate", self.delete_wallpaper)
+    move_up_menu.connect("activate", self.move_up_node)
+    move_down_menu.connect("activate", self.move_down_node)
+    self.popup_menu.append(add_wallpapers_files_menu)
+    self.popup_menu.append(add_wallpapers_directory_menu)
+    self.popup_menu.append(self.cut_menu)
+    self.popup_menu.append(self.copy_menu)
+    self.popup_menu.append(paste_menu)
+    self.popup_menu.append(self.rename_workspace_menu)
+    self.popup_menu.append(self.change_wallpaper_menu)
+    self.popup_menu.append(self.delete_wallpapers_menu)
+    self.popup_menu.append(move_up_menu)
+    self.popup_menu.append(move_down_menu)
+    add_wallpapers_files_menu.show()
+    add_wallpapers_directory_menu.show()
+    self.cut_menu.show()
+    self.copy_menu.show()
+    paste_menu.show()
+    self.rename_workspace_menu.show()
+    self.change_wallpaper_menu.show()
+    self.delete_wallpapers_menu.show()
+    move_up_menu.show()
+    move_down_menu.show()
+
+  # popup menu when user right-click the treeview widget
+  def right_click_menu(self, widget, event):
+    if event.type == gtk.gdk.BUTTON_PRESS and event.button == 3:
+      self.popup_menu.popup(None, None, None, event.button, event.time)
+
+  def restart_daemon(self, widget):
+    self.stop_daemon(None)
+    os.system(os.path.abspath("daemon_wallpapoz&"))
+
+  def stop_daemon(self, widget):
+    wallpapoz_id_list = os.popen("pgrep -f daemon_wallpapoz").read().splitlines()
+    python_id_list =os.popen("pgrep -f python").read().splitlines()
+    for iter in wallpapoz_id_list:
+      if iter in python_id_list:
+	os.system("kill " + iter)
+
+  # when use want to see the help files
+  def display_help(self, widget):
+    try:
+      props = { gnome.PARAM_APP_DATADIR : os.path.abspath(".") + "/../share" }
+      prog = gnome.program_init('wallpapoz', '1.0', properties=props)
+      gnome.help_display("wallpapoz")
+    # if users don't have gnome-python installed, use default documentation
+    except NameError:
+      os.spawnv(os.P_NOWAIT, "/usr/bin/yelp", ["/usr/bin/yelp", "../share/gnome/help/wallpapoz/C/wallpapoz.xml"] )
+
+  # when user click about menu item, show about dialog
+  def display_about(self, widget):
+    about_dialog = gtk.glade.XML(self.wallpapoz_glade_file, "wallpapoz_about_dialog", APP)
+    aboutdlg_widget = about_dialog.get_widget("wallpapoz_about_dialog")
+    aboutdlg_widget.connect('response', lambda w, e: aboutdlg_widget.destroy())
+
+  # get the selection iter
+  def get_selected_iter_of_treeview(self, type_selection):
+
+    # treeselection give 2-tuple.... ( model, path )
+    pathlist = self.treeselection.get_selected_rows()[1]
+
+    # how many of selection do we have
+    length_of_path_list = len(pathlist)
+
+    # add wallpapers, paste operation
+    # multiple selection are okay as long as in one workspace, parent and child node togeter are okay, these multiple selection
+    if type_selection == "wallpaper" or type_selection == "paste":
+      # if it is treestore
+      if type(self.store) == gtk.TreeStore:
+	# check if user select in more than one workspace
+	holdparent = pathlist[0][0]
+	for path in pathlist:
+	  if path[0] != holdparent:
+	    if type_selection == "wallpaper":
+	      warning_message = _("Please make your selections only in one workspace so Wallpapoz knows where to add wallpapers.")
+	    else:
+	      warning_message = _("Please make your selections in one workspace so Wallpapoz knows where to paste wallpapers.")
+	    message_dialog = gtk.MessageDialog(self.main_window_widget, gtk.DIALOG_MODAL, gtk.MESSAGE_ERROR, gtk.BUTTONS_CLOSE, warning_message)
+	    if message_dialog.run() == gtk.RESPONSE_CLOSE:
+	      message_dialog.destroy()
+	    return None
+
+      # if it is in one workspace, get the last iter, set current iter to that
+      # if it is multiple selection, the last iter will always be child node
+      # because parent iter is always in first node
+      # these are multiple selection, but we set the iter to single selection
+      # good for add, but bad for others ( todo )
+      # same as list mode
+      iter = self.store.get_iter(pathlist[length_of_path_list-1])
+
+    # cut, copy, delete operation
+    # multiple selection in more than one workspace are okay but no parent node
+    elif type_selection == "cut" or type_selection == "copy" or type_selection == "delete":
+      iter = []
+      # make user not select parent node
+      for path in pathlist:
+	# there is parent node in user selection
+	if len(path) == 1 and type(self.store) == gtk.TreeStore:
+	  if type_selection == "cut":
+	    warning_message = _("You can not cut workspace.")
+	  elif type_selection == "copy":
+	    warning_message = _("You can not copy workspace.")
+	  elif type_selection == "delete":
+	    warning_message = _("You can not delete workspace.")
+	  message_dialog = gtk.MessageDialog(self.main_window_widget, gtk.DIALOG_MODAL, gtk.MESSAGE_ERROR, gtk.BUTTONS_CLOSE, warning_message)
+	  if message_dialog.run() == gtk.RESPONSE_CLOSE:
+	    message_dialog.destroy()
+	  return None
+	iter.append(self.store.get_iter(path))
+
+    # move operation
+    # either workspace all or child node all
+    # must in block
+    elif type_selection == "move":
+      iter = []
+
+      # the first path of selection is parent node
+      if len(pathlist[0]) == 1:
+	index_of_first_path = pathlist[0][0]
+	length_of_first_path = 1
+      # the first path of selection is child node
+      else:
+	index_of_first_path = pathlist[0][1]
+	length_of_first_path = 2
+      iter.append(self.store.get_iter(pathlist[0]))
+
+      # check for other members
+      for path in pathlist[1:]:
+	# check if it is the same kind
+	if len(path) != length_of_first_path:
+	  message_dialog = gtk.MessageDialog(self.main_window_widget, gtk.DIALOG_MODAL, gtk.MESSAGE_ERROR, gtk.BUTTONS_CLOSE, _("You can not move parent nodes and child nodes at the same time."))
+	  if message_dialog.run() == gtk.RESPONSE_CLOSE:
+	    message_dialog.destroy()
+	  return None
+	# check if it is still in the block ( the index must be sequence )
+	if index_of_first_path + 1 != path[length_of_first_path-1]:
+	  message_dialog = gtk.MessageDialog(self.main_window_widget, gtk.DIALOG_MODAL, gtk.MESSAGE_ERROR, gtk.BUTTONS_CLOSE, _("You can not move a discontiguous tree selection."))
+	  if message_dialog.run() == gtk.RESPONSE_CLOSE:
+	    message_dialog.destroy()
+	  return None
+	else:
+	  index_of_first_path += 1
+        iter.append(self.store.get_iter(path))
+
+      return iter
+
+    # change wallpaper operation
+    # only child node in treestore or parent node in liststore, and it must one only
+    elif type_selection == "change":
+      if length_of_path_list > 1:
+	message_dialog = gtk.MessageDialog(self.main_window_widget, gtk.DIALOG_MODAL, gtk.MESSAGE_ERROR, gtk.BUTTONS_CLOSE, _("You can change one wallpaper only at a time."))
+	if message_dialog.run() == gtk.RESPONSE_CLOSE:
+	  message_dialog.destroy()
+	return None
+      else:
+	iter = self.store.get_iter(pathlist[0])
+
+    else:
+      iter = self.store.get_iter(pathlist[length_of_path_list-1])
+
+    return iter
+
+  # make wallpaper chooser dialog ( sharing by add_wallpapers_files function and change_wallpaper function )
+  def make_chooser_dialog(self, type_of_ok_button):
+    if type_of_ok_button == "change":
+      dialog_title = _("Choose Wallpaper")
+    elif type_of_ok_button == "add":
+      dialog_title = _("Choose Wallpapers")
+
+    # our filechooser dialog
+    filechooser_dialog = gtk.FileChooserDialog(dialog_title, self.main_window_widget, gtk.FILE_CHOOSER_ACTION_OPEN)
+
+    # our button
+    cancel_button = filechooser_dialog.add_button(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
+    if type_of_ok_button == "change":
+      ok_button = filechooser_dialog.add_button(_("Change"), gtk.RESPONSE_OK)
+    elif type_of_ok_button == "add":
+      ok_button = filechooser_dialog.add_button(gtk.STOCK_OK, gtk.RESPONSE_OK)
+      gtk.Tooltips().set_tip(ok_button, _("Add wallpapers"))
+
+    # cancel will quit the filechooser dialog
+    cancel_button.connect("clicked", lambda w: filechooser_dialog.destroy())
+
+    # set it to last directory
+    if self.last_directory == None: 
+      filechooser_dialog.set_current_folder(os.environ['HOME'])
+    else:
+      filechooser_dialog.set_current_folder(self.last_directory)
+
+    # set filter
+
+    # image filter
+    images_type = ('rgb', 'gif', 'pbm', 'pgm', 'ppm', 'tiff', 'rast', 'xbm', 'jpeg', 'jpg', 'bmp', 'png')
+    imagefilter = gtk.FileFilter()
+    for image_type in images_type:
+      imagefilter.add_pattern('*.' + image_type)
+    imagefilter.set_name(_("Images"))
+    filechooser_dialog.add_filter(imagefilter)
+
+    # all files filter
+    allfilter = gtk.FileFilter()
+    allfilter.add_pattern("*")
+    allfilter.set_name(_("All files"))
+    filechooser_dialog.add_filter(allfilter)
+
+    return filechooser_dialog
+
+  # add single wallpaper to treeview
+  def add_wallpapers_files(self, widget):
+    # common function for add single file and add directory
+    iter = self.get_selected_iter_of_treeview("wallpaper")
+
+    # this is indicating user select treeview node in more than one workspace
+    if iter == None:
+      return
+
+    # get the chooser dialog
+    filechooser_dialog = self.make_chooser_dialog("add")
+
+    # set it so we can select multiple files
+    filechooser_dialog.set_select_multiple(True)
+
+    # if user choose the file, add his choice to treeview
+    if filechooser_dialog.run() == gtk.RESPONSE_OK:
+      # get the list of filename that we choose to add
+      filenames = filechooser_dialog.get_filenames()
+
+      # if it is treestore
+      if type(self.store) == gtk.TreeStore:
+	# so we know where to put our choice
+	parent = self.store.iter_parent(iter)
+
+        # we are in child node
+	if parent != None:
+	  # iterate over filenames
+          for filename in filenames:
+	    new_index = self.store.get_value(iter, 0) + 1
+	    iter = self.store.insert_after(parent, iter, [new_index, filename, False])
+          # after inserting new row, we must sort out the index number after it
+          done = False
+	  while not done:
+	    iter = self.store.iter_next(iter)
+	    if iter:
+	      new_index = new_index + 1
+	      self.store.set_value(iter, 0, new_index)
+	    else:
+	      done = True
+
+	# we are in parent node
+	else:
+	  num_of_child = self.store.iter_n_children(iter)
+	  new_index = num_of_child
+	  # iterate over filenames
+          for filename in filenames:
+	    new_index = new_index + 1
+	    self.store.append(iter, [new_index, filename, False])
+
+      # if it is liststore
+      else:
+        # we are inserting the new row below the selected row
+        # which means we have to sorted out the row
+        new_index = self.store.get_value(iter, 0) + 1
+        next_iter = self.store.insert_after(iter, [new_index, filechooser_dialog.get_filename(), False])
+        done = False
+	# sorted the number out row after the new row
+        while not done:
+	  next_iter = self.store.iter_next(next_iter)
+          if next_iter:
+	    new_index = new_index + 1
+	    self.store.set_value(next_iter, 0, new_index)
+          else:
+	    done = True
+      # save the current folder to user come back to this folder when he open
+      # up the directory chooser again
+      self.last_directory = filechooser_dialog.get_current_folder()
+
+      filechooser_dialog.destroy()
+
+  # show up the preferences dialog
+  def preferences_option(self, widget):
+    self.preferences_dialog = gtk.glade.XML(self.wallpapoz_glade_file, "preferences_dialog", APP)
+    preferences_dialog_widget = self.preferences_dialog.get_widget("preferences_dialog")
+
+    # input widgets
+    time_changed_widget = self.preferences_dialog.get_widget("preferences_dialog_spin_button_time")
+    random_order_widget = self.preferences_dialog.get_widget("preferences_dialog_show_wallpaper_random_order")
+    changing_workspace_widget = self.preferences_dialog.get_widget("preferences_dialog_change_wallpaper_changing_workspace")
+    style_widget = self.preferences_dialog.get_widget("preferences_dialog_style_combobox")
+    size_widget = self.preferences_dialog.get_widget("preferences_dialog_size_combobox")
+
+    # load value from xml file
+    time_changed_widget.set_value(float(self.wallpapozxml.delay()))
+    if self.wallpapozxml.is_random() == "1":
+      random_order_widget.set_active(True)
+    elif self.wallpapozxml.is_random() == "0":
+      random_order_widget.set_active(False)
+    else:
+      raise "Random order value is not valid"
+    style_widget.set_active(int(self.wallpapozxml.style()))
+    changing_workspace_widget.set_active(self.wallpapozxml.change_wallpaper_when_changing_workspace())
+
+    # button
+    cancel_button = self.preferences_dialog.get_widget("preferences_cancel_button")
+    cancel_button.connect("clicked", lambda w: preferences_dialog_widget.destroy())
+
+    ok_button = self.preferences_dialog.get_widget("preferences_ok_button")
+    ok_button.connect("clicked", self.ok_preferences_dialog)
+
+  def ok_preferences_dialog(self, widget):
+    time_changed_widget = self.preferences_dialog.get_widget("preferences_dialog_spin_button_time")
+    random_order_widget = self.preferences_dialog.get_widget("preferences_dialog_show_wallpaper_random_order")
+    changing_workspace_widget = self.preferences_dialog.get_widget("preferences_dialog_change_wallpaper_changing_workspace")
+    style_widget = self.preferences_dialog.get_widget("preferences_dialog_style_combobox")
+    size_widget = self.preferences_dialog.get_widget("preferences_dialog_size_combobox")
+    preferences_dialog_widget = self.preferences_dialog.get_widget("preferences_dialog")
+
+    # user change option for changing_workspace
+    if changing_workspace_widget.get_active():
+      if self.wallpapozxml.wallpapoz_type == "workspace":
+	treetype = None
+      else:
+	self.wallpapozxml.wallpapoz_type = "workspace"
+	treetype = "treestore"
+    else:
+      if self.wallpapozxml.wallpapoz_type == "desktop":
+	treetype = None
+      else:
+	self.wallpapozxml.wallpapoz_type = "desktop"
+	treetype = "liststore"
+    value_of_style_tuple = style_widget.get_active()
+    self.wallpapozxml.set_style(str(value_of_style_tuple))
+    self.wallpapozxml.set_delay(str(int(time_changed_widget.get_value())))
+    self.wallpapozxml.set_random(random_order_widget.get_active())
+    self.wallpapozxml.save()
+
+    preferences_dialog_widget.destroy()
+
+    # actions necessary for reload the treetype and xml configuration
+    if treetype:
+      self.wallpapozxml.create_configuration_file(self.wallpapozxml.default_fill_list(treetype), treetype)
+      self.wallpapozxml.reparse_xml()
+      self.load_treeview()
+
+  # show up the directory chooser dialog
+  def add_wallpapers_directory(self, widget):
+    # common function for add single file and add directory
+    iter = self.get_selected_iter_of_treeview("wallpaper")
+
+    # if user has not select any node in treeview, don't show up the chooser dialog
+    if iter == None:
+      return
+
+    choose_directory_dialog = gtk.glade.XML(self.wallpapoz_glade_file, "add_wallpapers_directory_dialog", APP)
+    choose_directory_dialog_widget = choose_directory_dialog.get_widget("add_wallpapers_directory_dialog")
+    filechooser_widget = choose_directory_dialog.get_widget("filechooserwidget")
+    recursive_widget = choose_directory_dialog.get_widget("recursive_checkbutton")
+
+    # set it to last directory
+    if self.last_directory == None: 
+      filechooser_widget.set_current_folder(os.environ['HOME'])
+    else:
+      filechooser_widget.set_current_folder(self.last_directory)
+
+    # set it modal & above parent window
+    choose_directory_dialog_widget.set_modal(True)
+    choose_directory_dialog_widget.set_transient_for(self.main_window_widget)
+
+    # show the directory choose dialog
+    choose_directory_dialog_widget.show()
+
+    dic = { "on_cancel_add_wallpapers_directory_button_clicked" : (self.cancel_button_add_wallpapers_directory, choose_directory_dialog_widget),
+            "on_add_wallpapers_directory_button_clicked" : (self.ok_button_add_wallpapers_directory, filechooser_widget, recursive_widget, choose_directory_dialog_widget, iter) }
+    choose_directory_dialog.signal_autoconnect(dic)
+
+  # ok, if we choose the directory ( accept filechooser, recursive checkbutton, iter pointing treenode ), function add_wallpapers_directory call this function
+  def ok_button_add_wallpapers_directory(self, widget, filechooser_widget, recursive_widget, choose_directory_dialog_widget, iter):
+
+    # if it is treestore
+    if type(self.store) == gtk.TreeStore:
+      parent = self.store.iter_parent(iter)
+      # if user click in parent row
+      if parent == None:
+	# get the index number for new rows
+	num_of_child = self.store.iter_n_children(iter)
+	# what is the directory?
+	cur_dir = filechooser_widget.get_filename()
+        # if recursive, we use walktree
+	if recursive_widget.get_active():
+	  # looping with walktree method
+	  for (basepath, children) in self.walktree(cur_dir,False):
+	    for child in children:
+	      # get the filename
+	      filename = os.path.join(basepath, child)
+	      # we interested in file, not directory
+	      if os.path.isfile(filename):
+		# and we interested in image file
+		if imghdr.what(filename):
+		  # put it to new row
+		  self.store.append(iter, [num_of_child+1, filename, False])
+		  # increase the index
+		  num_of_child = num_of_child + 1
+        # if not just looping the directory with ordinary fashion
+	else:
+	  # looping all files in this directory
+	  for file in os.listdir(cur_dir):
+	    # get the filename
+	    filename = os.path.join(cur_dir, file)
+	    # we interested in file, not directory
+	    if os.path.isfile(filename):
+	      # and we interested in image file
+	      if imghdr.what(filename):
+		# put it to new row
+		self.store.append(iter, [num_of_child+1, filename, False])
+		# increase the index
+		num_of_child = num_of_child + 1
+      # if user click in row below parent
+      else: 
+	# our selected row
+	next_iter = iter
+	# our index row
+	new_index = self.store.get_value(next_iter, 0) + 1
+	# what is the directory?
+	cur_dir = filechooser_widget.get_filename()
+        # if recursive, we use walktree
+	if recursive_widget.get_active():
+	  # looping with walktree method
+	  for (basepath, children) in self.walktree(cur_dir,False):
+	    for child in children:
+	      # get the filename
+	      filename = os.path.join(basepath, child)
+	      # we interested in file, not directory
+	      if os.path.isfile(filename):
+		# and we interested in image file
+		if imghdr.what(filename):
+		  # put it to new row
+		  next_iter = self.store.insert_after(parent, next_iter, [new_index, filename, False])
+		  # increase the index
+		  new_index = new_index + 1
+        # if not, just looping with ordinary fashion
+        else:
+	  # looping all files in this directory
+	  for file in os.listdir(cur_dir):
+	    # get the filename
+	    filename = os.path.join(cur_dir, file)
+	    # we interested in file, not directory
+	    if os.path.isfile(filename):
+	      # and we interested in image file
+	      if imghdr.what(filename):
+		# put it to new row
+		next_iter = self.store.insert_after(parent, next_iter, [new_index, filename, False])
+		# increase the index
+		new_index = new_index + 1
+	# looping for all remaining row, and make adjustment for their index
+	done = False
+	while not done:
+	  next_iter = self.store.iter_next(next_iter)
+	  if next_iter:
+	    self.store.set_value(next_iter, 0, new_index)
+	    new_index = new_index + 1
+	  else:
+	    done = True
+    # if it is liststore
+    else:
+      # our selected row
+      next_iter = iter
+      # our index row
+      new_index = self.store.get_value(next_iter, 0) + 1
+      # what is the directory?
+      cur_dir = filechooser_widget.get_filename()
+      # if recursive, we use walktree
+      if recursive_widget.get_active():
+	# looping with walktree method
+	for (basepath, children) in self.walktree(cur_dir,False):
+	  for child in children:
+	    # get the filename
+	    filename = os.path.join(basepath, child)
+	    # we interested in file, not directory
+	    if os.path.isfile(filename):
+	      # and we interested in image file
+	      if imghdr.what(filename):
+		# put it to new row
+		next_iter = self.store.insert_after(next_iter, [new_index, filename, False])
+		# increase the index
+		new_index = new_index + 1
+      # if not recursive, just looping the directory with ordinary fashion
+      else:
+	# looping all files in this directory
+	for file in os.listdir(cur_dir):
+	  # get the filename
+	  filename = os.path.join(cur_dir, file)
+	  # we interested in file, not directory
+	  if os.path.isfile(filename):
+	    # and we interested in image file
+	    if imghdr.what(filename):
+	      # put it to new row
+	      next_iter = self.store.insert_after(next_iter, [new_index, filename, False])
+	      # increase the index
+	      new_index = new_index + 1
+      # looping for all remaining row, and make adjustment for their index
+      done = False
+      while not done:
+	next_iter = self.store.iter_next(next_iter)
+	if next_iter:
+	  self.store.set_value(next_iter, 0, new_index)
+	  new_index = new_index + 1
+	else:
+	  done = True
+
+    # save the current folder to user come back to this folder when he open
+    # up the directory chooser again
+    self.last_directory = filechooser_widget.get_current_folder()
+
+    # set it not modal anymore, so we can manipulate parent
+    choose_directory_dialog_widget.set_modal(False)
+
+    # destroy the parent window
+    choose_directory_dialog_widget.destroy()
+
+  # if we cancel our directory chooser, just destroy the window
+  def cancel_button_add_wallpapers_directory(self, widget, choose_directory_dialog_widget):
+    # set it not modal anymore, so we can manipulate parent
+    choose_directory_dialog_widget.set_modal(False)
+
+    # destroy the parent window
+    choose_directory_dialog_widget.destroy()
+
+  # make treeview based on the configuration file in ~/.wallpapoz/wallpapoz.xml
+  def load_treeview(self):
+    # fill the workspace list
+    worklist = self.wallpapozxml.fill_list()
+
+    # if the configuration file is for workspace, use treestore
+    if self.wallpapozxml.wallpapoz_type == "workspace":
+      # the treestore
+      self.store = gtk.TreeStore(gobject.TYPE_INT, gobject.TYPE_STRING, gobject.TYPE_BOOLEAN)
+
+      # make the wallpaper list
+      wallpapoz_system = WallpapozSystem()
+      workspace_num = wallpapoz_system.get_total_workspaces()
+      for i in range(workspace_num):
+	parent = self.store.append(None, [i+1, worklist[i].pop(0), True])
+	j = 1
+	for wallpaper in worklist[i]:
+	  self.store.append(parent, [j, wallpaper, False])
+	  j = j + 1
+
+      # enable rename workspace menu
+      self.main_window.get_widget("rename_workspace").set_sensitive(True)
+
+      # name of our left column
+      left_tvcolumn_name = _("Workspace")
+
+    # if our configuration file is for desktop, use liststore
+    elif self.wallpapozxml.wallpapoz_type == "desktop":
+      # the liststore
+      self.store = gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING, gobject.TYPE_BOOLEAN)
+
+      # disable cut, copy, paste, rename menu item
+      self.main_window.get_widget("cut").set_sensitive(False)
+      self.main_window.get_widget("copy").set_sensitive(False)
+      self.main_window.get_widget("paste").set_sensitive(False)
+
+      # enable change wallpaper menu item
+      self.main_window.get_widget("change_wallpaper").set_sensitive(True)
+
+      # make the wallpaper list
+      for i in range(len(worklist)):
+	self.store.append((i+1, worklist.pop(0), False))
+
+      # name of our left column
+      left_tvcolumn_name = _("No.")
+
+
+    # set the model
+    self.treeview_widget.set_model(self.store)
+
+    # column of treeview
+
+    # emptying the treecolumn
+    list_of_tcolumns = self.treeview_widget.get_columns()
+    for tcolumn in list_of_tcolumns:
+      self.treeview_widget.remove_column(tcolumn)
+
+    # set up workspace column
+    # this column is not editable
+    first_renderer = gtk.CellRendererText()
+    tvcolumn = gtk.TreeViewColumn(left_tvcolumn_name, first_renderer, text=0)
+    self.treeview_widget.append_column( tvcolumn )
+
+    # set up wallpaper column
+    # this column is editable with edited_cb function but according to third column value
+    second_renderer = gtk.CellRendererText()
+    second_renderer.connect('edited', self.edited_cb, self.store)
+    tvcolumn = gtk.TreeViewColumn(_("Wallpaper"), second_renderer, text=1, editable=2)
+    self.treeview_widget.append_column( tvcolumn )
+
+    # set mode to multiple selection
+    self.treeselection = self.treeview_widget.get_selection()
+    self.treeselection.set_mode(gtk.SELECTION_MULTIPLE)
+    self.treeselection.select_path(0)
+    
+    # show image for liststore
+    self.treeview_selection_changed(None)
+
+    # show the treeview
+    self.treeview_widget.show()
+
+  # handle the edited signal on cell of treeview
+  def edited_cb(self, cell, path, new_text, user_data):
+    treestore = user_data
+    treestore[path][1] = new_text
+    return				      
+
+  # we call this method when we click copy menu action
+  def copy_treenode(self, widget):
+    # common function for getting iter
+    self.selected_iter = self.get_selected_iter_of_treeview("copy")
+
+    # it is must always treestore, but I don't check it
+    #   the code if you must check it: 
+    #   if type(self.store) == gtk.TreeStore:
+    # it is assumed that no paret node in its selection
+
+    # status, copy or cut
+    self.work_on_tree = "copy"
+    # enable the paste menu item
+    self.main_window.get_widget("paste").set_sensitive(True)
+
+  # we call this method when we click cut menu action
+  def cut_treenode(self, widget):
+    # common function for getting iter
+    self.selected_iter = self.get_selected_iter_of_treeview("cut")
+
+    # it is must always treestore, but I don't check it
+    #   the code if you must check it: 
+    #   if type(self.store) == gtk.TreeStore:
+    # it is assumed that no paret node in its selection
+
+    # status, copy or cut
+    self.work_on_tree = "cut"
+    # enable the paste menu item
+    self.main_window.get_widget("paste").set_sensitive(True)
+
+  # helper function for reordering node after cut&paste, returning list of all lowest not selected iter from the related workspace
+  def reordering_node_after_cut_and_paste(self, copy_iter_list):
+
+    # list to put our lowest iter in every related workspace
+    lowest_iter_list = []
+
+    # indication we have done with this workspace
+    done_workspace = True
+
+    # we iterate right? Indication in what workspace we are in now
+    parent_number_index = -1
+
+    # ok, iterate
+    for copy_iter in copy_iter_list:
+
+      # get the parent and child number
+      copy_iter_parent_number, copy_iter_child_number = self.store.get_path(copy_iter)
+
+      # we are in new workspace
+      if copy_iter_parent_number != parent_number_index:
+
+        # we have not done with previous workspace
+        if not done_workspace:
+
+	  # so the highest iter in workspace in put to our list
+	  lowest_iter_list.append(
+	      self.store.get_iter( (parent_number_index, iter_workspace_index+1) ) )
+
+          # then we are done
+	  done_workspace = True
+
+        # if the index is not 0, or our selected iter is not the first iter in workspace
+	if copy_iter_child_number != 0:
+	  
+	  # append the previous iter
+	  lowest_iter_list.append( 
+	      self.store.get_iter( (copy_iter_parent_number, copy_iter_child_number-1) ) )
+
+        # if our iter is the first iter in workspace
+	else:
+
+	  # get the index
+	  iter_workspace_index = copy_iter_child_number
+
+	  # we not done yet
+	  done_workspace = False
+
+        # to check if we are in different workspace later
+	parent_number_index = copy_iter_parent_number
+
+      # if it is still in the same workspace
+      else:
+
+        # we have done with this workspace, so no need to bother
+        if not done_workspace:
+      
+	  # if it is still in the same block, update the index
+	  if iter_workspace_index + 1 == copy_iter_child_number:
+
+	    iter_workspace_index = copy_iter_child_number
+
+	  # it is not in the same block but still in the same workspace
+	  else:
+
+	    lowest_iter_list.append( 
+		self.store.get_iter( (copy_iter_parent_number, iter_workspace_index+1) ) )
+
+	    done_workspace = True
+
+    # do the remaining job, get the lowest iter from last workspace if we have not done withlast workspace
+    if not done_workspace:
+
+      lowest_iter_list.append(
+	  self.store.get_iter( (parent_number_index, iter_workspace_index+1) ) )
+
+    return lowest_iter_list
+
+  # we call this method when we click paste menu action
+  def paste_treenode(self, widget):
+    # get the selected iter so we know where to put our new iter
+    position_iter = self.get_selected_iter_of_treeview("paste")
+
+    if position_iter == None:
+      return
+
+    # check first. User can not cut all wallpapers in workspace. Every workspace must have at least one wallpaper
+    temp_iter_list = []
+    parent_number = self.store.get_path(self.selected_iter[0])[0]
+    for single_iter in self.selected_iter:
+      if self.store.get_path(single_iter)[0] != parent_number:
+        if self.store.iter_n_children( self.store.iter_parent(prev_iter) ) == len(temp_iter_list):
+	  warning_message = _("Every workspace must have at least one wallpaper.")
+	  message_dialog = gtk.MessageDialog(self.main_window_widget, gtk.DIALOG_MODAL, gtk.MESSAGE_ERROR, gtk.BUTTONS_CLOSE, warning_message)
+	  if message_dialog.run() == gtk.RESPONSE_CLOSE:
+	    message_dialog.destroy()
+	  return None
+        else:
+          temp_iter_list = []
+	  parent_number = self.store.get_path(single_iter)[0]
+      temp_iter_list.append(single_iter)
+      prev_iter = single_iter
+
+    # do the remaining job
+    if self.store.iter_n_children( self.store.iter_parent(prev_iter) ) == len(temp_iter_list):
+      warning_message = _("Every workspace must have at least one wallpaper.")
+      message_dialog = gtk.MessageDialog(self.main_window_widget, gtk.DIALOG_MODAL, gtk.MESSAGE_ERROR, gtk.BUTTONS_CLOSE, warning_message)
+      if message_dialog.run() == gtk.RESPONSE_CLOSE:
+	message_dialog.destroy()
+      return None
+
+    # it is must always treestore, but I don't check it
+    #   the code if you must check it: 
+    #   if type(self.store) == gtk.TreeStore:
+    parent = self.store.iter_parent(position_iter)
+    new_index = self.store.get_value(position_iter, 0) + 1
+    # if it is child node
+    if parent != None:
+      for single_iter in self.selected_iter:
+	node_value = self.store.get_value(single_iter, 1)
+	position_iter = self.store.insert_after(parent, position_iter, [new_index, node_value, False])
+        new_index = new_index + 1
+
+      # after inserting new row, we must sort out the index number after it
+      done = False
+      while not done:
+	position_iter = self.store.iter_next(position_iter)
+	if position_iter:
+	  self.store.set_value(position_iter, 0, new_index)
+	  new_index = new_index + 1
+	else:
+	  done = True
+    # if it is parent node
+    else:
+      num_of_child = self.store.iter_n_children(position_iter)
+      for single_iter in self.selected_iter:
+        num_of_child = num_of_child + 1
+	node_value = self.store.get_value(single_iter, 1)
+	self.store.append(position_iter, [num_of_child, node_value, False])
+
+    # if cut operation, delete what we have cut and reorder the node number
+    if self.work_on_tree == "cut":
+
+      # make sure the status is reset
+      self.work_on_tree = None
+      # disable the paste menu item
+      self.main_window.get_widget("paste").set_sensitive(False)
+
+      self.cut_and_reordering_treeiter()
+	
+  # delete and paste function use this
+  def cut_and_reordering_treeiter(self):
+    lowest_iter_list = self.reordering_node_after_cut_and_paste( self.selected_iter )
+
+    # iterate to cut ( really!!! ) the iter from selected iter list
+    for single_iter in self.selected_iter:
+
+      # remove the cutted iter
+      self.store.remove(single_iter)
+
+    # iterate to reordering
+    for single_iter in lowest_iter_list:
+      self.order_treeiter_from_lowest_iter(single_iter)
+
+  # order treeiter in one workspace or in list mode from lowest iter ( more efficient )
+  def order_treeiter_from_lowest_iter(self, single_iter):
+      # get the path
+      if type(self.store) == gtk.TreeStore:
+	child_path = self.store.get_path( single_iter )[1]
+      else:
+	child_path = self.store.get_path( single_iter )[0]
+
+      # if it is the first path
+      if child_path == 0:
+	# then start number from 1
+	self.store.set_value(single_iter, 0, 1)
+	new_index = 2
+      # other than that, just start from wherever number start
+      else:
+	new_index = self.store.get_value(single_iter, 0) + 1
+
+      # ordinary numbering algorithm
+      done = False
+      next_iter = self.store.iter_next(single_iter)
+      while not done:
+	if next_iter:
+	  self.store.set_value(next_iter, 0, new_index)
+	  new_index = new_index + 1
+	  next_iter = self.store.iter_next(next_iter)
+	else:
+	  done = True
+
+  # delete wallpaper node ( delete menu item )
+  def delete_wallpaper(self, widget):
+    # common function for getting iter
+    self.selected_iter = self.get_selected_iter_of_treeview("delete")
+
+    # if it is treestore
+    if type(self.store) == gtk.TreeStore:
+      self.cut_and_reordering_treeiter()
+    # if it is liststore
+    else:
+      # must not delete all treenodes
+      if len(self.selected_iter) == self.store.iter_n_children(None):
+	message_dialog = gtk.MessageDialog(self.main_window_widget, gtk.DIALOG_MODAL, gtk.MESSAGE_ERROR, gtk.BUTTONS_CLOSE, _("You can not delete all wallpapers."))
+	if message_dialog.run() == gtk.RESPONSE_CLOSE:
+	  message_dialog.destroy()
+	  return
+
+      # get the lowest iter
+      path_iter = self.store.get_path(self.selected_iter[0])[0]
+      if path_iter > 0:
+	lowest_iter = self.store.get_iter((path_iter-1,))
+      else:
+	index_temp = 0
+	for single_iter in self.selected_iter[1:]:
+	  path_iter = self.store.get_path(single_iter)[0]
+	  if path_iter == (index_temp + 1):
+	    index_temp = index_temp + 1
+	    before_path_iter = path_iter
+	  else:
+	    lowest_iter = self.store.get_iter((before_path_iter+1,))
+	    
+      # remove the iter
+      for single_iter in self.selected_iter:
+	self.store.remove(single_iter)
+
+      self.order_treeiter_from_lowest_iter(lowest_iter)
+
+    # select something after deleting treenodes
+    self.treeselection.select_path(0)
+
+  # create configuration file ( we call this method when we click save button )
+  def create_configuration_file(self, widget):
+    wallpaperlist = []
+    # if it is treestore
+    if type(self.store) == gtk.TreeStore:
+      tree_type = "treestore"
+      # get the parent row ( first )
+      parentrow = self.store.get_iter_first()
+      updone = False
+      index = 0
+      # iterate over workspace node ( parents node )
+      while not updone:
+        wallpaperlist.append([])
+        # get the first child
+        childiter = self.store.iter_children(parentrow)
+        # remember the first member of list is parent value
+        wallpaperlist[index].append(self.store.get_value(parentrow, 1))
+        done = False
+	# iterate over childs node
+	while not done:
+	  wallvar = self.store.get_value(childiter, 1)
+	  wallpaperlist[index].append(wallvar)
+          childiter = self.store.iter_next(childiter)
+          if childiter == None:
+	    done = True
+	parentrow = self.store.iter_next(parentrow)
+        if parentrow == None:
+	  updone = True
+	index += 1
+    # if it is liststore
+    else:
+      tree_type = "liststore"
+      row = self.store.get_iter_first()
+      done = False
+      while not done:
+        wallvar = self.store.get_value(row, 1)
+        wallpaperlist.append(wallvar)
+        row = self.store.iter_next(row)
+        if row == None:
+	  done = True
+    self.wallpapozxml.create_configuration_file(wallpaperlist, tree_type)
+
+  # pop up the dialog box so we can rename the right value of parent node
+  def rename_workspace_parentnode(self, widget):
+    # it is assumed the model of treeview is treestore
+    # we don't check here, if you must check, use this code:
+    #   if type(self.store) == gtk.TreeStore:
+    iter = self.get_selected_iter_of_treeview("single")
+    path_iter = self.store.get_path(iter)
+    # get the second column ( column counting from left to right, so number 1 means the second column from left )
+    wallpaper_column = self.treeview_widget.get_column(1)
+    self.treeview_widget.set_cursor_on_cell(path_iter, wallpaper_column, None, True)
+
+  # move up treeview node ( called by move up menu item )
+  def move_up_node(self, widget):
+    # get the selected iter
+    iter_list = self.get_selected_iter_of_treeview("move")
+
+    # the selection is not valid
+    if not iter_list:
+      return None
+    
+    # make sure it is not in the very top
+    the_path = self.store.get_path(iter_list[0])
+    length_of_first_path = len(the_path)
+    if the_path[length_of_first_path-1] == 0:
+      return None
+
+    # the parent node
+    if length_of_first_path == 1:
+      prev_path = (the_path[0]-1,)
+    # the child node
+    else:
+      prev_path = (the_path[0],the_path[1]-1)
+
+    # get the previous iter before the block selection
+    prev_iter = self.store.get_iter(prev_path)
+
+    # swap the prev_iter and the iter blocks
+    last_iter = iter_list[len(iter_list)-1]
+    self.store.move_after(prev_iter, last_iter)
+
+    # reordering the number
+    self.store.set_value(prev_iter, 0, self.store.get_value(last_iter, 0))
+    for single_iter in iter_list:
+      self.store.set_value(single_iter, 0, self.store.get_value(single_iter, 0)-1)
+
+  # move down treeview node ( called by move down menu item )
+  def move_down_node(self, widget):
+    # get the selected iter
+    iter_list = self.get_selected_iter_of_treeview("move")
+
+    # the selection is not valid
+    if not iter_list:
+      return None
+
+    # get the last iter first
+    last_iter = iter_list[len(iter_list)-1]
+    
+    # make sure it is not in the very bottom
+    the_path = self.store.get_path(last_iter)
+    length_of_first_path = len(the_path)
+    if the_path[length_of_first_path-1] == self.store.iter_n_children(self.store.iter_parent(last_iter)) - 1:
+      return None
+
+    # get the next iter before the block selection
+    next_iter = self.store.iter_next(last_iter)
+
+    # swap the next_iter and the iter blocks
+    self.store.move_before(next_iter, iter_list[0])
+
+    # reordering the number
+    self.store.set_value(next_iter, 0, self.store.get_value(iter_list[0], 0))
+    for single_iter in iter_list:
+      self.store.set_value(single_iter, 0, self.store.get_value(single_iter, 0)+1)
+
+  # change wallpaper function ( called by change wallpaper menu item )
+  def change_wallpaper(self, widget):
+    # get the selected iter
+    iter = self.get_selected_iter_of_treeview("change")
+
+    # selection is not valid
+    if not iter:
+      return None
+
+    # make the chooser dialog
+    filechooser_dialog = self.make_chooser_dialog("change")
+    # if user okay with his choice, then change the value
+    if filechooser_dialog.run() == gtk.RESPONSE_OK:
+      # we interested in image file
+      if imghdr.what(filechooser_dialog.get_filename()):
+	self.store.set_value(iter, 1, filechooser_dialog.get_filename())
+	self.treeview_selection_changed(None)
+	# save the current folder to user come back to this folder when he open
+	# up the directory chooser again
+	self.last_directory = filechooser_dialog.get_current_folder()
+      # if user choose not-image file, give warning
+      else:
+	message_dialog = gtk.MessageDialog(self.main_window_widget, gtk.DIALOG_MODAL, gtk.MESSAGE_ERROR, gtk.BUTTONS_CLOSE, _("You must choose only image file."))
+	if message_dialog.run() == gtk.RESPONSE_CLOSE:
+	  message_dialog.destroy()
+
+    filechooser_dialog.destroy()
+
+  # when you change your selection in treeview, we call this function
+  # it display another image, and disable/enable some menu
+  def treeview_selection_changed(self, widget):
+    position_iter = self.get_selected_iter_of_treeview("anything")
+    if type(self.store) == gtk.TreeStore:
+      parent = self.store.iter_parent(position_iter)
+      # parent node, enable: rename_workspace
+      # parent node, disable: change_wallpaper, cut, copy, delete_wallpaper
+
+      # child node
+      if parent != None:
+	self.main_window.get_widget("rename_workspace").set_sensitive(False)
+	self.rename_workspace_menu.set_sensitive(False)
+	self.main_window.get_widget("change_wallpaper").set_sensitive(True)
+	self.change_wallpaper_menu.set_sensitive(True)
+	self.main_window.get_widget("cut").set_sensitive(True)
+	self.cut_menu.set_sensitive(True)
+	self.main_window.get_widget("copy").set_sensitive(True)
+	self.copy_menu.set_sensitive(True)
+	self.main_window.get_widget("delete_wallpapers").set_sensitive(True)
+	self.delete_wallpapers_menu.set_sensitive(True)
+      # parent node
+      else:
+	self.main_window.get_widget("rename_workspace").set_sensitive(True)
+	self.rename_workspace_menu.set_sensitive(True)
+	self.main_window.get_widget("change_wallpaper").set_sensitive(False)
+	self.change_wallpaper_menu.set_sensitive(False)
+	self.main_window.get_widget("cut").set_sensitive(False)
+	self.cut_menu.set_sensitive(False)
+	self.main_window.get_widget("copy").set_sensitive(False)
+	self.copy_menu.set_sensitive(False)
+	self.main_window.get_widget("delete_wallpapers").set_sensitive(False)
+	self.delete_wallpapers_menu.set_sensitive(False)
+
+    filename = self.store.get_value(position_iter, 1)
+
+    # display image properly
+    try:
+      im = Image.open(filename)
+      # keep image proportions
+      if im.size[0] > im.size[1]:
+	self.image_widget.set_from_pixbuf(gtk.gdk.pixbuf_new_from_file_at_size(filename, 400, int((float(im.size[1])/im.size[0]) * 400)))
+      else:
+	self.image_widget.set_from_pixbuf(gtk.gdk.pixbuf_new_from_file_at_size(filename, int(float(im.size[1])/im.size[0] * 300), 300))
+    except IOError:
+      self.image_widget.clear()
+
+    # display image filename
+    self.wallpaper_filename.set_markup("<b>" + os.path.basename(filename) + "</b>")
+
+  # helping method
+  def walktree (self, top = ".", depthfirst = True):
+    names = os.listdir(top)
+    if not depthfirst:
+      yield top, names
+    for name in names:
+      try:
+	st = os.lstat(os.path.join(top, name))
+      except os.error:
+	continue
+      if stat.S_ISDIR(st.st_mode):
+	for (newtop, children) in self.walktree(os.path.join(top, name), depthfirst):
+	  yield newtop, children
+    if depthfirst:
+      yield top, names
+
+  # run the gui
+  def main(self):
+    gtk.main()
+
+if __name__ == "__main__":
+  wallpapozgui = Wallpapoz()
+  wallpapozgui.main()

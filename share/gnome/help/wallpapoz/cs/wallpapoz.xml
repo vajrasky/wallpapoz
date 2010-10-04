@@ -1,0 +1,532 @@
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appversion "0.4">
+  <!ENTITY manrevision "0.1">
+  <!ENTITY date "March 2007">
+  <!ENTITY app "<application>Wallpapoz</application>">
+  <!ENTITY appname "Wallpapoz">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+  
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="en">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo> 
+    <title>&appname; manuál</title>
+
+    <copyright> 
+      <year>2007</year> 
+      <holder>Vajrasky Akbar Kok</holder> 
+    </copyright> 
+
+  <copyright>
+   <year>2007</year>
+   <holder>Lukáš Macháček (Czech translation)</holder>
+  </copyright>
+
+<!-- An address can be added to the publisher information.  If a role is 
+     not specified, the publisher/author is the same for all versions of the 
+     document.  -->
+    <publisher> 
+      <publishername> Vajrasky Akbar Kok </publishername> 
+    </publisher> 
+
+   &legal;
+   <!-- This file  contains link to license for the documentation (GNU FDL), and 
+        other legal stuff such as "NO WARRANTY" statement. Please do not change 
+	any of this. -->
+   <authorgroup>
+   <author> 
+	<firstname>Vajrasky Akbar</firstname> 
+	<surname>Kok</surname> 
+	<email>akbarhome@gmail.com</email> 
+   </author>
+<!-- This is appropriate place for other contributors: translators,
+      maintainers,  etc. Commented out by default. -->
+       <othercredit role="translator">
+	<firstname>Lukáš</firstname> 
+	<surname>Macháček</surname> 
+	<affiliation> 
+<!--	  <orgname>Czech Translation Team</orgname> -->
+	  <email>cgrim@cgrim.cz</email> 
+	</affiliation>
+	<contrib>Czech translation</contrib>
+      </othercredit>
+    </authorgroup>
+ 
+    <revhistory>
+    <revision> 
+		<revnumber>Uživatelská příručka k aplikaci Wallpapoz</revnumber> 
+		<date>2007</date> 
+		<revdescription> 
+	  		<para role="author">Vajrasky Akbar Kok
+	    		  <email>akbarhome@gmail.com</email>
+	  		</para>
+	  		<para role="publisher">Vajrasky Akbar Kok</para>
+		</revdescription> 
+      </revision> 
+    </revhistory> 
+    <releaseinfo>Tento manuál popisuje verzi &appversion; aplikace &appname;.
+    </releaseinfo> 
+    <legalnotice> 
+      <title>Feedback</title> 
+      <para>Pokud jste objevili chybu v programu &appname; nebo máte jakýkoliv nápad na jeho zlepšení zašlete jej prosím emailem jeho autorovi. 
+      </para>
+<!-- Translators may also add here feedback address for translations -->
+    </legalnotice> 
+  </articleinfo> 
+
+  <indexterm>
+    <primary>Wallpapoz</primary> 
+  </indexterm> 
+
+<!-- ============= Document Body ============================= -->
+
+<!-- ============= Introduction ============================== -->
+<sect1 id="wallpapoz-introduction">
+  <title>Introduction</title>
+  <para>Aplikace &app; umožňuje nastavit tapetu pozadí v prostředí Gnome
+specifickou cestou. Tapety se mohou měnit například po uplynutí určitého času.
+Nejzajímavější vlastností je možnost změny tapety při změně pracovní
+plochy. To znamená, že lze asociovat pro každou pracovní plochu určitou
+skupinu obrázků, což usnadňuje rychlou orientaci, na které ploše se
+aktuálně nacházíte. Můžete si aplikaci nastavit například tak, že při přechodu
+na první pracovní plochu se jako tapeta nastaví některá z rodinných
+fotografií (k první ploše je asociována skupina obrázků s rodinnými
+fotografiemi). Při přechodu na druhou pracovní plochu se jako tapeta
+nastaví nějaký abstraktní obrázek (pro druhou plochu je asociována skupina
+abstraktních obrázků). V tomto duchu se pokračuje na dalších pracovních
+plochách. Tuto vlastnost lze samozřejmě zakázat tak, aby se měnily tapety 
+například jen po uplynutí určitého času, který si sami nastavíte, a přitom
+zůstávala tapeta stejná při změně pracovní plochy.
+  </para>
+
+  <sect2 id="wallpapoz-tostartapp">
+    <title>Spuštění aplikace &appname;</title>
+    <para>Aplikaci &app; můžete spustit následujícími způsoby:</para>
+    <itemizedlist>
+      <listitem>
+	<para>Vyberte <menuchoice><guimenu>Příslušenství</guimenu>
+	<guimenuitem>Wallpapoz</guimenuitem></menuchoice>
+	z menu <guimenu>Aplikace</guimenu>.</para>
+      </listitem>
+      <listitem>
+        <para>V příkazové řádce terminálu jako například
+        <application>gnome-terminal</application> nebo v dialogu
+        <application>Spustit aplikaci</application> zadejte
+        <command>wallpapoz</command> a spusťte.</para>
+      </listitem>
+    </itemizedlist>
+  </sect2>
+
+  <sect2 id="wallpapoz-closeapp">
+    <title>Ukončení aplikace &appname;</title>
+    <para>Pro ukončení aplikace &app; zvolte <menuchoice><guimenu>Soubor</guimenu>
+      <guimenuitem>Ukončit</guimenuitem></menuchoice>, anebo stlačte kombinaci
+      kláves <keycombo><keycap>Ctrl</keycap><keycap>Q</keycap></keycombo>.
+    </para>
+  </sect2>
+
+  <sect2 id="wallpapoz-features">
+    <title>Vlastnosti aplikace &appname;</title>
+    <para>Aplikace &app; disponuje různými funkcemi, které vám pomohou
+      spravovat pozadí pracovní plochy v prostředí Gnome. Lze například
+      nastavit to, že po změně pracovní plochy se změní i tapeta na pozadí.
+      Další možností, kterou lze nastavit, je změna tapety pozadí pracovní 
+      plochy po uplynutí určitého času.</para>
+
+    <para>&app; umožňuje více než jen nastavení pozadí pracovní
+      plochy prostředí Gnome. V této aplikaci lze seskupovat tapety
+      pro konkrétní pracovní plochy, tzn. že každá pracovní plocha
+      může mít svou vlastní sadu tapet. V případě, kdy je aktivována funkce
+      změny tapety pozadí při změně pracovní plochy, vybírá se nová tapeta
+      pro každou pracovní plochu z jiné sady tapet.</para>
+
+    <para>&app; umožňuje snadné seskupování tapet pro jednotlivá
+      pracovní prostředí. Lze najednou přidat více obrázků nebo adresářů
+      obsahujících obrázky. Aplikaci &app; lze přizpůsobit tak, aby měnila
+      tapety v náhodném pořadí anebo naopak. Mimo to lze prohlížet
+      jednotlivé tapety přímo v aplikaci &app;.</para>
+  </sect2>
+</sect1>
+
+<!--============== When You Start ===========-->
+<sect1 id="wallpapoz-whenyoustart">
+  <title>Začínáme</title>
+  <para>Okno aplikace &app; obsahuje následující prvky:</para>
+  <variablelist>
+	<varlistentry>
+  	  <term>Menu</term>
+ 	  <listitem>
+	    <para>Menu obsahuje všechny příkazy, které budete potřebovat pro práci s aplikací &app;.</para>
+	  </listitem>
+ 	</varlistentry>
+	<varlistentry>
+	  <term>Nástrojoví lišta</term>
+	  <listitem>
+	    <para>Nástrojová lišta obsahuje pouze nejpoužívanější přikazy, které jsou zároveň přístupné i z menu.</para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>Oblast zobrazení</term>
+	  <listitem>
+ 	    <para>V oblasti zobrazení se zobrazí zmenšená tapeta v případě, že ji označíte v seznamu tapet.</para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>Seznam tapet</term>
+	  <listitem>
+	    <para>Seznam tapet je buď tvořen jedním seznamem tapet anebo stromečkem,
+            kde v první urovni jsou uvedeny pracovní plochy a pro každou plochu pak v druhé úrovni následuje seznam tapet.</para>
+	  </listitem>
+	</varlistentry>
+  </variablelist>
+  <para>Většinu akcí v aplikaci &app; lze provést několika způsoby.
+  Tapety můžete například přidat provedením jedoho z následujících sledu kroků:
+  </para>
+  <itemizedlist>
+    <listitem><para>Zvole <menuchoice><guimenu>Soubor</guimenu>
+    <guimenuitem>Přidat tapety (soubory)</guimenuitem></menuchoice> a vyberte 
+    jeden nebo více souborů s obrázky v dialogovém okně 
+    <application>Vybrat tapety</application>.</para></listitem>
+    <listitem><para>Klikněte na tlačítko <guibutton>Přidat soubory</guibutton>
+    a vyberte jeden nebo více souborů s obrázky v dialogovém okně
+    <application>Vybrat tapety</application>.</para></listitem>
+    <listitem><para>Zmáčkněte kombinasi kláves <keycombo><keycap>Ctrl</keycap><keycap>F</keycap>
+    </keycombo> a vyberte jeden nebo více souborů s obrázky v dialogovém okně
+    <application>Vybrat tapety</application>.</para></listitem>
+  </itemizedlist>
+</sect1>
+
+
+<!-- ============= Adding Wallpapers ============================== -->
+<sect1 id="wallpapoz-add">
+  <title>Přidání tapet</title>
+
+    <sect2 id="wallpapoz-files">
+      <title>Přidání tapet výběrem souborů</title>
+        <para>Pro přidání tapet (souborů) proveďte následující sled kroků:</para>
+        <orderedlist>
+          <listitem>
+	    <para>
+	      Zvolte <menuchoice> <guimenu>Soubor</guimenu>
+              <guimenuitem>Přidat tapety (soubory)</guimenuitem> </menuchoice>,
+              anebo klikněte na tlačítko <guibutton>Přidat soubory</guibutton>
+              v nástrojové liště nebo stlačte kombinaci kláves 
+              <keycombo> <keycap>Ctrl</keycap><keycap>F</keycap> </keycombo>.
+            </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      V dialogovém okně <guilabel>Vybrat tapety</guilabel> vyberte 
+              jeden nebo více souborů z obrázky, které chcete přidat.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      Potvrďte dialogové okno tlačítkem <guibutton>OK</guibutton>.
+	    </para>
+	  </listitem>
+	</orderedlist>
+	</sect2>
+
+	<sect2 id="wallpapoz-directory">
+	  <title>Přidání celého adresáře</title>
+	  <para>Místo přidávání jednotlivých souborů můžete přidat
+          celý adresář obsahující soubory s obrázky. Pro přidání takovéhoto 
+          adresáře proveďte následující sled kroků:</para>
+	<orderedlist>
+	  <listitem>
+	    <para>
+	      Zvolte <menuchoice> <guimenu>Soubor</guimenu><guimenuitem>Přidat
+              tapety (adresář)</guimenuitem> </menuchoice> nebo klikněte na tlačítko
+              <guibutton>Přidat adresář</guibutton> v nástrojové liště nebo
+              stiskněte kombinaci kláves <keycombo> <keycap>Ctrl</keycap>
+              <keycap>D</keycap> </keycombo>.
+            </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      V dialogovém okně <guilabel>Vybrat adresář</guilabel> vyberte 
+              adresář, který chcete přidat.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      Dialogové okno potvrďte tlačítkem <guibutton>OK</guibutton>.
+	    </para>
+	  </listitem>
+	</orderedlist>
+	<para>
+	   V dialogovém okně <guilabel>Vybrat adresář</guilabel> je dole
+           na levé straně přepínač "rekurzivně". Pokud jej zaškrtnete,
+           bude se rekurzivně procházet celá adresářová struktura ve Vámi
+           vybraném adresáři a přidají se tak úlně všechny obrázky,
+           které se nacházejí v daném adresáři a všech jeho podadresářích.
+           Pokud tuto volbu nezškrtnete, přidají se pouze ty obrázky,
+           které se nacházejí přímo ve Vámi vybraném adresáři.
+	</para>
+	</sect2>
+
+	<para>Můžete přidávat tapety do již existujícího seznamu tapet. 
+	  V takovém případě, se nové tapety vloží pod místo, které máte
+          v seznamu tapet označené.</para>
+
+</sect1>
+
+<!-- ============= Editing List of Wallpapers ============================== -->
+<sect1 id="wallpapoz-edit">
+	<title>Správa seznamu tapet</title>
+
+	<para>Seznam tapet najdete na levé straně aplikace &appl;. Tento seznam můžete libovolně měnit. Veškeré změny se provedou pouze v paměti a budou uloženy pouze v případě, že provedete uložení nastavení (více viz <xref linkend="wallpapoz-save">uložit</xref>).
+	</para>
+
+	<!--============ To Cut Wallpapers ======================= -->
+	<sect2 id="wallpapoz-cut">
+		<title>Vyjmutí tapet</title>
+		<para>Pro vyjmutí tapet ze seznamu označte nejprve žadované tapety a poté buď zvolte v menu 
+		<menuchoice>
+		<guimenu>Úpravy</guimenu>
+		<guimenuitem>Vyjmout</guimenuitem>
+		</menuchoice>, anebo klikněte do seznamu tapet pravým tlačítkem myši a vyberte z nabídky funkci <guimenuitem>Vyjmout</guimenuitem>,
+		anebo stlačte kombinaci kláves <keycombo> <keycap>Ctrl</keycap><keycap>X</keycap> </keycombo>.</para>
+	</sect2>
+
+	<!--============ To Copy Wallpapers ======================= -->
+	<sect2 id="wallpapoz-copy">
+		<title>Kopírování tapet</title>
+		<para>Pokud chcete zkopírovat tapety vrámci seznamu tapet, označte požadované tapety a poté buď zvolte v menu
+		<menuchoice>
+		<guimenu>Úpravy</guimenu>
+		<guimenuitem>Kopírovat</guimenuitem>
+		</menuchoice>, anebo klikněte pravým tlačítkem myši na označené tapety a vyberte z nabídky funkci <guimenuitem>Kopírovat</guimenuitem>, 
+		anebo stlačte kombinaci kláves <keycombo> <keycap>Ctrl</keycap><keycap>C</keycap> </keycombo>.</para>
+	</sect2>
+
+	<!--============ To Paste Wallpapers ======================= -->
+	<sect2 id="wallpapoz-paste">
+		<title>Vložení tapet</title>
+		<para>Pro vložení tapet (nejprve musíte provést funkci vyjmutí anebo kopírování) do seznamu tapet vyberte místo v seznamu tapet, kam se má vložení provést a poté buď zvolte v menu 
+		<menuchoice>
+		<guimenu>Úpravy</guimenu>
+		<guimenuitem>Vložit</guimenuitem>
+		</menuchoice>, anebo klikněte pravým tlačítkem myši do místa, kam mají být tapety vloženy a vyberte z nabídky funkci <guimenuitem>Vložit</guimenuitem>, 
+		anebo stlačte kombinaci kláves <keycombo> <keycap>Ctrl</keycap><keycap>P</keycap> </keycombo>.</para>
+	</sect2>
+
+	<!--============ To Rename Workspace ======================= -->
+	<sect2 id="wallpapoz-rename">
+		<title>Přejmenování pracovní plochy</title>
+		<para>Pokud máte zapnutou možnost změny tapety při změně
+                  pracovní plochy, můžete si jednotlivé plochy přejmenovat.
+                  Nejprve označte příslušnou pracovní plochu (nejvyšší úroveň
+                  ve stromové struktuře) a poté buď zvolte v menu
+		<menuchoice>
+		<guimenu>Úpravy</guimenu>
+		<guimenuitem>Přejmenovat pracovní plochu</guimenuitem>
+		</menuchoice>, anebo klikněte pravým tlačítkem myši na
+                  označenou pracovní plochu a z nabídky vyberte funkci
+                  <guimenuitem>Přejmenovat pracovní plochu</guimenuitem>,
+		  anebo stlačte kombinaci kláves <keycombo> <keycap>Ctrl</keycap><keycap>E</keycap> </keycombo>. Poté se původní jméno pracovní plochy
+                  změní v editovatelné textové pole. Napište nový název
+                  a změny potvrďte klávesou <keycap>Enter</keycap>
+                  Pokud nechcete provést změny vraďte se zpět klávesou
+                  <keycap>Esc</keycap>.</para>
+	</sect2>
+
+	<!--============ To Change Wallpaper ======================== -->
+	<sect2 id="wallpapoz-change">
+		<title>Změna tapety</title>
+		<para>V seznamu tapet vyberte odpovídající tapetu a buď zvolte
+                   v menu 
+                   <menuchoice>
+                   <guimenu>Úpravy</guimenu>
+                   <guisubmenu>Změnit</guisubmenu>
+                   </menuchoice>, anebo klikněte na vybranou tapetu
+                   pravým tlačítkem myši a z nabídky vyberte funkci
+                   <guimenuitem>Změnit</guimenuitem>,
+                   anebo stlačte kombinaci kláves <keycombo> <keycap>Ctrl</keycap><keycap>H</keycap> </keycombo>.
+                   V dialogovém okně <guilabel>Vybrat tapetu</guilabel>
+                   vyberte tapetu, kterou chcete nahradit tu stávající.
+                   Poté klikněte na tlačítko <guibutton>Změnit</guibutton>.</para>
+	</sect2>
+
+	<!--============ To Delete Wallpapers ======================== -->
+	<sect2 id="wallpapoz-delete">
+		<title>Odstranění tapet</title>
+		<para>V seznamu tapet označte tapety, které chcete odstranit,
+                   a buď zvolte v menu 
+                   <menuchoice>
+                   <guimenu>Úpravy</guimenu>
+                   <guisubmenu>Odstranit</guisubmenu>
+                   </menuchoice>, anebo klikněte pravým tlačítkem myši na
+                   označené tapety a v nabídce zvolte funkci 
+                   <guimenuitem>Odstranit</guimenuitem>,
+                   anebo stiskněte klávesu <keycap>Delete</keycap>. </para>
+	</sect2>
+
+	<!--============ To Move Up Wallpapers ======================== -->
+	<sect2 id="wallpapoz-moveup">
+		<title>Přesun tapet výše</title>
+		<para>V seznamu tapet označte tapety, které chcete posunout
+                   výše, a buď zvolte v menu 
+                   <menuchoice>
+                   <guimenu>Úpravy</guimenu>
+                   <guisubmenu>Přesunout výše</guisubmenu>
+                   </menuchoice>, anebo klikněte pravým tlačítkem myši na
+                   označené tapety a v nabídce zvolte funkci
+                   <guimenuitem>Přesunout výše</guimenuitem>,
+                   anebo stlačte klávesu <keycap>Page Up</keycap>.
+		   Označené tapety se přesunou o jednu pozici výše.</para>
+	</sect2>
+
+	<!--============ To Move Down Wallpapers ======================== -->
+	<sect2 id="wallpapoz-movedown">
+		<title>Přesun tapet níže</title>
+		<para>V seznamu tapet označte tapety, které chcete posunout
+                   výše, a buď zvolte v menu 
+                   <menuchoice>
+                   <guimenu>Úpravy</guimenu>
+                   <guisubmenu>Přesunout níže</guisubmenu>
+                   </menuchoice>, anebo klikněte pravým tlačítkem myši na
+                   označené tapety a v nabídce zvolte funkci
+                   <guimenuitem>Přesunout níže</guimenuitem>,
+                   anebo stlačte klávesu <keycap>Page Down</keycap>.
+		   Označené tapety se přesunou o jednu pozici níže.</para>
+	</sect2>
+</sect1> 
+
+<!-- ============= Saving ============================== -->
+<sect1 id="wallpapoz-save">
+	<title>Uložení změn</title>
+
+	<para> 
+	  Pro uložení změn provedených v seznamu tapet do konfiguračního souboru zvolte
+	  <menuchoice><guimenu>Soubor</guimenu><guisubmenu>Uložit</guisubmenu></menuchoice>
+          nebo klikněte na tlačítko <guilabel>Uložit</guilabel> v nástrojové liště 
+	  nebo stlačte kombinaci kláves <keycombo> <keycap>Ctrl</keycap><keycap>S</keycap> </keycombo>.
+	</para>
+</sect1>
+
+<!-- ============= Preferences ============================== -->
+<sect1 id="wallpapoz-prefs">
+	<title>Nastavení</title>
+	<para>Pro změnu nastavení zvolte <menuchoice><guimenu>Úpravy</guimenu><guimenuitem>Nastavení</guimenuitem></menuchoice> nebo klikněte na tlačítko <guilabel>Nastavení</guilabel> v nástrojové liště nebo stlačte kombinaci kláves <keycombo> <keycap>Ctrl</keycap><keycap>P</keycap> </keycombo>. Poté můžete nastavit takové volby jako čas, po kterém se mají měnit tapety na pozadí pracovní plochy, zda se mají obrázky pro tapetu vybírat v náhodném pořadí nebo ne, zda se mají měnit tapety při přechodu mezi pracovními plochami a styl, kterým se má tapeta na pozadí pracovní plochy zobrazovat.
+	</para>
+
+	<variablelist>
+	<varlistentry>
+		<term>Čas</term>
+		<listitem>
+		<para>Pro nastavení času, po kterém se má automaticky změnit tapeta pracovní plochy,
+		použijte ovládací prvek <guilabel>Změnit tapetu pracovní plochy po
+		... minutách</guilabel>.</para>
+		</listitem>
+	</varlistentry>
+
+	<varlistentry>
+		<term>Zachování pořadí</term>
+		<listitem>
+		<para>V případě, že chcete, aby se vybíraly obrázky pro změnu tapety pozadí
+		pracovní plochy v náhodném pořadí, zaškrtněte volbu
+		<guilabel>Vybírat tapety v náhodném pořadí</guilabel>.
+		Pokud zůstane tato volba nezaškrtnuta, aplikace &app; bude vybírat obrázky
+		pro změnu tapety pracovní plochy v takovém pořadí, v jakém byly vloženy
+		do seznamu.</para>
+		</listitem>
+	</varlistentry>		
+
+	<varlistentry>
+		<term>Pracovní plocha</term>
+		<listitem>
+		<para>Zaškrtněte volbu <guilabel>Změnit tapetu pozadí při změně pracovní plochy</guilabel>
+		pokud chcete, aby se při změně pracovní plochy změnila i tapeta na pozadí.
+		Pokud zůstane tato volba nezaškrtnuta, alikace &app; nebude měnit tapetu pozadí
+		při změně pracovní plochy.</para>
+		</listitem>
+	</varlistentry>		
+
+	<varlistentry>
+		<term>Styl</term>
+		<listitem>
+		<para>Pomocí nabídky <guilabel>Styl</guilabel> můžete vybrat jakým způsobem
+		bude aplikace &app; zobrazovat tapetu na pozadí pracovní plochy.
+		Možné volby jsou Na střed, Vyplnit obrazovku, Přizpůsobená, Zvětšení, Tapeta.
+		Tato vlastnost je stejná jako v nastavení pozadí pracovní plochy v prostředí
+		Gnome.</para>
+		</listitem>
+	</varlistentry>		
+	</variablelist>
+		
+</sect1>
+
+<!-- ============= Daemon ============================== -->
+<sect1 id="wallpapoz-daemon">
+	<title>Démon</title>
+
+	<para> 
+	  Aplikace &app; se sestává ze dvou programů. 
+          Jako první je nástroj s grafickým uživatelským rozhranním 
+          určený k nastavení seznamu tapet.
+          Tento nástroj je popsán v předchozích kapitolách a jmenuje se &app;.
+          Druhý program již nemá žádné uživatelské rozhranní a jedná se
+          o takzvaného démona, který je neustále spuštěn. Během svého běhu
+          mění tapety pracovních ploch buď se změnou pracovní plochy
+          nebo po uplynutí daného časového intervalu, tak jak je nastaveno
+          v konfiguraci, pro jejíž editaci se používá právě programu &app;.
+          Démona je možné spustit, restartovat případně zastavit přímo z
+          programu &app;.
+	</para>
+
+	<note>
+	  <para>
+	    Je to právě <application>Wallpapoz démon</application>, který
+            provádí změnu tapety ve chvíli, kdy změníte pracovní plochu
+            nebo po uplynutí určitého časového intervalu, tak jak je uvedeno
+            v konfiguračním souboru.
+	    &app; je pouze program, kterým lze měnit daný konfigurační soubor.
+	  </para>
+	</note>
+
+	<sect2 id="wallpapoz-restart">
+	<title>Spuštění/restart démona</title>
+	<para> 
+	  Pro restart <application>Wallpapoz démona</application> zvolte
+	  <menuchoice><guimenu>Démon</guimenu>
+          <guisubmenu>Restartovat</guisubmenu></menuchoice>
+          nebo klikněte na tlačítko <guilabel>Restartovat</guilabel>
+          v nástrojové liště nebo stiskněte kombinaci kláves
+	  <keycombo> <keycap>Ctrl</keycap><keycap>R</keycap> </keycombo>. 
+	  Spustit <application>Wallpapoz démona</application> lze ještě jinou cestou.
+	  V terminálu (například <application>gnome-terminal</application>) nebo
+          v dialogovém okně <application>Spustit aplikaci</application>
+          zadejte příkaz <command>daemon_wallpapoz</command> a spusťte jej.
+	</para>
+	</sect2>
+
+	<sect2 id="wallpapoz-stop">
+	<title>Zastavení démona</title>
+	<para> 
+	  Pro zastavení <application>Wallpapoz démona</application> zvolte
+          <menuchoice><guimenu>Démon</guimenu><guisubmenu>Zastavit</guisubmenu>
+	  </menuchoice> nebo klikněte na tlačítko <guilabel>Zastavit</guilabel>
+          v nástrojové liště nebo stiskněte klávesu <keycap>Esc</keycap>.
+	  Zastavit <application>Wallpapoz démona</application> lze ještě jinou cestou.
+	  V terminálu (například <application>gnome-terminal</application>) nebo
+          v dialogovém okně <application>Spustit aplikaci</application>
+          zadejte příkaz <command>pkill daemon_wallpapoz</command> a spusťte jej.
+	</para>
+	</sect2>
+
+</sect1>
+
+</article>

@@ -1,0 +1,489 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Wallpapoz\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2008-03-16 14:44+0800\n"
+"Last-Translator: muzuiget <muzuiget@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Chinese\n"
+"X-Poedit-Country: CHINA\n"
+
+#: ../../src/wallpapoz:133
+#: ../wallpapoz/glade/wallpapoz.glade:50
+#: ../wallpapoz/glade/wallpapoz.glade:900
+msgid "Add Wallpapers (Files)"
+msgstr "添加壁纸（文件）"
+
+#: ../../src/wallpapoz:134
+#: ../wallpapoz/glade/wallpapoz.glade:73
+#: ../wallpapoz/glade/wallpapoz.glade:1005
+msgid "Add Wallpapers (Directory)"
+msgstr "添加壁纸（目录）"
+
+#: ../../src/wallpapoz:135
+msgid "Cut"
+msgstr "剪切"
+
+#: ../../src/wallpapoz:136
+msgid "Copy"
+msgstr "复制"
+
+#: ../../src/wallpapoz:137
+msgid "Paste"
+msgstr "粘贴"
+
+#: ../../src/wallpapoz:138
+#: ../wallpapoz/glade/wallpapoz.glade:186
+msgid "Rename Workspace"
+msgstr "重命名工作区"
+
+#: ../../src/wallpapoz:139
+#: ../wallpapoz/glade/wallpapoz.glade:210
+msgid "Change Wallpaper"
+msgstr "更换壁纸"
+
+#: ../../src/wallpapoz:140
+#: ../wallpapoz/glade/wallpapoz.glade:233
+msgid "Delete Wallpapers"
+msgstr "删除壁纸"
+
+#: ../../src/wallpapoz:141
+#: ../wallpapoz/glade/wallpapoz.glade:256
+msgid "Move Up"
+msgstr "上移"
+
+#: ../../src/wallpapoz:142
+#: ../wallpapoz/glade/wallpapoz.glade:279
+msgid "Move Down"
+msgstr "下移"
+
+#: ../../src/wallpapoz:224
+msgid "Please make your selections only in one workspace so Wallpapoz knows where to add wallpapers."
+msgstr "请只选择一个工作区，以便 Wallpapoz 知道应向哪个工作区添加壁纸。"
+
+#: ../../src/wallpapoz:226
+msgid "Please make your selections in one workspace so Wallpapoz knows where to paste wallpapers."
+msgstr "请只选择一个工作区，以便 Wallpapoz 知道应向哪个工作区粘贴壁纸。"
+
+#: ../../src/wallpapoz:249
+msgid "You can not cut workspace."
+msgstr "您不能剪切工作区。"
+
+#: ../../src/wallpapoz:251
+msgid "You can not copy workspace."
+msgstr "您不能复制工作区。"
+
+#: ../../src/wallpapoz:253
+msgid "You can not delete workspace."
+msgstr "您不能删除工作区。"
+
+#: ../../src/wallpapoz:280
+msgid "You can not move parent nodes and child nodes at the same time."
+msgstr "您不能同时移动父节点和子节点。"
+
+#: ../../src/wallpapoz:286
+msgid "You can not move a discontiguous tree selection."
+msgstr "您不能移动不连续的树目录。"
+
+#: ../../src/wallpapoz:300
+msgid "You can change one wallpaper only at a time."
+msgstr "您一次只能更换一张壁纸。"
+
+#: ../../src/wallpapoz:315
+msgid "Choose Wallpaper"
+msgstr "选择壁纸"
+
+#: ../../src/wallpapoz:317
+msgid "Choose Wallpapers"
+msgstr "选择壁纸"
+
+#: ../../src/wallpapoz:325
+msgid "Change"
+msgstr "更换"
+
+#: ../../src/wallpapoz:328
+msgid "Add wallpapers"
+msgstr "添加壁纸"
+
+#: ../../src/wallpapoz:346
+msgid "Images"
+msgstr "图像"
+
+#: ../../src/wallpapoz:352
+msgid "All files"
+msgstr "全部文件"
+
+#: ../../src/wallpapoz:700
+msgid "Workspace"
+msgstr "工作区"
+
+#: ../../src/wallpapoz:720
+msgid "No."
+msgstr "No."
+
+#: ../../src/wallpapoz:743
+msgid "Wallpaper"
+msgstr "壁纸"
+
+#: ../../src/wallpapoz:884
+#: ../../src/wallpapoz:897
+msgid "Every workspace must have at least one wallpaper."
+msgstr "每个工作区必须至少有一张壁纸。"
+
+#: ../../src/wallpapoz:996
+msgid "You can not delete all wallpapers."
+msgstr "您不能删除全部壁纸。"
+
+#: ../../src/wallpapoz:1161
+msgid "You must choose only image file."
+msgstr "您必须只选择一个图像文件。"
+
+#: ../wallpapoz/lib/xml_processing.py:65
+msgid "No configuration file. Use default configuration."
+msgstr "没有找到配置文件，使用默认配置。"
+
+#: ../wallpapoz/lib/xml_processing.py:76
+#: ../wallpapoz/lib/xml_processing.py:102
+msgid "The configuration file is corrupted. Remove it then create a new one again with Wallpapoz!"
+msgstr "配置文件是不完整的。删除配置文件然后用 Wallpapoz 重新创建一个！"
+
+#: ../wallpapoz/lib/xml_processing.py:271
+#: ../wallpapoz/lib/xml_processing.py:296
+msgid "rename this"
+msgstr "重命名"
+
+#: ../wallpapoz/glade/wallpapoz.glade:10
+msgid "Wallpapoz"
+msgstr "Wallpapoz"
+
+#: ../wallpapoz/glade/wallpapoz.glade:41
+msgid "_File"
+msgstr "文件(_F)"
+
+#: ../wallpapoz/glade/wallpapoz.glade:51
+msgid "Add Wallpapers (_Files)"
+msgstr "添加壁纸(文件)(_F)"
+
+#: ../wallpapoz/glade/wallpapoz.glade:74
+msgid "Add Wallpapers (_Directory)"
+msgstr "添加壁纸(目录）(_D)"
+
+#: ../wallpapoz/glade/wallpapoz.glade:96
+msgid "Save to the Configuration File"
+msgstr "保存到配置文件"
+
+#: ../wallpapoz/glade/wallpapoz.glade:97
+msgid "_Save"
+msgstr "保存(_S)"
+
+#: ../wallpapoz/glade/wallpapoz.glade:125
+msgid "Quit"
+msgstr "退出"
+
+#: ../wallpapoz/glade/wallpapoz.glade:140
+msgid "_Edit"
+msgstr "编辑(_E)"
+
+#: ../wallpapoz/glade/wallpapoz.glade:150
+msgid "Cut Wallpapers"
+msgstr "剪切壁纸"
+
+#: ../wallpapoz/glade/wallpapoz.glade:162
+msgid "Copy Wallpapers"
+msgstr "复制壁纸"
+
+#: ../wallpapoz/glade/wallpapoz.glade:174
+msgid "Paste Wallpapers"
+msgstr "粘贴壁纸"
+
+#: ../wallpapoz/glade/wallpapoz.glade:187
+msgid "_Rename Workspace"
+msgstr "重命名工作区(_R)"
+
+#: ../wallpapoz/glade/wallpapoz.glade:211
+msgid "C_hange Wallpaper"
+msgstr "更换壁纸(_C)"
+
+#: ../wallpapoz/glade/wallpapoz.glade:234
+msgid "_Delete Wallpapers"
+msgstr "删除壁纸(_D)"
+
+#: ../wallpapoz/glade/wallpapoz.glade:257
+msgid "Move _Up"
+msgstr "上移(_U)"
+
+#: ../wallpapoz/glade/wallpapoz.glade:280
+msgid "Move D_own"
+msgstr "下移(_D)"
+
+#: ../wallpapoz/glade/wallpapoz.glade:302
+#: ../wallpapoz/glade/wallpapoz.glade:1496
+msgid "Manage Preferences of Wallpapoz"
+msgstr "管理 Wallpapoz 的首选项"
+
+#: ../wallpapoz/glade/wallpapoz.glade:303
+msgid "Prefere_nces"
+msgstr "首选项(_n)"
+
+#: ../wallpapoz/glade/wallpapoz.glade:329
+msgid "_Daemon"
+msgstr "后台程序(_D)"
+
+#: ../wallpapoz/glade/wallpapoz.glade:338
+msgid "Run the Daemon"
+msgstr "运行后台程序"
+
+#: ../wallpapoz/glade/wallpapoz.glade:339
+msgid "_Restart"
+msgstr "重启(_R)"
+
+#: ../wallpapoz/glade/wallpapoz.glade:361
+msgid "Stop the Daemon"
+msgstr "停止后台程序"
+
+#: ../wallpapoz/glade/wallpapoz.glade:362
+msgid "_Stop"
+msgstr "停止(_S)"
+
+#: ../wallpapoz/glade/wallpapoz.glade:388
+msgid "_Help"
+msgstr "帮助(_H)"
+
+#: ../wallpapoz/glade/wallpapoz.glade:397
+msgid "Show Help"
+msgstr "显示帮助"
+
+#: ../wallpapoz/glade/wallpapoz.glade:398
+msgid "_Contents"
+msgstr "内容(_C)"
+
+#: ../wallpapoz/glade/wallpapoz.glade:426
+msgid "About the Author"
+msgstr "关于作者"
+
+#: ../wallpapoz/glade/wallpapoz.glade:427
+msgid "_About"
+msgstr "关于(_A)"
+
+#: ../wallpapoz/glade/wallpapoz.glade:850
+msgid "Add Wallpapers: "
+msgstr "添加壁纸："
+
+#: ../wallpapoz/glade/wallpapoz.glade:944
+msgid "Add Files"
+msgstr "添加文件"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1049
+msgid "Add Directory"
+msgstr "添加目录"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1173
+msgid "Daemon: "
+msgstr "后台程序："
+
+#: ../wallpapoz/glade/wallpapoz.glade:1223
+msgid "Restart Daemon"
+msgstr "重启后台程序"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1267
+msgid "Restart"
+msgstr "重启"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1328
+msgid "Stop Daemon"
+msgstr "停止后台程序"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1372
+msgid "Stop"
+msgstr "停止"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1540
+msgid "Preferences"
+msgstr "首选项"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1664
+msgid "Save the Configuration File"
+msgstr "保存配置文件"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1708
+msgid "Save"
+msgstr "保存"
+
+#: ../wallpapoz/glade/wallpapoz.glade:1825
+msgid "Gnome Desktop Wallpapers Configuration Tool"
+msgstr "Gnome 桌面壁纸配置工具"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2174
+msgid "Wallpapoz Website"
+msgstr "Wallpapoz 网站"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2177
+msgid "translator-credits"
+msgstr "muzuiget <muzuiget@gmail.com>"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2185
+msgid "Choose Directory"
+msgstr "选择目录"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2380
+msgid "recursive"
+msgstr "包括子文件夹"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2537
+msgid "Preferences Dialog"
+msgstr "首选项对话框"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2663
+msgid "Change desktop wallpaper after"
+msgstr "更换桌面壁纸每隔"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2757
+msgid "minutes"
+msgstr "分钟"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2846
+msgid "Pick wallpaper in random order"
+msgstr "随机更换壁纸"
+
+#: ../wallpapoz/glade/wallpapoz.glade:2928
+msgid "Change desktop wallpaper when changing workspace"
+msgstr "当切换工作区时更换壁纸"
+
+#: ../wallpapoz/glade/wallpapoz.glade:3009
+msgid "Style:"
+msgstr "样式："
+
+#: ../wallpapoz/glade/wallpapoz.glade:3059
+msgid ""
+"Centered\n"
+"Fill Screen\n"
+"Scaled\n"
+"Zoom\n"
+"Tiled"
+msgstr ""
+"居中\n"
+"拉伸\n"
+"比例缩放\n"
+"放大\n"
+"平铺"
+
+#: ../../setup.py:20
+msgid ""
+"\n"
+"This script installs or uninstalls Wallpapoz on your system.\n"
+"If you encounter any bugs, please report them to akbarhome@gmail.com.\n"
+"\n"
+"--------------------------------------------------------------------------------\n"
+"\n"
+"Usage:\n"
+"\n"
+" ./setup.py install              ---      Install to /usr/local\n"
+"\n"
+" ./setup.py uninstall            ---      Uninstall from /usr/local\n"
+"\n"
+"--------------------------------------------------------------------------------\n"
+"\n"
+"Options:\n"
+"\n"
+" --installdir <directory>          ---      Install or uninstall in <directory>\n"
+"                                            instead of /usr/local\n"
+msgstr ""
+"\n"
+"这个脚本为您安装或卸载 Wallpapoz 到您的系统。\n"
+"如果你遇到任何bug，请报告它们到 akbarhome@gmail.com。\n"
+"\n"
+"--------------------------------------------------------------------------------\n"
+"\n"
+"使用方法:\n"
+"\n"
+" ./setup.py install              ---      安装到 /usr/local\n"
+"\n"
+" ./setup.py uninstall            ---      卸载从 /usr/local\n"
+"\n"
+"--------------------------------------------------------------------------------\n"
+"\n"
+"选项:\n"
+"\n"
+" --installdir <directory>          ---      安装或卸载用 <directory>\n"
+"                                           代替 /usr/local\n"
+
+#: ../../setup.py:52
+msgid "Installed"
+msgstr "已安装"
+
+#: ../../setup.py:54
+msgid "Error while installing"
+msgstr "安装时发生错误"
+
+#: ../../setup.py:65
+msgid "Removed"
+msgstr "已移除"
+
+#: ../../setup.py:67
+msgid "Error while removing"
+msgstr "移除时发生错误"
+
+#: ../../setup.py:72
+msgid "Checking dependencies..."
+msgstr "正在检查依赖包关系..."
+
+#: ../../setup.py:74
+msgid "Required dependencies:"
+msgstr "需要依赖包："
+
+#: ../../setup.py:82
+#: ../../setup.py:88
+#: ../../setup.py:94
+msgid "Not found"
+msgstr "没有找到"
+
+#: ../../setup.py:99
+msgid "Could not find all required dependencies!"
+msgstr "不能找到全部需要的依赖包！"
+
+#: ../../setup.py:100
+msgid "Please install them and try again."
+msgstr "请安装它们并重试。"
+
+#: ../../setup.py:105
+msgid "Gnome Python is not found. Wallpapoz still could be used and it has been installed."
+msgstr "没有找到 Gnome Python，但 Wallpapoz 仍然能用并且已经安装好了。"
+
+#: ../../setup.py:106
+msgid "But it means you can not access help documentation in your native language if it is available."
+msgstr "但这意味者您不能进入您的本地语言帮助文档，即使您的本地语言帮助文档存在。"
+
+#: ../../setup.py:121
+msgid ""
+"\n"
+"*** Error:"
+msgstr ""
+"\n"
+"*** 错误:"
+
+#: ../../setup.py:121
+msgid "does not exist.\n"
+msgstr "不存在。\n"
+
+#: ../../setup.py:126
+msgid "Installing Wallpapoz in"
+msgstr "正在安装 Wallpapoz 在"
+
+#: ../../setup.py:146
+msgid "Uninstalling Wallpapoz from"
+msgstr "卸载 Wallpapoz 从"
+
+#: ../../setup.py:162
+msgid ""
+"\n"
+"There might still be files in ~/.wallpapoz/ left on your system.\n"
+"Please remove that directory manually if you do not plan to\n"
+"install Wallpapoz again later.\n"
+msgstr ""
+"\n"
+"在您的系统上 ~/.wallpapoz/ 目录可能仍然留下一些文件。\n"
+"请手动移除那个目录，如果你之后不打算重新安装 Wallpapoz。\n"
+

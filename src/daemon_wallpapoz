@@ -1,0 +1,171 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+#================================================
+#
+#    daemon_wallpapoz.py - Wallpapoz 
+#    Copyright (C) 2007 Akbar <akbarhome@gmail.com>
+#
+#================================================
+#
+#    This program is free software; you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation; either version 2 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program; if not, write to the Free Software
+#    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#
+#================================================
+
+## daemon_wallpapoz.py -- monitors desktop continously and changes wallpaper 
+# with preferences from configuration file
+
+import os
+import sys
+import array
+import time
+import threading
+import random
+import gtk.glade
+import string
+
+# so we can call from anywhere
+pathname = os.path.dirname(sys.argv[0])
+os.chdir(os.path.abspath(pathname))
+
+sys.path.append("../share/wallpapoz/lib")
+from xml_processing import XMLProcessing
+from wallpapoz_system import WallpapozSystem
+
+## number -- global variable
+#
+# this is index of wallpaper list of workspaces
+# for example: number[0] is index of wallpaper list in first workspace
+number = array.array('i')
+
+## delay -- global variable, how many time will wallpaper list thread
+#
+# has to wait before it manipulate its index
+delay = 1.0
+
+## random -- global variable, is wallpaper list thread randomize its index
+randomvar = 0
+
+## AsyncIndex -- class for making thread that manipulating index wallpaper list
+class AsyncIndex(threading.Thread):
+  ## constructor
+  def __init__(self, index):
+    threading.Thread.__init__(self)
+    self.index = index
+
+  ## the function that thread will execute
+  def run(self):
+    if randomvar == 1:
+      number[self.index] = 0
+      size = len(worklist[self.index])
+      while True:
+	number[self.index] = int(random.random() * size)
+	time.sleep(delay)
+    else:
+      while True:
+	number[self.index] = 0
+	for i in worklist[self.index]:
+	  time.sleep(delay)
+	  number[self.index] = number[self.index] + 1
+
+## the main program
+if __name__ == "__main__":
+
+  # generate seed for random number
+  random.seed()
+
+  # call the xmlprocessing class to read it
+  wallpapozxml = XMLProcessing()
+
+  # fill the workspace list
+  worklist = wallpapozxml.fill_list()
+
+  # type of wallpapers configuration (desktop or workspace)
+  conf_type =  wallpapozxml.get_type()
+
+  # create the system class ( to change wallpaper and read current desktop )
+  # by calling external program
+  wallpapoz_system = WallpapozSystem()
+  available_style = { '3' : 'zoom', '2' : 'scaled', '1' : 'stretched', 
+      '0' : 'centered', '4' : 'wallpaper' } 
+  style = available_style[wallpapozxml.style()]
+  wallpapoz_system.set_style(style)
+
+  # get the delay time and random preferences
+  delay = 60 * float(wallpapozxml.delay())
+  randomvar = int(wallpapozxml.is_random())
+
+  # how many workspace we use
+  if conf_type == "workspace":
+    # cleansing
+    for iter in worklist:
+      iter.pop(0)
+    total_workspaces = wallpapoz_system.get_total_workspaces()
+
+    # create the index for wallpaper list thread
+    number.fromlist( range( total_workspaces ) )
+
+    # previous workspace
+    previous_desktop = -1
+
+    # previous wallpaper list index
+    previous_index = -1
+
+    # create the thread
+    wallpaper_list = []
+    for i in range(total_workspaces):
+      wallpaper_list.append(AsyncIndex(i))
+      wallpaper_list[i].start()
+
+  # the daemon that works forever
+  try:
+    if wallpapozxml.get_type() == "workspace":
+      while True:
+	# don't get rush
+	time.sleep(1)
+
+	# what workspace we are in now?
+	cur_desk = wallpapoz_system.current_desktop()
+
+	# requirement for changing wallpaper
+	# 1. we change workspace
+	# 2. index of wallpaper list change
+	if wallpapoz_system.has_changed(previous_desktop, cur_desk) or previous_index != number[cur_desk]: 
+	  
+	  # command to change wallpaper
+	  wallpapoz_system.change_wallpaper(worklist[cur_desk][number[cur_desk]])
+
+	  # our previous workspace and index of wallpaper list
+	  previous_desktop = cur_desk
+	  previous_index = number[cur_desk]
+
+    elif wallpapozxml.get_type() == "desktop":
+
+      if randomvar == 1:
+	size = len(worklist)
+	while True:
+	  index = int(random.random() * size)
+	  wallpapoz_system.change_wallpaper(worklist[index])
+	  time.sleep(delay)
+      else:
+	while True:
+	  for wallpaper in worklist:
+	    wallpapoz_system.change_wallpaper(wallpaper)
+	    time.sleep(delay)
+
+  # ok, we stop this daemon
+  except KeyboardInterrupt:
+    # now it's time for the main thread to exit
+    os._exit(0)
