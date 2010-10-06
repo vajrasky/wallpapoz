@@ -1821,7 +1821,7 @@
   <property name="visible">True</property>
   <property name="destroy_with_parent">False</property>
   <property name="name">Wallpapoz</property>
-  <property name="copyright">Copyright @ 2004 - 2007 Vajrasky Akbar Kok</property>
+  <property name="copyright">Copyright @ 2004 - 2010 Vajrasky Akbar Kok</property>
   <property name="comments" translatable="yes">Gnome Desktop Wallpapers Configuration Tool</property>
   <property name="license">(c) 2007 Vajrasky Akbar Kok 
 
