@@ -2,7 +2,7 @@
 #=============================================================================
 #
 #    Readme 
-#    Copyright (C) 2007 Akbar <akbarhome@gmail.com>
+#    Copyright (C) 2010 Akbar <akbarhome@gmail.com>
 #
 #=============================================================================
 #
@@ -80,8 +80,8 @@ when uninstalling.
 
 Example installation:
 
-    $ tar -xzf wallpapoz-0.4.tar.gz
-    $ cd wallpapoz-0.4
+    $ tar -xzf wallpapoz-0.5.tar.gz
+    $ cd wallpapoz-0.5
 
 Depending on distro, the next steps could be this:
     # su
@@ -92,18 +92,18 @@ or this:
 You don't have to install Wallpapoz to run the application. 
 You can run Wallpapoz from its directory anywhere.
 
-    $ cd wallpapoz-0.4
+    $ cd wallpapoz-0.5
     $ cd src
     $ ./wallpapoz
 
-You can put wallpapoz-0.4 directory in your home directory or anywhere.
+You can put wallpapoz-0.5 directory in your home directory or anywhere.
 Someday if you want to get rid of Wallpapoz, just remove the directory.
 
 Credits and Thanks
 -----------------------------------------------------------------------------
 Translators: 
 My self (Indonesian), Mamoru Tasaka (Japanese), Zoltán Nagy (Hungarian),
-Nils Heymann (Deutsch), Daniel Holm (Swedish), Daniel Nylander (Swedish),
+Nils Heymann (Germany), Daniel Holm (Swedish), Daniel Nylander (Swedish),
 Yuri Myasoedov (Russian), Ivan Virgili (Italian), Lukáš Macháček (Czech),
 Corentin Lemée (French), and Rene Garcia (Spanish and Portuguese).
 
