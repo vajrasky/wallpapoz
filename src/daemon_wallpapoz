@@ -71,14 +71,14 @@ class AsyncIndex(threading.Thread):
       number[self.index] = 0
       size = len(worklist[self.index])
       while True:
-	number[self.index] = int(random.random() * size)
-	time.sleep(delay)
+        number[self.index] = int(random.random() * size)
+        time.sleep(delay)
     else:
       while True:
-	number[self.index] = 0
-	for i in worklist[self.index]:
-	  time.sleep(delay)
-	  number[self.index] = number[self.index] + 1
+        number[self.index] = 0
+        for i in worklist[self.index]:
+          time.sleep(delay)
+          number[self.index] = number[self.index] + 1
 
 ## the main program
 if __name__ == "__main__":
@@ -133,37 +133,37 @@ if __name__ == "__main__":
   try:
     if wallpapozxml.get_type() == "workspace":
       while True:
-	# don't get rush
-	time.sleep(1)
+        # don't get rush
+        time.sleep(1)
 
-	# what workspace we are in now?
-	cur_desk = wallpapoz_system.current_desktop()
+        # what workspace we are in now?
+        cur_desk = wallpapoz_system.current_desktop()
 
-	# requirement for changing wallpaper
-	# 1. we change workspace
-	# 2. index of wallpaper list change
-	if wallpapoz_system.has_changed(previous_desktop, cur_desk) or previous_index != number[cur_desk]: 
-	  
-	  # command to change wallpaper
-	  wallpapoz_system.change_wallpaper(worklist[cur_desk][number[cur_desk]])
+        # requirement for changing wallpaper
+        # 1. we change workspace
+        # 2. index of wallpaper list change
+        if wallpapoz_system.has_changed(previous_desktop, cur_desk) or previous_index != number[cur_desk]: 
+  
+          # command to change wallpaper
+          wallpapoz_system.change_wallpaper(worklist[cur_desk][number[cur_desk]])
 
-	  # our previous workspace and index of wallpaper list
-	  previous_desktop = cur_desk
-	  previous_index = number[cur_desk]
+          # our previous workspace and index of wallpaper list
+          previous_desktop = cur_desk
+          previous_index = number[cur_desk]
 
     elif wallpapozxml.get_type() == "desktop":
 
       if randomvar == 1:
-	size = len(worklist)
-	while True:
-	  index = int(random.random() * size)
-	  wallpapoz_system.change_wallpaper(worklist[index])
-	  time.sleep(delay)
+        size = len(worklist)
+        while True:
+          index = int(random.random() * size)
+          wallpapoz_system.change_wallpaper(worklist[index])
+          time.sleep(delay)
       else:
-	while True:
-	  for wallpaper in worklist:
-	    wallpapoz_system.change_wallpaper(wallpaper)
-	    time.sleep(delay)
+        while True:
+          for wallpaper in worklist:
+            wallpapoz_system.change_wallpaper(wallpaper)
+            time.sleep(delay)
 
   # ok, we stop this daemon
   except KeyboardInterrupt:
