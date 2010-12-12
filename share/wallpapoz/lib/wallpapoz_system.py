@@ -101,15 +101,15 @@ class WallpapozSystem:
   ## class method to change desktop wallpaper
   def change_wallpaper(self, wallpaper):
     os.system('gconftool-2 -t string -s /desktop/gnome/background/picture_filename ' + 
-	'"' + wallpaper + '"' + ' -s /desktop/gnome/background/picture_options ' + 
-	self.wallpaper_style)
+        '"' + wallpaper + '"' + ' -s /desktop/gnome/background/picture_options ' + 
+        self.wallpaper_style)
 
   ## class method to detect that we have changed workspace or not
   def has_changed(self, previous_desktop, cur_desk):
     if previous_desktop != cur_desk:
       # if we move to workspace that we don't use, just ignore
       if cur_desk >= self.total_workspaces:
-	return False
+        return False
       return True
     else:
       return False

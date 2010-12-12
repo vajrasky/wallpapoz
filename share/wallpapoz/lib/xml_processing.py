@@ -67,7 +67,7 @@ class XMLProcessing:
       print _("No configuration file. Use default configuration.")
       home = os.environ['HOME']
       if not os.path.exists(home + '/.wallpapoz'):
-	os.makedirs(home + '/.wallpapoz')
+        os.makedirs(home + '/.wallpapoz')
 
       self.create_configuration_file(self.default_fill_list("treestore"), "treestore")
 
@@ -153,9 +153,9 @@ class XMLProcessing:
   def change_wallpaper_when_changing_workspace(self):
     try:
       if self.wallpapoz_node.attributes["type"].value == 'desktop':
-	return False
+        return False
       elif self.wallpapoz_node.attributes["type"].value == 'workspace':
-	return True
+        return True
     except KeyError:
       return True
 
@@ -179,7 +179,7 @@ class XMLProcessing:
       # so if we have 4 workspace, worklist will be like this:
       # [ [], [], [], [] ]
       for i in range(self.workspace_num):
-	worklist.append( [] )
+        worklist.append( [] )
 
       # workspace number
       index = -1
@@ -195,66 +195,66 @@ class XMLProcessing:
 
       # workspace_node hold <workspace name="blabla">
       for workspace_node in self.workspace_node_list:
-	# file_node_list hold all <file> below <workspace...>
-	file_node_list = workspace_node.getElementsByTagName('file')
+        # file_node_list hold all <file> below <workspace...>
+        file_node_list = workspace_node.getElementsByTagName('file')
 
-	# our treeview example
-	# workspace             wallpaper
-	# >1                    nature
-	#  >1                    sunset.jpg
-	#  >2                    moon.png
-	# >2                    sexy girls
-	#  >1                    britney.jpg
+        # our treeview example
+        # workspace             wallpaper
+        # >1                    nature
+        #  >1                    sunset.jpg
+        #  >2                    moon.png
+        # >2                    sexy girls
+        #  >1                    britney.jpg
 
-	# the corresponding xml file will be like this:
-	# <workspace name="nature">
-	#   <file>sunset.jpg</file>
-	#   <file>moon.png</file>
-	# </workspace>
-	# <workspace name="sexy girls">
-	#   <file>britney.jpg</file>
+        # the corresponding xml file will be like this:
+        # <workspace name="nature">
+        #   <file>sunset.jpg</file>
+        #   <file>moon.png</file>
+        # </workspace>
+        # <workspace name="sexy girls">
+        #   <file>britney.jpg</file>
 
-	# index hold workspace number, that is number in the left of "nature" and "sexy girls"
-	index = index + 1
+        # index hold workspace number, that is number in the left of "nature" and "sexy girls"
+        index = index + 1
 
-	# if our workspace amount in desktop is lesser than workspace node in xml file
-	# then no need to fill it again from xml file
-	if len(worklist) <= index:
-	  break;
+        # if our workspace amount in desktop is lesser than workspace node in xml file
+        # then no need to fill it again from xml file
+        if len(worklist) <= index:
+          break;
 
-	# we put "name" attribute value to the first of every list inside worklist
-	# <workspace name="stupid">, "name" attribute value will be "stupid"
-	# so worklist will be like this in first iteration:
-	# [ ["nature"], [], [], [] ]
-	# example taken from above line "index = index + 1"
-	worklist[index].append( workspace_node.attributes["name"].value )
+        # we put "name" attribute value to the first of every list inside worklist
+        # <workspace name="stupid">, "name" attribute value will be "stupid"
+        # so worklist will be like this in first iteration:
+        # [ ["nature"], [], [], [] ]
+        # example taken from above line "index = index + 1"
+        worklist[index].append( workspace_node.attributes["name"].value )
 
-	# node will hold single <file> below <workspace...>
-	# we iterating all <file> below <workspace...>
-	for node in file_node_list:
-	  # here we just interested in "file" not empty space
-	  # remember, this is our xml file
-	  # <workspace name="stupid">
-	  #   <file>bla.jpg</file>
-	  #   <file>buu.jpg</file>
-	  # .....
-	  # for first iteration, our node hold this value: emptyspace<file>bla.jpg</file>emptyspace
-	  # emptyspace is space between workspace node and file node
-	  # of course, if our xml file is like this:
-	  # <workspace name="stupid"><file>bla.jpg</file><file>buu.jpg</file>....
-	  # there is no emptyspace
-	  # but I don't like that xml file style
-	  if node.nodeName == "file":
-	    # put it in our worklist list
-	    worklist[index].append(node.firstChild.data)
-	  
-	  # remember our xml file, upthere
-	  # after iterating all of it, our worklist will be like this:
-	  # [ ["nature", "sunset.jpg", "moon.png"], [], [], [] ]
-	  # so worklist is designed to hold data like this:
-	  # [ [name_of_wallpapers_group1, wallpaper1, wallpaper2,...], [name_of_wallpapers_group2, wallpaper1,....],...]
-	  # remember, the first data of every list inside worklist list is name of wallpaper group like "nature",
-	  # "sexy girls". The second data and so on will hold wallpapers data
+        # node will hold single <file> below <workspace...>
+        # we iterating all <file> below <workspace...>
+        for node in file_node_list:
+          # here we just interested in "file" not empty space
+          # remember, this is our xml file
+          # <workspace name="stupid">
+          #   <file>bla.jpg</file>
+          #   <file>buu.jpg</file>
+          # .....
+          # for first iteration, our node hold this value: emptyspace<file>bla.jpg</file>emptyspace
+          # emptyspace is space between workspace node and file node
+          # of course, if our xml file is like this:
+          # <workspace name="stupid"><file>bla.jpg</file><file>buu.jpg</file>....
+          # there is no emptyspace
+          # but I don't like that xml file style
+          if node.nodeName == "file":
+            # put it in our worklist list
+            worklist[index].append(node.firstChild.data)
+          
+          # remember our xml file, upthere
+          # after iterating all of it, our worklist will be like this:
+          # [ ["nature", "sunset.jpg", "moon.png"], [], [], [] ]
+          # so worklist is designed to hold data like this:
+          # [ [name_of_wallpapers_group1, wallpaper1, wallpaper2,...], [name_of_wallpapers_group2, wallpaper1,....],...]
+          # remember, the first data of every list inside worklist list is name of wallpaper group like "nature",
+          # "sexy girls". The second data and so on will hold wallpapers data
       
       # if our workspace in desktop is larger than workspace node amount in xml file
       # we must add the rest with "rename this" on wallpapers group name
@@ -269,18 +269,18 @@ class XMLProcessing:
       # [ ["nature", ...],...,["8th workspace",...], ["rename this", current_wallpaper], ["rename this", current_wallpaper] ]
       index = index + 1
       if index < self.workspace_num:
-	for i in range(self.workspace_num - index):
-	  worklist[index].append(_("rename this"))
-	  worklist[index].append(self.current_wallpaper)
-	  index += 1
+        for i in range(self.workspace_num - index):
+          worklist[index].append(_("rename this"))
+          worklist[index].append(self.current_wallpaper)
+          index += 1
 
     # if our configuration file is for desktop,
     # we don't change wallpaper when user change workspace
     else:
       # file_node hold <file>blabla.jpg</file>
       for file_node in self.workspace_node_list:
-	# put it in our worklist list
-	worklist.append(file_node.firstChild.data)
+        # put it in our worklist list
+        worklist.append(file_node.firstChild.data)
 
     return worklist
 
@@ -294,9 +294,9 @@ class XMLProcessing:
     default_list = []
     if type == "treestore":
       for i in range(self.workspace_num):
-	default_list.append([])
-	default_list[i].append(_("rename this"))
-	default_list[i].append(self.current_wallpaper)
+        default_list.append([])
+        default_list[i].append(_("rename this"))
+        default_list[i].append(self.current_wallpaper)
     elif type == "liststore":
       default_list.append(self.current_wallpaper)
     return default_list
@@ -335,24 +335,24 @@ class XMLProcessing:
 
       # create file node based on wallpaper list
       for filepath in wallpaperlist:
-	fileelement = newdoc.createElement("file")
+        fileelement = newdoc.createElement("file")
 
-	# pretty printing
-	space_workspace_tab = newdoc.createTextNode("    ")
-	top_element.appendChild(space_workspace_tab)
-	# end of pretty printing
+        # pretty printing
+        space_workspace_tab = newdoc.createTextNode("    ")
+        top_element.appendChild(space_workspace_tab)
+        # end of pretty printing
 
-	# put wallpaper path to file node text
-	wallpaper_path = newdoc.createTextNode(filepath)
-	fileelement.appendChild(wallpaper_path)
-	
-	# add file node to top element
-	top_element.appendChild(fileelement)
+        # put wallpaper path to file node text
+        wallpaper_path = newdoc.createTextNode(filepath)
+        fileelement.appendChild(wallpaper_path)
 
-	# pretty printing
-	space_file = newdoc.createTextNode("\n")
-	top_element.appendChild(space_file)
-	# end of pretty printing
+        # add file node to top element
+        top_element.appendChild(fileelement)
+
+        # pretty printing
+        space_file = newdoc.createTextNode("\n")
+        top_element.appendChild(space_file)
+        # end of pretty printing
 
     elif tree_type == "treestore":
       top_element.setAttribute('type', "workspace")
@@ -361,48 +361,48 @@ class XMLProcessing:
 
       # create workspace node based on wallpaper list
       for workspace in wallpaperlist:
-	workspaceelement = newdoc.createElement("workspace")
-	workspaceelement.setAttribute("no", str(index_of_wallpaperlist) )
-	workspaceelement.setAttribute("name", workspace.pop(0) )
+        workspaceelement = newdoc.createElement("workspace")
+        workspaceelement.setAttribute("no", str(index_of_wallpaperlist) )
+        workspaceelement.setAttribute("name", workspace.pop(0) )
 
-	# add the index
-	index_of_wallpaperlist += 1
+        # add the index
+        index_of_wallpaperlist += 1
 
-	# pretty printing
-	space_workspace_tab = newdoc.createTextNode("    ")
-	top_element.appendChild(space_workspace_tab)
-	space_workspace = newdoc.createTextNode("\n")
-	workspaceelement.appendChild(space_workspace)
-	# end of pretty printing
+        # pretty printing
+        space_workspace_tab = newdoc.createTextNode("    ")
+        top_element.appendChild(space_workspace_tab)
+        space_workspace = newdoc.createTextNode("\n")
+        workspaceelement.appendChild(space_workspace)
+        # end of pretty printing
 
-	for file in workspace:
+        for file in workspace:
 
-	  # pretty printing
-	  space_file_tab = newdoc.createTextNode("        ")
-	  workspaceelement.appendChild(space_file_tab)
-	  # end of pretty printing
+          # pretty printing
+          space_file_tab = newdoc.createTextNode("        ")
+          workspaceelement.appendChild(space_file_tab)
+          # end of pretty printing
 
-	  fileelement = newdoc.createElement("file")
-	  path = newdoc.createTextNode(file)
-	  fileelement.appendChild(path)
-	  workspaceelement.appendChild(fileelement)
+          fileelement = newdoc.createElement("file")
+          path = newdoc.createTextNode(file)
+          fileelement.appendChild(path)
+          workspaceelement.appendChild(fileelement)
 
-	  # pretty printing
-	  space_file = newdoc.createTextNode("\n")
-	  workspaceelement.appendChild(space_file)
-	  # end of pretty printing 
+          # pretty printing
+          space_file = newdoc.createTextNode("\n")
+          workspaceelement.appendChild(space_file)
+          # end of pretty printing 
 
-	# pretty printing
-	space_file_tab = newdoc.createTextNode("    ")
-	workspaceelement.appendChild(space_file_tab)
-	# end of pretty printing
+        # pretty printing
+        space_file_tab = newdoc.createTextNode("    ")
+        workspaceelement.appendChild(space_file_tab)
+        # end of pretty printing
 
-	top_element.appendChild(workspaceelement)
+        top_element.appendChild(workspaceelement)
 
-	# pretty printing
-	space = newdoc.createTextNode("\n")
-	top_element.appendChild(space)
-	# end of pretty printing
+        # pretty printing
+        space = newdoc.createTextNode("\n")
+        top_element.appendChild(space)
+        # end of pretty printing
 
     # create it
     xml_file = open(self.config_file, "w")
