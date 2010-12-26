@@ -1,7 +1,7 @@
 #================================================
 #
 #    xml_processing.py - Wallpapoz 
-#    Copyright (C) 2007 Akbar <akbarhome@gmail.com>
+#    Copyright (C) 2007 Vajrasky Akbar Kok <akbarhome@gmail.com>
 #
 #================================================
 #
@@ -45,21 +45,12 @@ class XMLProcessing:
 
   ## The constructor
   def __init__(self):
-    # how many workspace do we have
-    wallpapoz_system = WallpapozSystem()
-    self.workspace_num = wallpapoz_system.get_total_workspaces()
-
     # our document instance
     self.xmldoc = None
 
     # the configuration file
     home = os.environ['HOME']
     self.config_file = home + "/.wallpapoz/wallpapoz.xml"
-
-    # our current wallpaper
-    self.current_wallpaper = os.popen("gconftool-2 -g /desktop/gnome/background/picture_filename").read()[:-1]
-    if self.current_wallpaper == '':
-      self.current_wallpaper = _("change this with picture file")
 
     # if wallpapoz run for the first time ( no configuration file )
     # we make default list, for every workspace, we give one wallpaper that is our current wallpaper
@@ -86,6 +77,21 @@ class XMLProcessing:
       self.wallpapoz_type = self.wallpapoz_node.attributes["type"].value
     except KeyError:
       self.wallpapoz_type = "workspace"
+
+    # wallpapoz window manager ( gnome, xfce, or fluxbox )
+    try:
+      self.wallpapoz_window_manager = self.wallpapoz_node.attributes["window"].value
+    except KeyError:
+      self.wallpapoz_window_manager = "gnome"
+
+    # how many workspace do we have
+    wallpapoz_system = WallpapozSystem(self.wallpapoz_window_manager)
+    self.workspace_num = wallpapoz_system.get_total_workspaces()
+
+    # our current wallpaper
+    self.current_wallpaper = wallpapoz_system.finding_current_wallpaper()
+    if self.current_wallpaper == '':
+      self.current_wallpaper = _("change this with picture file")
 
     # workspace node list
     # fill with workspace node if the type is workspace
@@ -158,6 +164,10 @@ class XMLProcessing:
         return True
     except KeyError:
       return True
+
+  # get type of window manager
+  def get_window_manager(self):
+    return self.wallpapoz_window_manager
 
   ## class method -- set random
   def set_random(self, randm):

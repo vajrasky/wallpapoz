@@ -4,7 +4,7 @@
 #================================================
 #
 #    daemon_wallpapoz.py - Wallpapoz 
-#    Copyright (C) 2007 Akbar <akbarhome@gmail.com>
+#    Copyright (C) 2007 Vajrasky Akbar Kok <akbarhome@gmail.com>
 #
 #================================================
 #
@@ -95,9 +95,12 @@ if __name__ == "__main__":
   # type of wallpapers configuration (desktop or workspace)
   conf_type =  wallpapozxml.get_type()
 
+  # type of window manager (gnome or xfce) 
+  window_manager = wallpapozxml.get_window_manager()
+
   # create the system class ( to change wallpaper and read current desktop )
   # by calling external program
-  wallpapoz_system = WallpapozSystem()
+  wallpapoz_system = WallpapozSystem(window_manager)
   available_style = { '3' : 'zoom', '2' : 'scaled', '1' : 'stretched', 
       '0' : 'centered', '4' : 'wallpaper' } 
   style = available_style[wallpapozxml.style()]

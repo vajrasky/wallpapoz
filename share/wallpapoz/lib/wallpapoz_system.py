@@ -29,7 +29,8 @@ import string
 
 class WallpapozSystem:
 
-  def __init__(self):
+  def __init__(self, window_manager):
+    self.window_manager = window_manager
     self.wallpaper_style = 'scaled'
     self.finding_screen_resolution()
     self.check_beryl()
@@ -100,9 +101,20 @@ class WallpapozSystem:
 
   ## class method to change desktop wallpaper
   def change_wallpaper(self, wallpaper):
-    os.system('gconftool-2 -t string -s /desktop/gnome/background/picture_filename ' + 
+    if self.window_manager == "gnome":
+      os.system('gconftool-2 -t string -s /desktop/gnome/background/picture_filename ' + 
         '"' + wallpaper + '"' + ' -s /desktop/gnome/background/picture_options ' + 
         self.wallpaper_style)
+    elif self.window_manager == "xfce":
+      os.system("xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -s " +
+        '"' + wallpaper + '"')
+
+  ## class method to find current desktop wallpaper
+  def finding_current_wallpaper(self):
+    if self.window_manager == "gnome":
+      return os.popen("gconftool-2 -g /desktop/gnome/background/picture_filename").read()[:-1]
+    elif self.window_manager == "xfce":
+      return os.popen("xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path").read()[:-1]
 
   ## class method to detect that we have changed workspace or not
   def has_changed(self, previous_desktop, cur_desk):
