@@ -85,7 +85,8 @@ class XMLProcessing:
       self.wallpapoz_window_manager = "gnome"
 
     # how many workspace do we have
-    wallpapoz_system = WallpapozSystem(self.wallpapoz_window_manager)
+    wallpapoz_system = WallpapozSystem()
+    wallpapoz_system.set_window_manager(self.wallpapoz_window_manager)
     self.workspace_num = wallpapoz_system.get_total_workspaces()
 
     # our current wallpaper
