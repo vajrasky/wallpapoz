@@ -72,11 +72,11 @@ class WallpapozSystem:
 
   ## class method to change desktop wallpaper
   def change_wallpaper(self, wallpaper):
-    if self.window_manager == "gnome":
+    if self.window_manager == "Gnome":
       os.system('gconftool-2 -t string -s /desktop/gnome/background/picture_filename ' + 
         '"' + wallpaper + '"' + ' -s /desktop/gnome/background/picture_options ' + 
         self.wallpaper_style)
-    elif self.window_manager == "xfce":
+    elif self.window_manager == "XFCE":
       os.system("xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -s " +
         '"' + wallpaper + '"')
       os.system("xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-style -s " +
