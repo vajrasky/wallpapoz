@@ -1,6 +1,6 @@
 #================================================
 #
-#    wallpapoz_system.py - Wallpapoz 
+#    wallpapoz_system.py - Wallpapoz
 #    Copyright (C) 2007 Vajrasky Akbar Kok <akbarhome@gmail.com>
 #
 #================================================
@@ -30,16 +30,13 @@ import string
 class WallpapozSystem:
 
   def __init__(self):
-    self.window_manager = 'gnome'
     self.wallpaper_style = 'scaled'
     self.finding_screen_resolution()
     self.finding_total_workspaces()
+    self.finding_desktop_environment()
 
   def set_style(self, style):
     self.wallpaper_style = style
-
-  def set_window_manager(self, window_manager):
-    self.window_manager = window_manager
 
   ## class method to find monitor resolution
   def finding_screen_resolution(self):
@@ -50,6 +47,17 @@ class WallpapozSystem:
     end_height = raw_resolution.find('\n', start_height)
     self.screen_width = int(raw_resolution[start_width+7:end_width])
     self.screen_height = int(raw_resolution[start_height+8:end_height])
+
+  ## class method to find which desktop environment user uses
+  def finding_desktop_environment(self):
+    raw_window_id = os.popen('xprop -root _NET_SUPPORTING_WM_CHECK').read()
+    window_id = raw_window_id[46:raw_window_id.find("\n")]
+    raw_wm_name = os.popen('xprop -id ' + window_id + ' 8s _NET_WM_NAME').read()
+    wm_name = raw_wm_name[29:raw_wm_name.rfind('"')]
+    if wm_name=='Metacity':
+      self.window_manager = 'Gnome'
+    elif wm_name=='Xfwm4':
+      self.window_manager = 'XFCE4'
 
   ## class method to find amount of workspaces in user desktop
   def finding_total_workspaces(self):
@@ -73,10 +81,10 @@ class WallpapozSystem:
   ## class method to change desktop wallpaper
   def change_wallpaper(self, wallpaper):
     if self.window_manager == "Gnome":
-      os.system('gconftool-2 -t string -s /desktop/gnome/background/picture_filename ' + 
-        '"' + wallpaper + '"' + ' -s /desktop/gnome/background/picture_options ' + 
+      os.system('gconftool-2 -t string -s /desktop/gnome/background/picture_filename ' +
+        '"' + wallpaper + '"' + ' -s /desktop/gnome/background/picture_options ' +
         self.wallpaper_style)
-    elif self.window_manager == "XFCE":
+    elif self.window_manager == "XFCE4":
       os.system("xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -s " +
         '"' + wallpaper + '"')
       os.system("xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-style -s " +
@@ -84,9 +92,9 @@ class WallpapozSystem:
 
   ## class method to find current desktop wallpaper
   def finding_current_wallpaper(self):
-    if self.window_manager == "gnome":
+    if self.window_manager == "Gnome":
       return os.popen("gconftool-2 -g /desktop/gnome/background/picture_filename").read()[:-1]
-    elif self.window_manager == "xfce":
+    elif self.window_manager == "XFCE4":
       return os.popen("xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path").read()[:-1]
 
   ## class method to detect that we have changed workspace or not

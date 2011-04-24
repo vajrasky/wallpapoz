@@ -1,6 +1,6 @@
 #================================================
 #
-#    xml_processing.py - Wallpapoz 
+#    xml_processing.py - Wallpapoz
 #    Copyright (C) 2007 Vajrasky Akbar Kok <akbarhome@gmail.com>
 #
 #================================================
@@ -52,6 +52,15 @@ class XMLProcessing:
     home = os.environ['HOME']
     self.config_file = home + "/.wallpapoz/wallpapoz.xml"
 
+    # how many workspace do we have
+    wallpapoz_system = WallpapozSystem()
+    self.workspace_num = wallpapoz_system.get_total_workspaces()
+
+    # our current wallpaper
+    self.current_wallpaper = wallpapoz_system.finding_current_wallpaper()
+    if self.current_wallpaper == '':
+      self.current_wallpaper = _("change this with picture file")
+
     # if wallpapoz run for the first time ( no configuration file )
     # we make default list, for every workspace, we give one wallpaper that is our current wallpaper
     if not os.path.exists(self.config_file):
@@ -77,22 +86,6 @@ class XMLProcessing:
       self.wallpapoz_type = self.wallpapoz_node.attributes["type"].value
     except KeyError:
       self.wallpapoz_type = "workspace"
-
-    # wallpapoz window manager ( gnome, xfce, or fluxbox )
-    try:
-      self.wallpapoz_window_manager = self.wallpapoz_node.attributes["window_manager"].value
-    except KeyError:
-      self.wallpapoz_window_manager = "Gnome"
-
-    # how many workspace do we have
-    wallpapoz_system = WallpapozSystem()
-    wallpapoz_system.set_window_manager(self.wallpapoz_window_manager)
-    self.workspace_num = wallpapoz_system.get_total_workspaces()
-
-    # our current wallpaper
-    self.current_wallpaper = wallpapoz_system.finding_current_wallpaper()
-    if self.current_wallpaper == '':
-      self.current_wallpaper = _("change this with picture file")
 
     # workspace node list
     # fill with workspace node if the type is workspace
@@ -262,7 +255,7 @@ class XMLProcessing:
           if node.nodeName == "file":
             # put it in our worklist list
             worklist[index].append(node.firstChild.data)
-          
+
           # remember our xml file, upthere
           # after iterating all of it, our worklist will be like this:
           # [ ["nature", "sunset.jpg", "moon.png"], [], [], [] ]
@@ -270,7 +263,7 @@ class XMLProcessing:
           # [ [name_of_wallpapers_group1, wallpaper1, wallpaper2,...], [name_of_wallpapers_group2, wallpaper1,....],...]
           # remember, the first data of every list inside worklist list is name of wallpaper group like "nature",
           # "sexy girls". The second data and so on will hold wallpapers data
-      
+
       # if our workspace in desktop is larger than workspace node amount in xml file
       # we must add the rest with "rename this" on wallpapers group name
       # and for every workspace of the rest give one wallpaper, that is current wallpaper
@@ -407,7 +400,7 @@ class XMLProcessing:
           # pretty printing
           space_file = newdoc.createTextNode("\n")
           workspaceelement.appendChild(space_file)
-          # end of pretty printing 
+          # end of pretty printing
 
         # pretty printing
         space_file_tab = newdoc.createTextNode("    ")
