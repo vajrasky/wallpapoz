@@ -30,7 +30,6 @@ import string
 class WallpapozSystem:
 
   def __init__(self):
-    self.wallpaper_style = 'scaled'
     self.finding_screen_resolution()
     self.finding_total_workspaces()
     self.finding_desktop_environment()
