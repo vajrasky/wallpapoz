@@ -24,35 +24,52 @@
                   <widget class="GtkMenu" id="menuitem_file_menu">
                     <child>
                       <widget class="GtkImageMenuItem" id="add_wallpapers_files">
-                        <property name="label">Add Wallpapers (_Files)</property>
+                        <property name="label" translatable="yes">Add Wallpapers (_Files)</property>
                         <property name="visible">True</property>
                         <property name="tooltip" translatable="yes">Add Wallpapers (Files)</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
+                        <property name="use_stock">False</property>
                         <signal name="activate" handler="on_add_wallpapers_files_activate"/>
                         <accelerator key="f" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <child internal-child="image">
+                          <widget class="GtkImage" id="image1">
+                            <property name="visible">True</property>
+                            <property name="stock">gtk-add</property>
+                          </widget>
+                        </child>
                       </widget>
                     </child>
                     <child>
                       <widget class="GtkImageMenuItem" id="add_wallpapers_directory">
-                        <property name="label">Add Wallpapers (_Directory)</property>
+                        <property name="label" translatable="yes">Add Wallpapers (_Directory)</property>
                         <property name="visible">True</property>
                         <property name="tooltip" translatable="yes">Add Wallpapers (Directory)</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
+                        <property name="use_stock">False</property>
                         <signal name="activate" handler="on_add_wallpapers_directory_activate"/>
                         <accelerator key="d" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <child internal-child="image">
+                          <widget class="GtkImage" id="image2">
+                            <property name="visible">True</property>
+                            <property name="stock">gtk-directory</property>
+                          </widget>
+                        </child>
                       </widget>
                     </child>
                     <child>
                       <widget class="GtkImageMenuItem" id="save">
-                        <property name="label">_Save</property>
+                        <property name="label" translatable="yes">_Save</property>
                         <property name="visible">True</property>
                         <property name="tooltip" translatable="yes">Save to the Configuration File</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
+                        <property name="use_stock">False</property>
                         <signal name="activate" handler="on_save_activate"/>
                         <accelerator key="s" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <child internal-child="image">
+                          <widget class="GtkImage" id="image3">
+                            <property name="visible">True</property>
+                            <property name="stock">gtk-save</property>
+                          </widget>
+                        </child>
                       </widget>
                     </child>
                     <child>
@@ -120,70 +137,106 @@
                     </child>
                     <child>
                       <widget class="GtkImageMenuItem" id="rename_workspace">
-                        <property name="label">_Rename Workspace</property>
+                        <property name="label" translatable="yes">_Rename Workspace</property>
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
                         <property name="tooltip" translatable="yes">Rename Workspace</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
+                        <property name="use_stock">False</property>
                         <signal name="activate" handler="on_rename_workspace_activate"/>
                         <accelerator key="e" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <child internal-child="image">
+                          <widget class="GtkImage" id="image7">
+                            <property name="visible">True</property>
+                            <property name="stock">gtk-convert</property>
+                          </widget>
+                        </child>
                       </widget>
                     </child>
                     <child>
                       <widget class="GtkImageMenuItem" id="change_wallpaper">
-                        <property name="label">C_hange Wallpaper</property>
+                        <property name="label">_Change Wallpaper</property>
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
                         <property name="tooltip" translatable="yes">Change Wallpaper</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
+                        <property name="use_stock">False</property>
                         <signal name="activate" handler="on_change_wallpaper_activate"/>
                         <accelerator key="h" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <child internal-child="image">
+                          <widget class="GtkImage" id="image9">
+                            <property name="visible">True</property>
+                            <property name="stock">gtk-edit</property>
+                          </widget>
+                        </child>
                       </widget>
                     </child>
                     <child>
                       <widget class="GtkImageMenuItem" id="delete_wallpapers">
-                        <property name="label">_Delete Wallpapers</property>
+                        <property name="label" translatable="yes">_Delete Wallpapers</property>
                         <property name="visible">True</property>
                         <property name="tooltip" translatable="yes">Delete Wallpapers</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
+                        <property name="use_stock">False</property>
                         <signal name="activate" handler="on_delete_wallpapers_activate"/>
                         <accelerator key="Delete" signal="activate"/>
+                        <child internal-child="image">
+                          <widget class="GtkImage" id="image8">
+                            <property name="visible">True</property>
+                            <property name="stock">gtk-delete</property>
+                          </widget>
+                        </child>
                       </widget>
                     </child>
                     <child>
                       <widget class="GtkImageMenuItem" id="move_up">
-                        <property name="label">Move _Up</property>
+                        <property name="label" translatable="yes">Move _Up</property>
                         <property name="visible">True</property>
                         <property name="tooltip" translatable="yes">Move Up</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
+                        <property name="use_stock">False</property>
                         <signal name="activate" handler="on_move_up_activate"/>
                         <accelerator key="Page_Up" signal="activate"/>
+                        <child internal-child="image">
+                          <widget class="GtkImage" id="image4">
+                            <property name="visible">True</property>
+                            <property name="stock">gtk-go-up</property>
+                          </widget>
+                        </child>
                       </widget>
                     </child>
                     <child>
                       <widget class="GtkImageMenuItem" id="move_down">
-                        <property name="label">Move D_own</property>
+                        <property name="label" translatable="yes">Move _Down</property>
                         <property name="visible">True</property>
                         <property name="tooltip" translatable="yes">Move Down</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
+                        <property name="use_stock">False</property>
                         <signal name="activate" handler="on_move_down_activate"/>
                         <accelerator key="Page_Down" signal="activate"/>
+                        <child internal-child="image">
+                          <widget class="GtkImage" id="image5">
+                            <property name="visible">True</property>
+                            <property name="stock">gtk-go-down</property>
+                          </widget>
+                        </child>
                       </widget>
                     </child>
                     <child>
                       <widget class="GtkImageMenuItem" id="preferences">
-                        <property name="label">Prefere_nces</property>
+                        <property name="label" translatable="yes">_Preferences</property>
                         <property name="visible">True</property>
                         <property name="tooltip" translatable="yes">Manage Preferences of Wallpapoz</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
+                        <property name="use_stock">False</property>
                         <signal name="activate" handler="on_preferences_activate"/>
                         <accelerator key="p" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <child internal-child="image">
+                          <widget class="GtkImage" id="image6">
+                            <property name="visible">True</property>
+                            <property name="stock">gtk-preferences</property>
+                          </widget>
+                        </child>
                       </widget>
                     </child>
                   </widget>
@@ -199,13 +252,19 @@
                   <widget class="GtkMenu" id="menuitem_daemon_menu">
                     <child>
                       <widget class="GtkImageMenuItem" id="restart">
-                        <property name="label">_Restart</property>
+                        <property name="label" translatable="yes">_Restart</property>
                         <property name="visible">True</property>
                         <property name="tooltip" translatable="yes">Run the Daemon</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
+                        <property name="use_stock">False</property>
                         <signal name="activate" handler="on_restart_activate"/>
                         <accelerator key="r" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <child internal-child="image">
+                          <widget class="GtkImage" id="image10">
+                            <property name="visible">True</property>
+                            <property name="stock">gtk-refresh</property>
+                          </widget>
+                        </child>
                       </widget>
                     </child>
                     <child>
@@ -214,9 +273,15 @@
                         <property name="visible">True</property>
                         <property name="tooltip" translatable="yes">Stop the Daemon</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
+                        <property name="use_stock">False</property>
                         <signal name="activate" handler="on_stop_activate"/>
                         <accelerator key="Escape" signal="activate"/>
+                        <child internal-child="image">
+                          <widget class="GtkImage" id="image11">
+                            <property name="visible">True</property>
+                            <property name="stock">gtk-stop</property>
+                          </widget>
+                        </child>
                       </widget>
                     </child>
                   </widget>
@@ -232,10 +297,9 @@
                   <widget class="GtkMenu" id="menuitem_help_menu">
                     <child>
                       <widget class="GtkImageMenuItem" id="contents">
-                        <property name="label">_Contents</property>
+                        <property name="label">gtk-help</property>
                         <property name="visible">True</property>
                         <property name="tooltip" translatable="yes">Show Help</property>
-                        <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="on_contents_activate"/>
                         <accelerator key="F1" signal="activate"/>
@@ -248,7 +312,7 @@
                     </child>
                     <child>
                       <widget class="GtkImageMenuItem" id="about">
-                        <property name="label">_About</property>
+                        <property name="label">gtk-orientation-portrait</property>
                         <property name="visible">True</property>
                         <property name="tooltip" translatable="yes">About the Author</property>
                         <property name="use_underline">True</property>
@@ -1781,6 +1845,7 @@ Public License instead of this License.
             <child>
               <widget class="GtkHBox" id="preferences_dialog_hbox_2">
                 <property name="visible">True</property>
+                <property name="spacing">1</property>
                 <child>
                   <widget class="GtkLabel" id="preferences_dialog_dummy_label_small_5">
                     <property name="visible">True</property>
@@ -1827,51 +1892,6 @@ Tiled</property>
                     <property name="expand">False</property>
                     <property name="fill">False</property>
                     <property name="position">3</property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkLabel" id="preferences_dialog_dummy_label_small_7">
-                    <property name="visible">True</property>
-                    <property name="label" translatable="yes">  </property>
-                  </widget>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">False</property>
-                    <property name="position">4</property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkLabel" id="preferences_dialog_window_label">
-                    <property name="visible">True</property>
-                    <property name="label" translatable="yes">Window Manager:</property>
-                  </widget>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">False</property>
-                    <property name="position">5</property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkLabel" id="preferences_dialog_dummy_label_small_">
-                    <property name="visible">True</property>
-                    <property name="label" translatable="yes">  </property>
-                  </widget>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">False</property>
-                    <property name="position">6</property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkComboBox" id="preferences_dialog_window_manager_combobox">
-                    <property name="visible">True</property>
-                    <property name="items">Gnome
-XFCE</property>
-                  </widget>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">False</property>
-                    <property name="position">7</property>
                   </packing>
                 </child>
               </widget>
