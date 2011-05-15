@@ -142,14 +142,6 @@ class XMLProcessing:
       # default is centered
       return "2"
 
-  # set window manager attribute (xfce or gnome)
-  def set_window_manager(self, window_manager):
-    self.wallpapoz_node.setAttribute('window_manager', window_manager)
-
-  # get window manager attribute (xfce or gnome)
-  def window_manager(self):
-    return self.wallpapoz_node.attributes["window_manager"].value
-
   # get type attribute (desktop or workspace)
   def get_type(self):
     try:
@@ -332,12 +324,10 @@ class XMLProcessing:
       top_element.setAttribute('random', self.is_random())
       top_element.setAttribute('interval', self.delay())
       top_element.setAttribute('style', self.style())
-      top_element.setAttribute('window_manager', self.window_manager())
     else:
       top_element.setAttribute('random', '0')
       top_element.setAttribute('interval', '5')
       top_element.setAttribute('style', '2')
-      top_element.setAttribute('window_manager', 'Gnome')
 
     # put type attributes to wallpapoz element and make the xml file
     if tree_type == "liststore":
