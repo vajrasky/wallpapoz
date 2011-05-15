@@ -3,7 +3,7 @@
 
 #=============================================================================
 #
-#    wallpapoz.py - Wallpapoz 
+#    wallpapoz.py - Wallpapoz
 #    Copyright (C) 2007 Vajrasky Akbar Kok <akbarhome@gmail.com>
 #
 #=============================================================================
@@ -108,7 +108,7 @@ class Wallpapoz:
             "on_preferences_button_clicked" : self.preferences_option,
             "on_cut_activate" : self.cut_treenode,
             "on_copy_activate" : self.copy_treenode,
-            "on_paste_activate" : self.paste_treenode, 
+            "on_paste_activate" : self.paste_treenode,
             "on_rename_workspace_activate" : self.rename_workspace_parentnode,
             "on_restart_activate" : self.restart_daemon,
             "on_stop_activate" : self.stop_daemon,
@@ -332,7 +332,7 @@ class Wallpapoz:
     cancel_button.connect("clicked", lambda w: filechooser_dialog.destroy())
 
     # set it to last directory
-    if self.last_directory == None: 
+    if self.last_directory == None:
       filechooser_dialog.set_current_folder(os.environ['HOME'])
     else:
       filechooser_dialog.set_current_folder(self.last_directory)
@@ -448,10 +448,6 @@ class Wallpapoz:
     else:
       raise "Random order value is not valid"
     style_widget.set_active(int(self.wallpapozxml.style()))
-    if self.wallpapozxml.window_manager()=='XFCE':
-      window_manager_widget.set_active(1)
-    else:
-      window_manager_widget.set_active(0)
     changing_workspace_widget.set_active(self.wallpapozxml.change_wallpaper_when_changing_workspace())
 
     # button
@@ -516,7 +512,7 @@ class Wallpapoz:
     recursive_widget = choose_directory_dialog.get_widget("recursive_checkbutton")
 
     # set it to last directory
-    if self.last_directory == None: 
+    if self.last_directory == None:
       filechooser_widget.set_current_folder(os.environ['HOME'])
     else:
       filechooser_widget.set_current_folder(self.last_directory)
@@ -574,7 +570,7 @@ class Wallpapoz:
                 # increase the index
                 num_of_child = num_of_child + 1
       # if user click in row below parent
-      else: 
+      else:
         # our selected row
         next_iter = iter
         # our index row
@@ -758,7 +754,7 @@ class Wallpapoz:
     self.treeselection = self.treeview_widget.get_selection()
     self.treeselection.set_mode(gtk.SELECTION_MULTIPLE)
     self.treeselection.select_path(0)
-    
+
     # show image for liststore
     self.treeview_selection_changed(None)
 
@@ -769,7 +765,7 @@ class Wallpapoz:
   def edited_cb(self, cell, path, new_text, user_data):
     treestore = user_data
     treestore[path][1] = new_text
-    return				      
+    return
 
   # we call this method when we click copy menu action
   def copy_treenode(self, widget):
@@ -777,7 +773,7 @@ class Wallpapoz:
     self.selected_iter = self.get_selected_iter_of_treeview("copy")
 
     # it is must always treestore, but I don't check it
-    #   the code if you must check it: 
+    #   the code if you must check it:
     #   if type(self.store) == gtk.TreeStore:
     # it is assumed that no paret node in its selection
 
@@ -792,7 +788,7 @@ class Wallpapoz:
     self.selected_iter = self.get_selected_iter_of_treeview("cut")
 
     # it is must always treestore, but I don't check it
-    #   the code if you must check it: 
+    #   the code if you must check it:
     #   if type(self.store) == gtk.TreeStore:
     # it is assumed that no paret node in its selection
 
@@ -834,9 +830,9 @@ class Wallpapoz:
 
         # if the index is not 0, or our selected iter is not the first iter in workspace
         if copy_iter_child_number != 0:
-          
+
           # append the previous iter
-          lowest_iter_list.append( 
+          lowest_iter_list.append(
               self.store.get_iter( (copy_iter_parent_number, copy_iter_child_number-1) ) )
 
         # if our iter is the first iter in workspace
@@ -856,7 +852,7 @@ class Wallpapoz:
 
         # we have done with this workspace, so no need to bother
         if not done_workspace:
-      
+
           # if it is still in the same block, update the index
           if iter_workspace_index + 1 == copy_iter_child_number:
 
@@ -865,7 +861,7 @@ class Wallpapoz:
           # it is not in the same block but still in the same workspace
           else:
 
-            lowest_iter_list.append( 
+            lowest_iter_list.append(
                 self.store.get_iter( (copy_iter_parent_number, iter_workspace_index+1) ) )
 
             done_workspace = True
@@ -912,7 +908,7 @@ class Wallpapoz:
       return None
 
     # it is must always treestore, but I don't check it
-    #   the code if you must check it: 
+    #   the code if you must check it:
     #   if type(self.store) == gtk.TreeStore:
     parent = self.store.iter_parent(position_iter)
     new_index = self.store.get_value(position_iter, 0) + 1
@@ -1022,7 +1018,7 @@ class Wallpapoz:
             before_path_iter = path_iter
           else:
             lowest_iter = self.store.get_iter((before_path_iter+1,))
-    
+
       # remove the iter
       for single_iter in self.selected_iter:
         self.store.remove(single_iter)
@@ -1093,7 +1089,7 @@ class Wallpapoz:
     # the selection is not valid
     if not iter_list:
       return None
-    
+
     # make sure it is not in the very top
     the_path = self.store.get_path(iter_list[0])
     length_of_first_path = len(the_path)
@@ -1130,7 +1126,7 @@ class Wallpapoz:
 
     # get the last iter first
     last_iter = iter_list[len(iter_list)-1]
-    
+
     # make sure it is not in the very bottom
     the_path = self.store.get_path(last_iter)
     length_of_first_path = len(the_path)
