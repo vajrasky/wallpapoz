@@ -481,10 +481,6 @@ class Wallpapoz:
         treetype = "liststore"
     value_of_style_tuple = style_widget.get_active()
     self.wallpapozxml.set_style(str(value_of_style_tuple))
-    if window_manager_widget.get_active()==1:
-      self.wallpapozxml.set_window_manager('XFCE')
-    else:
-      self.wallpapozxml.set_window_manager('Gnome')
     self.wallpapozxml.set_delay(str(int(time_changed_widget.get_value())))
     self.wallpapozxml.set_random(random_order_widget.get_active())
     self.wallpapozxml.save()
