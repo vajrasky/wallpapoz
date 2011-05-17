@@ -27,6 +27,7 @@
                         <property name="label" translatable="yes">Add Wallpapers (_Files)</property>
                         <property name="visible">True</property>
                         <property name="tooltip" translatable="yes">Add Wallpapers (Files)</property>
+                        <property name="use_underline">True</property>
                         <property name="use_stock">False</property>
                         <signal name="activate" handler="on_add_wallpapers_files_activate"/>
                         <accelerator key="f" signal="activate" modifiers="GDK_CONTROL_MASK"/>
@@ -300,6 +301,7 @@
                         <property name="label">gtk-help</property>
                         <property name="visible">True</property>
                         <property name="tooltip" translatable="yes">Show Help</property>
+                        <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="on_contents_activate"/>
                         <accelerator key="F1" signal="activate"/>
@@ -312,13 +314,19 @@
                     </child>
                     <child>
                       <widget class="GtkImageMenuItem" id="about">
-                        <property name="label">gtk-orientation-portrait</property>
+                        <property name="label" translatable="yes">_About</property>
                         <property name="visible">True</property>
                         <property name="tooltip" translatable="yes">About the Author</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
+                        <property name="use_stock">False</property>
                         <signal name="activate" handler="on_about_activate"/>
                         <accelerator key="a" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <child internal-child="image">
+                          <widget class="GtkImage" id="image12">
+                            <property name="visible">True</property>
+                            <property name="stock">gtk-orientation-portrait</property>
+                          </widget>
+                        </child>
                       </widget>
                     </child>
                   </widget>
