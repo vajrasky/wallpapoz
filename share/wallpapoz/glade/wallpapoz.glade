@@ -546,7 +546,10 @@
                 <child>
                   <widget class="GtkLabel" id="add_wallpapers_label">
                     <property name="visible">True</property>
-                    <property name="label" translatable="yes">Add Wallpapers: </property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">&lt;b&gt;Add Wallpapers&lt;/b&gt;</property>
+                    <property name="use_markup">True</property>
+                    <property name="ellipsize">start</property>
                   </widget>
                   <packing>
                     <property name="fill">False</property>
@@ -717,7 +720,9 @@
                 <child>
                   <widget class="GtkLabel" id="daemon_label">
                     <property name="visible">True</property>
-                    <property name="label" translatable="yes">Daemon: </property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">&lt;b&gt;Daemon&lt;/b&gt;</property>
+                    <property name="use_markup">True</property>
                   </widget>
                   <packing>
                     <property name="fill">False</property>
