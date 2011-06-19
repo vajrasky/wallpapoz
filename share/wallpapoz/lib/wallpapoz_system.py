@@ -26,6 +26,7 @@
 
 import os
 import string
+import subprocess
 
 class WallpapozSystem:
 
@@ -54,7 +55,11 @@ class WallpapozSystem:
     raw_wm_name = os.popen('xprop -id ' + window_id + ' 8s _NET_WM_NAME').read()
     wm_name = raw_wm_name[29:raw_wm_name.rfind('"')]
     if wm_name=='Metacity':
-      self.window_manager = 'Gnome'
+      self.window_manager = 'Gnome3'
+      try:
+	subprocess.Popen(["gsettings"], stdout=subprocess.PIPE)
+      except OSError:
+        self.window_manager = 'Gnome'
     elif wm_name=='Xfwm4':
       self.window_manager = 'XFCE4'
 
@@ -83,6 +88,9 @@ class WallpapozSystem:
       os.system('gconftool-2 -t string -s /desktop/gnome/background/picture_filename ' +
         '"' + wallpaper + '"' + ' -s /desktop/gnome/background/picture_options ' +
         self.wallpaper_style)
+    elif self.window_manager == "Gnome3":
+      os.system("gsettings set org.gnome.desktop.background picture-uri 'file://" + wallpaper + "'")
+      os.system("gsettings set org.gnome.desktop.background picture-options " + self.wallpaper_style)
     elif self.window_manager == "XFCE4":
       os.system("xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -s " +
         '"' + wallpaper + '"')
@@ -93,6 +101,8 @@ class WallpapozSystem:
   def finding_current_wallpaper(self):
     if self.window_manager == "Gnome":
       return os.popen("gconftool-2 -g /desktop/gnome/background/picture_filename").read()[:-1]
+    elif self.window_manager == "Gnome3":
+      return os.popen("gsettings get org.gnome.desktop.background picture-uri").read()[8:-2]
     elif self.window_manager == "XFCE4":
       return os.popen("xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path").read()[:-1]
 
