@@ -883,20 +883,13 @@ class Wallpapoz:
     parent_number = self.store.get_path(self.selected_iter[0])[0]
     for single_iter in self.selected_iter:
       if self.store.get_path(single_iter)[0] != parent_number:
-        if self.store.iter_n_children( self.store.iter_parent(prev_iter) ) == len(temp_iter_list):
-          warning_message = _("Every workspace must have at least one wallpaper.")
-          message_dialog = gtk.MessageDialog(self.main_window_widget, gtk.DIALOG_MODAL, gtk.MESSAGE_ERROR, gtk.BUTTONS_CLOSE, warning_message)
-          if message_dialog.run() == gtk.RESPONSE_CLOSE:
-            message_dialog.destroy()
-          return None
-        else:
-          temp_iter_list = []
-          parent_number = self.store.get_path(single_iter)[0]
+	temp_iter_list = []
+	parent_number = self.store.get_path(single_iter)[0]
       temp_iter_list.append(single_iter)
       prev_iter = single_iter
 
     # do the remaining job
-    if self.store.iter_n_children( self.store.iter_parent(prev_iter) ) == len(temp_iter_list):
+    if self.store.iter_n_children( self.store.iter_parent(prev_iter) ) == len(temp_iter_list) and self.work_on_tree == "cut":
       warning_message = _("Every workspace must have at least one wallpaper.")
       message_dialog = gtk.MessageDialog(self.main_window_widget, gtk.DIALOG_MODAL, gtk.MESSAGE_ERROR, gtk.BUTTONS_CLOSE, warning_message)
       if message_dialog.run() == gtk.RESPONSE_CLOSE:
