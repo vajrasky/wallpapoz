@@ -34,7 +34,6 @@ import gobject
 import os
 import sys
 import stat
-import imghdr
 import gettext
 import Image
 
@@ -546,7 +545,7 @@ class Wallpapoz:
               # we interested in file, not directory
               if os.path.isfile(filename):
                 # and we interested in image file
-                if imghdr.what(filename):
+                if self.is_image_file(filename):
                   # put it to new row
                   self.store.append(iter, [num_of_child+1, filename, False])
                   # increase the index
@@ -560,7 +559,7 @@ class Wallpapoz:
             # we interested in file, not directory
             if os.path.isfile(filename):
               # and we interested in image file
-              if imghdr.what(filename):
+              if self.is_image_file(filename):
                 # put it to new row
                 self.store.append(iter, [num_of_child+1, filename, False])
                 # increase the index
@@ -583,7 +582,7 @@ class Wallpapoz:
               # we interested in file, not directory
               if os.path.isfile(filename):
                 # and we interested in image file
-                if imghdr.what(filename):
+                if self.is_image_file(filename):
                   # put it to new row
                   next_iter = self.store.insert_after(parent, next_iter, [new_index, filename, False])
                   # increase the index
@@ -597,7 +596,7 @@ class Wallpapoz:
             # we interested in file, not directory
             if os.path.isfile(filename):
               # and we interested in image file
-              if imghdr.what(filename):
+              if self.is_image_file(filename):
                 # put it to new row
                 next_iter = self.store.insert_after(parent, next_iter, [new_index, filename, False])
                 # increase the index
@@ -629,7 +628,7 @@ class Wallpapoz:
             # we interested in file, not directory
             if os.path.isfile(filename):
               # and we interested in image file
-              if imghdr.what(filename):
+              if self.is_image_file(filename):
                 # put it to new row
                 next_iter = self.store.insert_after(next_iter, [new_index, filename, False])
                 # increase the index
@@ -643,7 +642,7 @@ class Wallpapoz:
           # we interested in file, not directory
           if os.path.isfile(filename):
             # and we interested in image file
-            if imghdr.what(filename):
+            if self.is_image_file(filename):
               # put it to new row
               next_iter = self.store.insert_after(next_iter, [new_index, filename, False])
               # increase the index
@@ -1147,7 +1146,7 @@ class Wallpapoz:
     # if user okay with his choice, then change the value
     if filechooser_dialog.run() == gtk.RESPONSE_OK:
       # we interested in image file
-      if imghdr.what(filechooser_dialog.get_filename()):
+      if self.is_image_file(filechooser_dialog.get_filename()):
         self.store.set_value(iter, 1, filechooser_dialog.get_filename())
         self.treeview_selection_changed(None)
         # save the current folder to user come back to this folder when he open
@@ -1226,6 +1225,14 @@ class Wallpapoz:
           yield newtop, children
     if depthfirst:
       yield top, names
+
+  # test whether the file is image or not.
+  def is_image_file(self, filepath):
+    try:
+      im = Image.open(filepath)
+      return True
+    except IOError:
+      return False
 
   # run the gui
   def main(self):
