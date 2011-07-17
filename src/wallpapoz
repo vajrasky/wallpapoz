@@ -436,7 +436,6 @@ class Wallpapoz:
     changing_workspace_widget = self.preferences_dialog.get_widget("preferences_dialog_change_wallpaper_changing_workspace")
     style_widget = self.preferences_dialog.get_widget("preferences_dialog_style_combobox")
     size_widget = self.preferences_dialog.get_widget("preferences_dialog_size_combobox")
-    window_manager_widget = self.preferences_dialog.get_widget("preferences_dialog_window_manager_combobox")
 
     # load value from xml file
     time_changed_widget.set_value(float(self.wallpapozxml.delay()))
@@ -461,7 +460,6 @@ class Wallpapoz:
     random_order_widget = self.preferences_dialog.get_widget("preferences_dialog_show_wallpaper_random_order")
     changing_workspace_widget = self.preferences_dialog.get_widget("preferences_dialog_change_wallpaper_changing_workspace")
     style_widget = self.preferences_dialog.get_widget("preferences_dialog_style_combobox")
-    window_manager_widget = self.preferences_dialog.get_widget("preferences_dialog_window_manager_combobox")
     size_widget = self.preferences_dialog.get_widget("preferences_dialog_size_combobox")
     preferences_dialog_widget = self.preferences_dialog.get_widget("preferences_dialog")
 
