@@ -26,7 +26,6 @@
 
 import os
 import string
-import subprocess
 
 class WallpapozSystem:
 
@@ -55,13 +54,13 @@ class WallpapozSystem:
     raw_wm_name = os.popen('xprop -id ' + window_id + ' 8s _NET_WM_NAME').read()
     wm_name = raw_wm_name[29:raw_wm_name.rfind('"')]
     if wm_name=='Metacity':
-      fnull = open(os.devnull, 'w')
-      result = subprocess.call("gsettings", stdout=fnull, stderr=fnull)
-      fnull.close()
-      if result == 1:
-        self.window_manager = 'Gnome3'
-      elif result == 127:
+      output = os.popen("gnome-session --version")
+      result = output.readlines()
+      version = result[0].split()[1].split('.')[0]
+      if version == '2':
         self.window_manager = 'Gnome'
+      elif version == '3':
+        self.window_manager = 'Gnome3'
     elif wm_name=='Xfwm4':
       self.window_manager = 'XFCE4'
 
