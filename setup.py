@@ -3,7 +3,7 @@
 
 #=============================================================================
 #
-#    Installation 
+#    Installation
 #    Copyright (C) 2007 Akbar <akbarhome@gmail.com>
 #
 #=============================================================================
@@ -149,7 +149,7 @@ def check_dependencies():
     sys.exit(1)
   if not recommended_found:
     print
-    print _("Gnome Python is not found. Wallpapoz still could be used and it has been installed.") 
+    print _("Gnome Python is not found. Wallpapoz still could be used and it has been installed.")
     print _("But it means you can not access help documentation in your native language if it is available.")
     print
 
@@ -174,6 +174,7 @@ if args == ["install"]:
   print _("Installing Wallpapoz in"), install_dir, "...\n"
   install("src/wallpapoz", "bin/wallpapoz")
   install("src/daemon_wallpapoz", "bin/daemon_wallpapoz")
+  install("src/launcher_wallpapoz.sh", "bin/launcher_wallpapoz.sh")
   install("share/wallpapoz/lib/xml_processing.py", "share/wallpapoz/lib/xml_processing.py")
   install("share/wallpapoz/lib/wallpapoz_system.py", "share/wallpapoz/lib/wallpapoz_system.py")
   install("share/wallpapoz/glade/wallpapoz.glade", "share/wallpapoz/glade/wallpapoz.glade")
@@ -195,6 +196,7 @@ elif args == ["uninstall"]:
   print _("Uninstalling Wallpapoz from"), install_dir, "...\n"
   uninstall("bin/wallpapoz")
   uninstall("bin/daemon_wallpapoz")
+  uninstall("bin/launcher_wallpapoz.sh")
   uninstall("share/wallpapoz/lib/xml_processing.py")
   uninstall("share/wallpapoz/lib/wallpapoz_system.py")
   uninstall("share/wallpapoz/glade/wallpapoz.glade")
