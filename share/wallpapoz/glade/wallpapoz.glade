@@ -2159,7 +2159,7 @@ library.  If this is what you want to do, use the GNU Library General
 Public License instead of this License.
 </property>
   <property name="wrap_license">True</property>
-  <property name="website">http://vajrasky.net/wallpapoz</property>
+  <property name="website">http://vajrasky.wordpress.com/wallpapoz</property>
   <property name="website_label" translatable="yes">Wallpapoz Website</property>
   <property name="authors">Vajrasky Akbar Kok &lt;akbarhome@gmail.com&gt;</property>
   <property name="documenters">Vajrasky Akbar Kok &lt;akbarhome@gmail.com&gt;</property>
