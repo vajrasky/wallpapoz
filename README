@@ -24,10 +24,10 @@
 
 About
 --------------------------------------------------------------------------
-Wallpapoz application enables you to configure Gnome desktop wallpapers
-in unique way. You could have Gnome desktop wallpaper changes when 
+Wallpapoz application enables you to configure Gnome and XFCE desktop wallpapers
+in unique way. You could have Gnome and XFCE desktop wallpaper changes when 
 the specified time has passed. The most important feature is you could 
-have Gnome desktop wallpaper changes when you change workspace. It means 
+have Gnome and XFCE desktop wallpaper changes when you change workspace. It means 
 you could group your wallpapers into specific workspace. It offers
 quick orientation cues where you are. You can manage it so when you change 
 to first workspace, your desktop wallpaper will be picked from wallpapers 
