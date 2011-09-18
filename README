@@ -80,8 +80,8 @@ when uninstalling.
 
 Example installation:
 
-    $ tar -xzf wallpapoz-0.5.tar.gz
-    $ cd wallpapoz-0.5
+    $ tar -xzf wallpapoz-0.6.tar.gz
+    $ cd wallpapoz-0.6
 
 Depending on distro, the next steps could be this:
     # su
@@ -92,11 +92,11 @@ or this:
 You don't have to install Wallpapoz to run the application. 
 You can run Wallpapoz from its directory anywhere.
 
-    $ cd wallpapoz-0.5
+    $ cd wallpapoz-0.6
     $ cd src
     $ ./wallpapoz
 
-You can put wallpapoz-0.5 directory in your home directory or anywhere.
+You can put wallpapoz-0.6 directory in your home directory or anywhere.
 Someday if you want to get rid of Wallpapoz, just remove the directory.
 
 Credits and Thanks
@@ -126,6 +126,6 @@ package.
 Contact
 -----------------------------------------------------------------------------
 Vajrasky Akbar Kok <akbarhome@gmail.com>
-http://wallpapoz.akbarhome.com
+http://vajrasky.wordpress.com/wallpapoz
 
 Don't hesitate to contact me with any questions, suggestions, and bugs reports.

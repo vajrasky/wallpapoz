@@ -1,3 +1,9 @@
+Version 0.6, 2011-09-18
+-----------------------
+- Changed homepage of wallpapoz.
+- Added support for XFCE desktop and Gnome 3 desktop.
+- Removed support for compiz.
+
 Version 0.5, 2010-10-4
 ----------------------
 - Added Hungarian, Germany, Russian, Italian, Czech,
