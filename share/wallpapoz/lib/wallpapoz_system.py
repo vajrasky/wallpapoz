@@ -53,7 +53,10 @@ class WallpapozSystem:
     window_id = raw_window_id[46:raw_window_id.find("\n")]
     raw_wm_name = os.popen('xprop -id ' + window_id + ' 8s _NET_WM_NAME').read()
     wm_name = raw_wm_name[29:raw_wm_name.rfind('"')]
-    if wm_name=='Metacity':
+    if wm_name=='Xfwm4':
+      self.window_manager = 'XFCE4'
+    # default is Gnome.
+    else:
       output = os.popen("gnome-session --version")
       result = output.readlines()
       version = result[0].split()[1].split('.')[0]
@@ -61,8 +64,6 @@ class WallpapozSystem:
         self.window_manager = 'Gnome'
       elif version == '3':
         self.window_manager = 'Gnome3'
-    elif wm_name=='Xfwm4':
-      self.window_manager = 'XFCE4'
 
   ## class method to find amount of workspaces in user desktop
   def finding_total_workspaces(self):
