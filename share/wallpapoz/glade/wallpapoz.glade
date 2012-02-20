@@ -2161,8 +2161,8 @@ Public License instead of this License.
   <property name="wrap_license">True</property>
   <property name="website">http://vajrasky.wordpress.com/wallpapoz</property>
   <property name="website_label" translatable="yes">Wallpapoz Website</property>
-  <property name="authors">Vajrasky Akbar Kok &lt;akbarhome@gmail.com&gt;</property>
-  <property name="documenters">Vajrasky Akbar Kok &lt;akbarhome@gmail.com&gt;</property>
+  <property name="authors">Vajrasky Akbar Kok &lt;arjuna@vajrasky.net&gt;</property>
+  <property name="documenters">Vajrasky Akbar Kok &lt;arjuna@vajrasky.net&gt;</property>
   <property name="translator_credits" translatable="yes" comments="TRANSLATORS: Replace this string with your names, one name per line.">translator-credits</property>
   <property name="logo">wallpapoz.png</property>
 

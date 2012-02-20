@@ -1,7 +1,7 @@
 #================================================
 #
 #    xml_processing.py - Wallpapoz
-#    Copyright (C) 2007 Vajrasky Akbar Kok <akbarhome@gmail.com>
+#    Copyright (C) 2012 Vajrasky Akbar Kok <arjuna@vajrasky.net>
 #
 #================================================
 #

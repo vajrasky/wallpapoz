@@ -4,7 +4,7 @@
 #=============================================================================
 #
 #    Installation
-#    Copyright (C) 2007 Akbar <akbarhome@gmail.com>
+#    Copyright (C) 2012 Vajrasky Akbar Kok <arjuna@vajrasky.net>
 #
 #=============================================================================
 #
@@ -43,7 +43,7 @@ _ = gettext.gettext
 
 usage_info = _("""
 This script installs or uninstalls Wallpapoz on your system.
-If you encounter any bugs, please report them to akbarhome@gmail.com.
+If you encounter any bugs, please report them to arjuna@vajrasky.net.
 
 --------------------------------------------------------------------------------
 

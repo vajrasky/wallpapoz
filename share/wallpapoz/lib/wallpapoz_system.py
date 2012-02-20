@@ -1,7 +1,7 @@
 #================================================
 #
 #    wallpapoz_system.py - Wallpapoz
-#    Copyright (C) 2007 Vajrasky Akbar Kok <akbarhome@gmail.com>
+#    Copyright (C) 2007 Vajrasky Akbar Kok <arjuna@vajrasky.net>
 #
 #================================================
 #
@@ -53,9 +53,10 @@ class WallpapozSystem:
     window_id = raw_window_id[46:raw_window_id.find("\n")]
     raw_wm_name = os.popen('xprop -id ' + window_id + ' 8s _NET_WM_NAME').read()
     wm_name = raw_wm_name[29:raw_wm_name.rfind('"')]
+    # default is Gnome3.
+    self.window_manager = 'Gnome3'
     if wm_name=='Xfwm4':
       self.window_manager = 'XFCE4'
-    # default is Gnome.
     else:
       output = os.popen("gnome-session --version")
       result = output.readlines()
