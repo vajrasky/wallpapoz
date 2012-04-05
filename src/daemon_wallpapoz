@@ -33,8 +33,10 @@ import array
 import time
 import threading
 import random
-import gtk.glade
 import string
+import wnck
+import gtk
+import gtk.glade
 
 # so we can call from anywhere
 pathname = os.path.dirname(sys.argv[0])
@@ -143,24 +145,21 @@ if __name__ == "__main__":
   # the daemon that works forever
   try:
     if wallpapozxml.get_type() == "workspace":
-      while True:
-        # don't get rush
-        time.sleep(1)
 
-        # what workspace we are in now?
-        cur_desk = wallpapoz_system.current_desktop()
+      def workspace_active_changed(screen, previous):
+        workspace = screen.get_active_workspace()
+        cur_desk = workspace.get_number()
 
-        # requirement for changing wallpaper
-        # 1. we change workspace
-        # 2. index of wallpaper list change
-        if wallpapoz_system.has_changed(previous_desktop, cur_desk) or previous_index != number[cur_desk]:
+        # command to change wallpaper
+        wallpapoz_system.change_wallpaper(worklist[cur_desk][number[cur_desk]])
 
-          # command to change wallpaper
-          wallpapoz_system.change_wallpaper(worklist[cur_desk][number[cur_desk]])
+        # our previous workspace and index of wallpaper list
+        previous_desktop = cur_desk
+        previous_index = number[cur_desk]
 
-          # our previous workspace and index of wallpaper list
-          previous_desktop = cur_desk
-          previous_index = number[cur_desk]
+      screen = wnck.screen_get_default()
+      screen.connect('active-workspace-changed', workspace_active_changed)
+      gtk.main()
 
     elif wallpapozxml.get_type() == "desktop":
 
