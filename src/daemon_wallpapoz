@@ -59,124 +59,129 @@ delay = 1.0
 randomvar = 0
 
 ## AsyncIndex -- class for making thread that manipulating index wallpaper list
-class AsyncIndex(threading.Thread):
-  ## constructor
-  def __init__(self, index):
-    threading.Thread.__init__(self)
-    self.index = index
 
-  ## the function that thread will execute
-  def run(self):
-    if randomvar == 1:
-      number[self.index] = 0
-      size = len(worklist[self.index])
-      while True:
-        number[self.index] = int(random.random() * size)
-        time.sleep(delay)
-    else:
-      while True:
-        number[self.index] = 0
-        for i in worklist[self.index]:
-          time.sleep(delay)
-          number[self.index] = number[self.index] + 1
+
+class AsyncIndex(threading.Thread):
+    ## constructor
+    def __init__(self, index):
+        threading.Thread.__init__(self)
+        self.index = index
+
+    ## the function that thread will execute
+    def run(self):
+        if randomvar == 1:
+            number[self.index] = 0
+            size = len(worklist[self.index])
+            while True:
+                number[self.index] = int(random.random() * size)
+                time.sleep(delay)
+        else:
+            while True:
+                number[self.index] = 0
+                for i in worklist[self.index]:
+                    time.sleep(delay)
+                    number[self.index] = number[self.index] + 1
 
 ## the main program
 if __name__ == "__main__":
 
-  # generate seed for random number
-  random.seed()
+    # generate seed for random number
+    random.seed()
 
-  # call the xmlprocessing class to read it
-  wallpapozxml = XMLProcessing()
+    # call the xmlprocessing class to read it
+    wallpapozxml = XMLProcessing()
 
-  # fill the workspace list
-  worklist = wallpapozxml.fill_list()
+    # fill the workspace list
+    worklist = wallpapozxml.fill_list()
 
-  # type of wallpapers configuration (desktop or workspace)
-  conf_type =  wallpapozxml.get_type()
+    # type of wallpapers configuration (desktop or workspace)
+    conf_type = wallpapozxml.get_type()
 
-  # create the system class ( to change wallpaper and read current desktop )
-  # by calling external program
-  wallpapoz_system = WallpapozSystem()
+    # create the system class ( to change wallpaper and read current desktop )
+    # by calling external program
+    wallpapoz_system = WallpapozSystem()
 
-  # type of window manager (gnome or xfce)
-  window_manager = wallpapoz_system.window_manager
+    # type of window manager (gnome or xfce)
+    window_manager = wallpapoz_system.window_manager
 
-  # In Wallpapoz gui, the option for styling is ordered.
-  # 0 for centered, 1 for stretched, 2 for scaled, 3 for zoomed, 4 for
-  # wallpaper tiled.
-  available_style = {}
-  available_style['Gnome'] = { '3' : 'zoom', '2' : 'scaled', '1' : 'stretched',
-          '0' : 'centered', '4' : 'wallpaper' }
-  available_style['Gnome3'] = available_style['Gnome']
-  available_style['XFCE4'] = { '3' : '5', '2' : '4', '1' : '3', '0' : '1',
-          '4' : '2' }
-  style = available_style[window_manager][wallpapozxml.style()]
-  wallpapoz_system.set_style(style)
+    # In Wallpapoz gui, the option for styling is ordered.
+    # 0 for centered, 1 for stretched, 2 for scaled, 3 for zoomed, 4 for
+    # wallpaper tiled.
+    available_style = {}
+    available_style['Gnome'] = {'3': 'zoom', '2': 'scaled', '1': 'stretched',
+                                '0': 'centered', '4': 'wallpaper'}
+    available_style['Gnome3'] = available_style['Gnome']
+    available_style['XFCE4'] = {'3': '5', '2': '4', '1': '3', '0': '1',
+                                '4': '2'}
+    style = available_style[window_manager][wallpapozxml.style()]
+    wallpapoz_system.set_style(style)
 
-  # get the delay time and random preferences
-  delay = 60 * float(wallpapozxml.delay())
-  randomvar = int(wallpapozxml.is_random())
+    # get the delay time and random preferences
+    delay = 60 * float(wallpapozxml.delay())
+    randomvar = int(wallpapozxml.is_random())
 
-  # how many workspace we use
-  if conf_type == "workspace":
-    # cleansing
-    for iter in worklist:
-      iter.pop(0)
-    total_workspaces = wallpapoz_system.get_total_workspaces()
+    # how many workspace we use
+    if conf_type == "workspace":
+        # cleansing
+        for iter in worklist:
+            iter.pop(0)
+        total_workspaces = wallpapoz_system.get_total_workspaces()
 
-    # create the index for wallpaper list thread
-    number.fromlist( range( total_workspaces ) )
+        # create the index for wallpaper list thread
+        number.fromlist(range(total_workspaces))
 
-    # previous workspace
-    previous_desktop = -1
+        # previous workspace
+        previous_desktop = -1
 
-    # previous wallpaper list index
-    previous_index = -1
+        # previous wallpaper list index
+        previous_index = -1
 
-    # create the thread
-    wallpaper_list = []
-    for i in range(total_workspaces):
-      wallpaper_list.append(AsyncIndex(i))
-      wallpaper_list[i].start()
+        # create the thread
+        wallpaper_list = []
+        for i in range(total_workspaces):
+            wallpaper_list.append(AsyncIndex(i))
+            wallpaper_list[i].start()
 
-  # the daemon that works forever
-  try:
-    if wallpapozxml.get_type() == "workspace":
-      while True:
-        # don't get rush
-        time.sleep(1)
+    # the daemon that works forever
+    try:
+        if wallpapozxml.get_type() == "workspace":
+            while True:
+                # don't get rush
+                time.sleep(1)
 
-        # what workspace we are in now?
-        cur_desk = wallpapoz_system.current_desktop()
+                # what workspace we are in now?
+                cur_desk = wallpapoz_system.current_desktop()
 
-        # requirement for changing wallpaper
-        # 1. we change workspace
-        # 2. index of wallpaper list change
-        if wallpapoz_system.has_changed(previous_desktop, cur_desk) or previous_index != number[cur_desk]:
+                # requirement for changing wallpaper
+                # 1. we change workspace
+                # 2. index of wallpaper list change
+                if (wallpapoz_system.has_changed(previous_desktop, cur_desk)
+                        or previous_index != number[cur_desk]):
 
-          # command to change wallpaper
-          wallpapoz_system.change_wallpaper(worklist[cur_desk][number[cur_desk]])
+                    # command to change wallpaper
+                    cwrklst = worklist[cur_desk]
+                    wrkdsk_no = number[cur_desk]
+                    wallpapoz_system.change_wallpaper(cwrklst[wrkdsk_no])
 
-          # our previous workspace and index of wallpaper list
-          previous_desktop = cur_desk
-          previous_index = number[cur_desk]
+                    # our previous workspace and index of wallpaper list
+                    previous_desktop = cur_desk
+                    previous_index = number[cur_desk]
 
-    elif wallpapozxml.get_type() == "desktop":
+        elif wallpapozxml.get_type() == "desktop":
 
-      if randomvar == 1:
-        size = len(worklist)
-        while True:
-          index = int(random.random() * size)
-          wallpapoz_system.change_wallpaper(worklist[index])
-          time.sleep(delay)
-      else:
-        while True:
-          for wallpaper in worklist:
-            wallpapoz_system.change_wallpaper(wallpaper)
-            time.sleep(delay)
+            if randomvar == 1:
+                size = len(worklist)
+                while True:
+                    index = int(random.random() * size)
+                    wallpapoz_system.change_wallpaper(worklist[index])
+                    time.sleep(delay)
+            else:
+                while True:
+                    for wallpaper in worklist:
+                        wallpapoz_system.change_wallpaper(wallpaper)
+                        time.sleep(delay)
 
-  # ok, we stop this daemon
-  except KeyboardInterrupt:
-    # now it's time for the main thread to exit
-    os._exit(0)
+    # ok, we stop this daemon
+    except KeyboardInterrupt:
+        # now it's time for the main thread to exit
+        os._exit(0)
