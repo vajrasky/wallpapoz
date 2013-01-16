@@ -57,6 +57,8 @@ class WallpapozSystem:
     self.window_manager = 'Gnome3'
     if wm_name=='Xfwm4':
       self.window_manager = 'XFCE4'
+    elif wm_name=='Fluxbox':
+      self.window_manager = 'Fluxbox'
     else:
       output = os.popen("gnome-session --version")
       result = output.readlines()
@@ -99,6 +101,8 @@ class WallpapozSystem:
         '"' + wallpaper + '"')
       os.system("xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-style -s " +
         self.wallpaper_style)
+    elif self.window_manager == "Fluxbox":
+      os.system("feh " + self.wallpaper_style + " " + wallpaper)
 
   ## class method to find current desktop wallpaper
   def finding_current_wallpaper(self):

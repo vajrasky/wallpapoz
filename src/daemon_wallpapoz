@@ -113,6 +113,8 @@ if __name__ == "__main__":
     available_style['Gnome3'] = available_style['Gnome']
     available_style['XFCE4'] = {'3': '5', '2': '4', '1': '3', '0': '1',
                                 '4': '2'}
+    available_style['Fluxbox'] = {'3': '--bg-fill', '2': '--bg-max', '1': '--bg-fill',
+                                '0': '--bg-center', '4': '--bg-tile'}
     style = available_style[window_manager][wallpapozxml.style()]
     wallpapoz_system.set_style(style)
 
