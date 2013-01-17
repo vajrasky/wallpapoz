@@ -112,6 +112,16 @@ class WallpapozSystem:
       return os.popen("gsettings get org.gnome.desktop.background picture-uri").read()[8:-2]
     elif self.window_manager == "XFCE4":
       return os.popen("xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path").read()[:-1]
+    elif self.window_manager == "Fluxbox":
+      home = os.environ['HOME']
+      try:
+        with open(home + '/.fehbg') as feh_setting_file:
+          feh_setting_file_content = feh_setting_file.read()
+          return feh_setting_file_content[15:feh_setting_file_content.find("'", 15)]
+      except IOError as e:
+        return ''
+    else:
+      return ''
 
   ## class method to detect that we have changed workspace or not
   def has_changed(self, previous_desktop, cur_desk):
