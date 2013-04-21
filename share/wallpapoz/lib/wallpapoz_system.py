@@ -70,8 +70,11 @@ class WallpapozSystem:
 
   ## class method to find amount of workspaces in user desktop
   def finding_total_workspaces(self):
-    self.total_workspaces = int(os.popen("xprop -root _NET_NUMBER_OF_DESKTOPS").read()[36:38])
-
+    try:
+      self.total_workspaces = int(os.popen("xprop -root _NET_NUMBER_OF_DESKTOPS").read()[36:38])
+    except:
+      self.total_workspaces = 1
+      
   ## class method to find how many rows and columns of workspaces
   def finding_row_and_column(self):
     self.row_workspaces = self.geometry_height / self.screen_height
