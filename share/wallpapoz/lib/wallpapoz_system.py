@@ -25,7 +25,6 @@
 # achieve goal by calling external program
 
 import os
-import string
 
 class WallpapozSystem:
 
@@ -59,6 +58,8 @@ class WallpapozSystem:
       self.window_manager = 'XFCE4'
     elif wm_name=='Fluxbox':
       self.window_manager = 'Fluxbox'
+    elif wm_name=='Marco':
+      self.window_manager = 'MATE'
     else:
       output = os.popen("gnome-session --version")
       result = output.readlines()
@@ -96,6 +97,9 @@ class WallpapozSystem:
     elif self.window_manager == "Gnome3":
       os.system("gsettings set org.gnome.desktop.background picture-uri 'file://" + wallpaper + "'")
       os.system("gsettings set org.gnome.desktop.background picture-options " + self.wallpaper_style)
+    elif self.window_manager == "MATE":
+      os.system('gsettings set org.mate.background picture-filename ' + wallpaper)
+      os.system('gsettings set org.mate.background picture-options ' + self.wallpaper_style)
     elif self.window_manager == "XFCE4":
       os.system("xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -s " +
         '"' + wallpaper + '"')
@@ -110,6 +114,8 @@ class WallpapozSystem:
       return os.popen("gconftool-2 -g /desktop/gnome/background/picture_filename").read()[:-1]
     elif self.window_manager == "Gnome3":
       return os.popen("gsettings get org.gnome.desktop.background picture-uri").read()[8:-2]
+    elif self.window_manager == "MATE":
+      return os.popen("gsettings get org.mate.background picture-filename").read()[:-1]
     elif self.window_manager == "XFCE4":
       return os.popen("xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path").read()[:-1]
     elif self.window_manager == "Fluxbox":
