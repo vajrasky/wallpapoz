@@ -30,6 +30,8 @@ from tkinter.messagebox import *
 
 from lib.gettext import _
 
+from wallpapoz_gui.wallpapoz_menu_commands import *
+
 def notdone():
     showerror('Not implemented', 'Not yet available')
 
@@ -84,7 +86,7 @@ def makemenu(parent):
     menu = Menu(fbutton, tearoff=False)
     menu.add_command(label=_('Help'), command=notdone)
     menu.add_separator()
-    menu.add_command(label=_('About'), command=notdone)
+    menu.add_command(label=_('About'), command=menu_command_about)
     fbutton.config(menu=menu)
 
     return menubar
