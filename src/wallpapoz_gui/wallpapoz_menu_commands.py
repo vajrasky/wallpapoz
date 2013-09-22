@@ -26,11 +26,32 @@
 ## The gui menu commands
 
 from tkinter import *
+from tkinter import ttk
 
 from lib.gettext import _
 
 import os.path
 from PIL import ImageTk, Image
+
+def launch_credit_window():
+    credit_win = Toplevel()
+    tabs = ttk.Notebook(credit_win)
+    credit_tab = ttk.Frame(tabs)
+    t = Text(credit_tab, width=50, height=10)
+    t.insert(END, "Vajrasky Kok <sky.kok@speaklikeaking.com>")
+    t.configure(state='disabled')
+    t.pack()
+    documentation_tab = ttk.Frame(tabs)
+    t = Text(documentation_tab, width=50, height=10)
+    t.insert(END, "Vajrasky Kok <sky.kok@speaklikeaking.com>")
+    t.configure(state='disabled')
+    t.pack()
+    tabs.add(credit_tab, text=_("Written by"))
+    tabs.add(documentation_tab, text=_("Documentated by"))
+    tabs.pack()
+    credit_win.title(_("Wallpapoz Credit"))
+    credit_win.focus_set()
+    credit_win.grab_set()
 
 def menu_command_about():
     about_win = Toplevel()
@@ -71,7 +92,7 @@ def menu_command_about():
     wallpapoz_website_label.pack()
 
     buttons_frame = Frame(about_win)
-    Button(buttons_frame, text='Credits', command=about_win.destroy)\
+    Button(buttons_frame, text='Credits', command=launch_credit_window)\
         .pack(side=LEFT)
     Button(buttons_frame, text='License', command=about_win.destroy)\
         .pack(side=LEFT)
@@ -79,6 +100,6 @@ def menu_command_about():
         .pack(side=LEFT)
     buttons_frame.pack()
 
-    about_win.title(_('about wallpapoz'))
+    about_win.title(_('About Wallpapoz'))
     about_win.focus_set()
     about_win.grab_set()
