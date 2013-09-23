@@ -3,7 +3,7 @@
 #=============================================================================
 #
 #   wallpapoz_menu_commands.py - Wallpapoz
-#   Copyright (C) 2013 Sky Kok <sky.kok@speaklikeaking.com>
+#   Copyright (C) 2013 Vajrasky Kok <sky.kok@speaklikeaking.com>
 #
 #=============================================================================
 #
@@ -53,6 +53,21 @@ def launch_credit_window():
     credit_win.focus_set()
     credit_win.grab_set()
 
+def launch_license_window():
+    license_win = Toplevel()
+    license_file = os.path.dirname(os.path.abspath(__file__)) +\
+        '/../../COPYING'
+    license_content = None
+    with open(license_file) as lf:
+        license_content = lf.read()
+    t = Text(license_win, width=80, height=40)
+    t.insert(END, "(c) 2013 Vajrasky Kok\n" + license_content)
+    t.configure(state='disabled')
+    t.pack()
+    license_win.title(_("Wallpapoz License"))
+    license_win.focus_set()
+    license_win.grab_set()
+
 def menu_command_about():
     about_win = Toplevel()
 
@@ -94,7 +109,7 @@ def menu_command_about():
     buttons_frame = Frame(about_win)
     Button(buttons_frame, text='Credits', command=launch_credit_window)\
         .pack(side=LEFT)
-    Button(buttons_frame, text='License', command=about_win.destroy)\
+    Button(buttons_frame, text='License', command=launch_license_window)\
         .pack(side=LEFT)
     Button(buttons_frame, text='Close', command=about_win.destroy)\
         .pack(side=LEFT)
