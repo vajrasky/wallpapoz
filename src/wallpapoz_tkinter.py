@@ -4,7 +4,7 @@
 #=============================================================================
 #
 #   wallpapoz.py - Wallpapoz
-#   Copyright (C) 2013 Sky Kok <sky.kok@speaklikeaking.com>
+#   Copyright (C) 2013 Vajrasky Kok <sky.kok@speaklikeaking.com>
 #
 #=============================================================================
 #
@@ -33,6 +33,6 @@ from wallpapoz_gui.wallpapoz_menu import makemenu
 
 if __name__ == '__main__':
     root = Tk()
-    root.title('menu_frm')
+    root.title("Wallpapoz")
     makemenu(root)
     root.mainloop()

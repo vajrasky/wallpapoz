@@ -3,7 +3,7 @@
 #=============================================================================
 #
 #   wallpapoz_menu.py - Wallpapoz
-#   Copyright (C) 2013 Sky Kok <sky.kok@speaklikeaking.com>
+#   Copyright (C) 2013 Vajrasky Kok <sky.kok@speaklikeaking.com>
 #
 #=============================================================================
 #
@@ -63,14 +63,6 @@ def makemenu(parent):
     menu.add_command(label=_('Move Down'), command=notdone)
     menu.add_separator()
     menu.add_command(label=_('Preferences'), command=notdone)
-    fbutton.config(menu=menu)
-
-    fbutton = Menubutton(menubar, text=_('Daemon'), underline=0)
-    fbutton.pack(side=LEFT)
-    menu = Menu(fbutton, tearoff=False)
-    menu.add_command(label=_('Start'), command=notdone)
-    menu.add_command(label=_('Restart'), command=notdone)
-    menu.add_command(label=_('Stop'), command=notdone)
     fbutton.config(menu=menu)
 
     fbutton = Menubutton(menubar, text=_('Daemon'), underline=0)
