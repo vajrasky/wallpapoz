@@ -31,7 +31,23 @@ from tkinter import ttk
 from lib.gettext import _
 
 import os.path
+import os
+import locale
 from PIL import ImageTk, Image
+import subprocess
+
+def launch_help_window():
+    lang_code, _ = locale.getlocale()
+    if lang_code is not None:
+        lang_code = lang_code.split('_')[0]
+    else:
+        lang_code = 'C'
+    help_file = os.path.dirname(os.path.abspath(__file__)) +\
+        '/../../share/gnome/help/wallpapoz/%s/wallpapoz.xml' % lang_code
+    if not os.path.exists(help_file):
+        help_file = os.path.dirname(os.path.abspath(__file__)) +\
+            '/../../share/gnome/help/wallpapoz/C/wallpapoz.xml'
+    subprocess.call(['yelp', help_file])
 
 def launch_credit_window():
     credit_win = Toplevel()

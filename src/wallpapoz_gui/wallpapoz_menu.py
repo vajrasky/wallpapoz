@@ -76,7 +76,7 @@ def makemenu(parent):
     fbutton = Menubutton(menubar, text=_('Help'), underline=0)
     fbutton.pack(side=LEFT)
     menu = Menu(fbutton, tearoff=False)
-    menu.add_command(label=_('Help'), command=notdone)
+    menu.add_command(label=_('Help'), command=launch_help_window)
     menu.add_separator()
     menu.add_command(label=_('About'), command=menu_command_about)
     fbutton.config(menu=menu)
