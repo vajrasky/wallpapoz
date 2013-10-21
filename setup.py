@@ -123,7 +123,7 @@ def check_dependencies():
       print "    !!! Python Glade ............. ", _("Not found")
       required_found = False
   try:
-    import Image
+    from PIL import Image
     print "    Python Imaging Library ....... OK"
   except ImportError:
     print "    !!! Python Imaging Library ... ", _("Not found")

@@ -35,7 +35,7 @@ import os
 import sys
 import stat
 import gettext
-import Image
+from PIL import Image
 
 try:
     import gnome
