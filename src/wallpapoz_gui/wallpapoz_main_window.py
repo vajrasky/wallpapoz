@@ -1,9 +1,8 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 #=============================================================================
 #
-#   wallpapoz.py - Wallpapoz
+#   wallpapoz_menu.py - Wallpapoz
 #   Copyright (C) 2013 Vajrasky Kok <sky.kok@speaklikeaking.com>
 #
 #=============================================================================
@@ -24,17 +23,19 @@
 #
 #=============================================================================
 
-## The gui tool for creating configuration file and calling daemon program
+## The main window
 
-from tkinter import *
-from tkinter.messagebox import *
+from tkinter import Frame, TOP, X, Y
+from tkinter.ttk import Treeview
 
-from wallpapoz_gui.wallpapoz_menu import makemenu
-from wallpapoz_gui.wallpapoz_main_window import makemainwindow
-
-if __name__ == '__main__':
-    root = Tk()
-    root.title("Wallpapoz")
-    makemenu(root)
-    makemainwindow(root)
-    root.mainloop()
+def makemainwindow(parent):
+    main_window = Frame(parent)
+    tree_window = Frame(main_window)
+    image_window = Frame(main_window)
+    main_window.pack(side=TOP, fill=X)
+    tree_window.pack(side=TOP, fill=Y)
+    image_window.pack(side=TOP, fill=Y)
+    tree = Treeview(tree_window)
+    tree.insert('', 'end', 'widgets', text='Widget Tour')
+    tree.insert('widgets', 0, 'gallery', text='Applications')
+    tree.pack()
