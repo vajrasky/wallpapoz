@@ -23,18 +23,19 @@
 #   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
 #=============================================================================
-
-## The gui tool for creating configuration file and calling daemon program
-
-from tkinter import *
-from tkinter.messagebox import *
+from tkinter import Tk
 
 from wallpapoz_gui.wallpapoz_menu import makemenu
 from wallpapoz_gui.wallpapoz_main_window import makemainwindow
+
 
 if __name__ == '__main__':
     root = Tk()
     root.title("Wallpapoz")
     makemenu(root)
-    makemainwindow(root)
+    workspaces = {
+        'workspace1': ['haha', 'hihi'],
+        'workspace2': ['haha', 'hihi'],
+    }
+    makemainwindow(root, workspaces)
     root.mainloop()
