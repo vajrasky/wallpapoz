@@ -24,6 +24,8 @@
 #
 #=============================================================================
 from tkinter import Tk
+from os.path import expanduser
+from os.path import sep
 
 from wallpapoz_gui.wallpapoz_menu import makemenu
 from wallpapoz_gui.wallpapoz_main_window import makemainwindow
@@ -33,6 +35,12 @@ if __name__ == '__main__':
     root = Tk()
     root.title("Wallpapoz")
     makemenu(root)
+    # Get the wallpapoz configuration file
+    home = expanduser('~')
+    wallpapoz_setting_dir = home + sep + '.wallpapoz'
+    wallpapoz_setting_file = wallpapoz_setting_dir + sep + 'wallpapoz.xml'
+
+    # parse it
     workspaces = {
         'workspace1': ['haha', 'hihi'],
         'workspace2': ['haha', 'hihi'],

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE Wallpapoz>
+<wallpapoz interval="5" random="0" style="0" type="workspace">
+    <workspace name="workspace1" no="1">
+        <file>/home/sky/Pictures/wallpapers/naruto.jpg</file>
+        <file>/home/sky/Pictures/wallpapers/bleach.jpg</file>
+    </workspace>
+    <workspace name="workspace_2" no="2">
+        <file>/home/sky/Pictures/wallpapers/lands_cape.gif</file>
+        <file>/home/sky/Pictures/wallpapers/cameron-highland.gif</file>
+    </workspace>
+    <workspace name="workspace 3" no="3">
+        <file>/home/sky/wallpapers with space/paris.jpg</file>
+        <file>/home/sky/wallpapers with space/café.jpg</file>
+    </workspace>
+    <workspace name="workspaceчетири" no="4">
+        <file>/home/sky/unicode/漢語.png</file>
+        <file>/home/sky/unicode/日本語.png</file>
+    </workspace>
+</wallpapoz>
