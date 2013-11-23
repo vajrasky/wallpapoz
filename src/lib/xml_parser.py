@@ -9,6 +9,9 @@ def parse_wallpapoz_file(wallpapoz_setting_file):
     """
     xmldoc = minidom.parse(wallpapoz_setting_file)
     wallpapoz_element = xmldoc.lastChild
+    conf = {}
+    for item in wallpapoz_element.attributes.items():
+        conf[item[0]] = item[1]
     wallpapoz_type = wallpapoz_element.attributes['type'].value
 
     if wallpapoz_type == 'workspace':
@@ -20,7 +23,7 @@ def parse_wallpapoz_file(wallpapoz_setting_file):
             for element in workspace_element.childNodes:
                 if isinstance(element, minidom.Element):
                     workspaces[workspace_name].append(element.childNodes[0].data)
-        return workspaces
+        return workspaces, conf
 
     elif wallpapoz_type == 'desktop':
         files_elements = xmldoc.getElementsByTagName('file')
@@ -28,6 +31,6 @@ def parse_wallpapoz_file(wallpapoz_setting_file):
         for file_element in files_elements:
             if isinstance(file_element, minidom.Element):
                 files.append(file_element.childNodes[0].data)
-        return files
+        return files, conf
 
     return None

@@ -29,21 +29,22 @@ from os.path import sep
 
 from wallpapoz_gui.wallpapoz_menu import makemenu
 from wallpapoz_gui.wallpapoz_main_window import makemainwindow
+from lib.xml_parser import parse_wallpapoz_file
+
+# Get the wallpapoz configuration file
+home = expanduser('~')
+wallpapoz_conf_dir = home + sep + '.wallpapoz'
+wallpapoz_conf_file = wallpapoz_conf_dir + sep + 'wallpapoz.xml'
+
+WALLPAPOZ_CONF_FILE = wallpapoz_conf_file
 
 
 if __name__ == '__main__':
     root = Tk()
     root.title("Wallpapoz")
-    makemenu(root)
-    # Get the wallpapoz configuration file
-    home = expanduser('~')
-    wallpapoz_setting_dir = home + sep + '.wallpapoz'
-    wallpapoz_setting_file = wallpapoz_setting_dir + sep + 'wallpapoz.xml'
 
-    # parse it
-    workspaces = {
-        'workspace1': ['haha', 'hihi'],
-        'workspace2': ['haha', 'hihi'],
-    }
-    makemainwindow(root, workspaces)
+    makemenu(root)
+    wallpapers, conf = parse_wallpapoz_file(WALLPAPOZ_CONF_FILE)
+    makemainwindow(root, wallpapers, conf)
+
     root.mainloop()

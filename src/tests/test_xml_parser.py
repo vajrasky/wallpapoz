@@ -12,7 +12,7 @@ tests_dir = dirname(realpath(__file__))
 class WallpapozXmlParsingTests(unittest.TestCase):
 
     def test_parse_xml_workspaces_type(self):
-        workspaces = parse_wallpapoz_file(tests_dir + sep + 'wallpapoz_example_workspace_type.xml')
+        workspaces, conf = parse_wallpapoz_file(tests_dir + sep + 'wallpapoz_example_workspace_type.xml')
         self.assertEqual(workspaces, {
             'workspace1': ['/home/sky/Pictures/wallpapers/naruto.jpg',
                            '/home/sky/Pictures/wallpapers/bleach.jpg'],
@@ -25,7 +25,7 @@ class WallpapozXmlParsingTests(unittest.TestCase):
         })
 
     def test_parse_xml_desktop_type(self):
-        files = parse_wallpapoz_file(tests_dir + sep + 'wallpapoz_example_desktop_type.xml')
+        files, conf = parse_wallpapoz_file(tests_dir + sep + 'wallpapoz_example_desktop_type.xml')
         self.assertEqual(files,
             ['/home/sky/Pictures/wallpapers/naruto.jpg',
              '/home/sky/Pictures/wallpapers/bleach.jpg',
