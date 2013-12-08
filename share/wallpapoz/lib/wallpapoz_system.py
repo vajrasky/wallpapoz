@@ -60,6 +60,8 @@ class WallpapozSystem:
       self.window_manager = 'Fluxbox'
     elif wm_name=='Marco':
       self.window_manager = 'MATE'
+    elif wm_name=='Mutter (Muffin)':
+      self.window_manager = 'CINNAMON'
     else:
       output = os.popen("gnome-session --version")
       result = output.readlines()
@@ -103,6 +105,9 @@ class WallpapozSystem:
     elif self.window_manager == "MATE":
       os.system('gsettings set org.mate.background picture-filename ' + wallpaper)
       os.system('gsettings set org.mate.background picture-options ' + self.wallpaper_style)
+    elif self.window_manager == "CINNAMON":
+      os.system("gsettings set org.cinnamon.desktop.background picture-uri 'file://" + wallpaper + "'")
+      os.system("gsettings set org.cinnamon.desktop.background picture-options " + self.wallpaper_style)
     elif self.window_manager == "XFCE4":
       os.system("xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -s " +
         '"' + wallpaper + '"')
@@ -119,6 +124,8 @@ class WallpapozSystem:
       return os.popen("gsettings get org.gnome.desktop.background picture-uri").read()[8:-2]
     elif self.window_manager == "MATE":
       return os.popen("gsettings get org.mate.background picture-filename").read()[:-1]
+    elif self.window_manager == "CINNAMON":
+      return os.popen("gsettings get org.cinnamon.desktop.background picture-uri").read()[8:-2]
     elif self.window_manager == "XFCE4":
       return os.popen("xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path").read()[:-1]
     elif self.window_manager == "Fluxbox":
