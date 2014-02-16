@@ -67,6 +67,17 @@ def info():
     sys.exit(1)
 
 
+def get_locale():
+    path = os.path.join("share", "locale")
+
+    dirs = sorted([os.path.join(path, d, "LC_MESSAGES", "wallpapoz.mo")
+                   for d in os.listdir(path)
+                   if os.path.isdir(os.path.join(path, d))
+                   and os.path.isfile(os.path.join(path, d, "LC_MESSAGES",
+                                                   "wallpapoz.mo"))])
+    return dirs
+
+
 def install(src, dst=None):
     if not dst:
         dst = src
@@ -146,8 +157,6 @@ def check_dependencies():
 
 
 install_dir = "/usr/local/"
-APP_ISO_CODES = ("id", "ja", "de", "sv", "es", "fr", "ru", "it", "cs", "zh_CN",
-                 "pl", "tr", "hu", "pt")
 DOC_ISO_CODES = ("id", "ja", "ru", "cs")
 
 try:
@@ -182,8 +191,8 @@ if args == ["install"]:
     install("share/wallpapoz/glade/wallpapoz.png",
             "share/pixmaps/wallpapoz.png")
 
-    for lang in APP_ISO_CODES:
-        install("share/locale/" + lang + "/LC_MESSAGES/wallpapoz.mo")
+    for locale in get_locale():
+        install(locale)
 
     for lang in DOC_ISO_CODES:
         install("share/gnome/help/wallpapoz/" + lang + "/wallpapoz.xml")
@@ -191,6 +200,7 @@ if args == ["install"]:
 
 elif args == ["uninstall"]:
     print _("Uninstalling Wallpapoz from"), install_dir, "...\n"
+
     uninstall("bin/wallpapoz")
     uninstall("bin/daemon_wallpapoz")
     uninstall("bin/launcher_wallpapoz.sh")
@@ -203,8 +213,9 @@ elif args == ["uninstall"]:
     uninstall("share/applications/wallpapoz.desktop")
     uninstall("share/pixmaps/wallpapoz.png")
 
-    for lang in APP_ISO_CODES:
-        uninstall("share/locale/" + lang + "/LC_MESSAGES/wallpapoz.mo")
+    for locale in get_locale():
+        uninstall(locale)
+
     for lang in DOC_ISO_CODES:
         uninstall("share/gnome/help/wallpapoz/" + lang + "/wallpapoz.xml")
         uninstall("share/gnome/help/wallpapoz/" + lang + "/legal.xml")
