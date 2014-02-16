@@ -67,7 +67,10 @@ def info():
     sys.exit(1)
 
 
-def install(src, dst):
+def install(src, dst=None):
+    if not dst:
+        dst = src
+
     try:
         dst = os.path.join(install_dir, dst)
         assert os.path.isfile(src)
@@ -165,32 +168,23 @@ if args == ["install"]:
     install("src/wallpapoz", "bin/wallpapoz")
     install("src/daemon_wallpapoz", "bin/daemon_wallpapoz")
     install("src/launcher_wallpapoz.sh", "bin/launcher_wallpapoz.sh")
-    install("share/wallpapoz/lib/xml_processing.py",
-            "share/wallpapoz/lib/xml_processing.py")
-    install("share/wallpapoz/lib/wallpapoz_system.py",
-            "share/wallpapoz/lib/wallpapoz_system.py")
-    install("share/wallpapoz/glade/wallpapoz.glade",
-            "share/wallpapoz/glade/wallpapoz.glade")
-    install("share/wallpapoz/glade/wallpapoz.png",
-            "share/wallpapoz/glade/wallpapoz.png")
-    install("share/gnome/help/wallpapoz/C/wallpapoz.xml",
-            "share/gnome/help/wallpapoz/C/wallpapoz.xml")
-    install("share/gnome/help/wallpapoz/C/legal.xml",
-            "share/gnome/help/wallpapoz/C/legal.xml")
+    install("share/wallpapoz/lib/xml_processing.py")
+    install("share/wallpapoz/lib/wallpapoz_system.py")
+    install("share/wallpapoz/glade/wallpapoz.glade")
+    install("share/wallpapoz/glade/wallpapoz.png")
+    install("share/gnome/help/wallpapoz/C/wallpapoz.xml")
+    install("share/gnome/help/wallpapoz/C/legal.xml")
     install("share/wallpapoz/wallpapoz.desktop",
             "share/applications/wallpapoz.desktop")
     install("share/wallpapoz/glade/wallpapoz.png",
             "share/pixmaps/wallpapoz.png")
 
     for lang in APP_ISO_CODES:
-        install("share/locale/" + lang + "/LC_MESSAGES/wallpapoz.mo",
-                "share/locale/" + lang + "/LC_MESSAGES/wallpapoz.mo")
+        install("share/locale/" + lang + "/LC_MESSAGES/wallpapoz.mo")
 
     for lang in DOC_ISO_CODES:
-        install("share/gnome/help/wallpapoz/" + lang + "/wallpapoz.xml",
-                "share/gnome/help/wallpapoz/" + lang + "/wallpapoz.xml")
-        install("share/gnome/help/wallpapoz/" + lang + "/legal.xml",
-                "share/gnome/help/wallpapoz/" + lang + "/legal.xml")
+        install("share/gnome/help/wallpapoz/" + lang + "/wallpapoz.xml")
+        install("share/gnome/help/wallpapoz/" + lang + "/legal.xml")
 
 elif args == ["uninstall"]:
     print _("Uninstalling Wallpapoz from"), install_dir, "...\n"
