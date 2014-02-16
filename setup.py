@@ -135,6 +135,7 @@ def check_dependencies():
     if not os.environ.get('DISPLAY'):
         import warnings
         warnings.simplefilter("ignore", Warning)
+
     if os.popen('which xwininfo').read():
         print _("Checking for xwininfo\t\t\t\t\tOK")
     else:
