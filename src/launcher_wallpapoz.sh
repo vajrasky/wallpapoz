@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/sh
 clear
 sleep_delay=10
 sleep $sleep_delay
