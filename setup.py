@@ -200,6 +200,7 @@ elif args == ["uninstall"]:
     uninstall("share/gnome/help/wallpapoz/C/legal.xml")
     uninstall("share/applications/wallpapoz.desktop")
     uninstall("share/pixmaps/wallpapoz.png")
+
     for lang in APP_ISO_CODES:
         uninstall("share/locale/" + lang + "/LC_MESSAGES/wallpapoz.mo")
     for lang in DOC_ISO_CODES:
