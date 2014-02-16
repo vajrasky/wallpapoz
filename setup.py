@@ -98,74 +98,48 @@ def uninstall(path):
         print _("Error while removing"), path
 
 
-def check_dependencies():
-    required_found = True
-    recommended_found = True
+def check_libs():
+    req_deps = ['pygtk', 'gtk.glade', 'PIL']
 
-    print _("Checking dependencies...")
-    print
-    print _("Required dependencies:")
-    print
+    for dep in req_deps:
+        try:
+            __import__(dep)
 
-    # Should also check the PyGTK version. To do that we have to load the
-    # gtk module though, which normally can't be done while using `sudo`.
-    try:
-        import pygtk
-        print "    PyGTK ........................ OK"
-    except ImportError:
-        print "    !!! PyGTK .................... ", _("Not found")
-        required_found = False
-    try:
-        # shutdown the warnings
-        import warnings
-        warnings.simplefilter("ignore", Warning)
-        import gtk.glade
-        print "    Python Glade ................. OK"
-    except ImportError:
-        print "    !!! Python Glade ............. ", _("Not found")
-        required_found = False
-    except RuntimeError:
-        # so we can check dependency when there is no DISPLAY
-        warnings.simplefilter("default", Warning)
-        if not os.environ.get("DISPLAY"):
-            print "    Python Glade ................. SKIP"
-        else:
-            print "    !!! Python Glade ............. ", _("Not found")
-            required_found = False
-    try:
-        from PIL import Image
-        print "    Python Imaging Library ....... OK"
-    except ImportError:
-        print "    !!! Python Imaging Library ... ", _("Not found")
-        required_found = False
+            print _("Checking for %s\t\t\t\t\tOK" % dep)
+        except ImportError:
+            raise Exception(_("missing required dependency: %s" % dep))
+        except:
+            raise
+
+
+def check_gnome():
     try:
         import gnome
-        print "    Gnome Python ................. OK"
+        assert gnome._gnome.__version__ > 1
     except ImportError:
-        print "    !!! Gnome Python ............. ", _("Not found")
-        recommended_found = False
-
-    out = os.popen('which xwininfo').readlines
-
-    if out == []:
-        print "    Xwininfo tool ................ ", _("Not found")
-        required_found = False
-    else:
-        print "    Xwininfo tool ................ OK"
-
-    if not required_found:
-        print
-        print _("Could not find all required dependencies!")
-        print _("Please install them and try again.")
-        print
-        sys.exit(1)
-    if not recommended_found:
         print
         print _("Gnome Python is not found. Wallpapoz still could be used ",
                 "and it has been installed.")
         print _("But it means you can not access help documentation in your ",
                 "native language if it is available.")
         print
+    except AssertionError:
+        print
+        print _("Please upgrade your gnome to at least version 2")
+
+
+def check_dependencies():
+    if not os.environ.get('DISPLAY'):
+        import warnings
+        warnings.simplefilter("ignore", Warning)
+    if os.popen('which xwininfo').read():
+        print _("Checking for xwininfo\t\t\t\t\tOK")
+    else:
+        raise Exception(_("missing xwininfo"))
+
+    check_libs()
+    check_gnome()
+
 
 install_dir = "/usr/local/"
 APP_ISO_CODES = ("id", "ja", "de", "sv", "es", "fr", "ru", "it", "cs", "zh_CN",
