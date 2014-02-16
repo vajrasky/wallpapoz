@@ -165,7 +165,9 @@ for opt, value in opts:
 
 if args == ["install"]:
     check_dependencies()
+
     print _("Installing Wallpapoz in"), install_dir, "...\n"
+
     install("src/wallpapoz", "bin/wallpapoz")
     install("src/daemon_wallpapoz", "bin/daemon_wallpapoz")
     install("src/launcher_wallpapoz.sh", "bin/launcher_wallpapoz.sh")
@@ -206,6 +208,7 @@ elif args == ["uninstall"]:
     for lang in DOC_ISO_CODES:
         uninstall("share/gnome/help/wallpapoz/" + lang + "/wallpapoz.xml")
         uninstall("share/gnome/help/wallpapoz/" + lang + "/legal.xml")
+
     print
     print _("""
 There might still be files in ~/.wallpapoz/ left on your system.
