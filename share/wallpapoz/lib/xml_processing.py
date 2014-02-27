@@ -29,6 +29,7 @@ import os
 import sys
 import gettext
 import gtk
+import gtk.glade
 from wallpapoz_system import WallpapozSystem
 
 # i18n
