@@ -5,7 +5,7 @@ def _maketree(parent_tree, wallpapers, conf):
     tree = Treeview(parent_tree)
     i = 0
     if conf['type'] == 'workspace':
-        for workspace, wallpaper_files in wallpapers.items():
+        for workspace, wallpaper_files in wallpapers:
             i += 1
             index = str(i)
             tree.insert('', 'end', index, text=workspace)

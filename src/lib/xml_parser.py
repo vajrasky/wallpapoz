@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
 from xml.dom import minidom
 
 
@@ -22,16 +19,15 @@ def parse_wallpapoz_file(wallpapoz_setting_file):
 
     if wallpapoz_type == 'workspace':
         workspaces_elements = xmldoc.getElementsByTagName('workspace')
-        workspaces = {}
+        workspaces = []
 
         for workspace_element in workspaces_elements:
             workspace_name = workspace_element.attributes['name'].value
-            workspaces[workspace_name] = []
+            workspaces.append((workspace_name, []))
 
             for element in workspace_element.childNodes:
                 if isinstance(element, minidom.Element):
-                    workspaces[workspace_name].append(
-                        element.childNodes[0].data)
+                    workspaces[-1][1].append(element.childNodes[0].data)
         return workspaces, conf
 
     elif wallpapoz_type == 'desktop':
