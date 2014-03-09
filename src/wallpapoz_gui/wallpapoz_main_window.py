@@ -1,4 +1,4 @@
-from tkinter import Frame, TOP, LEFT, Y, YES, BOTH
+from tkinter import Frame, TOP, LEFT, Y, YES, BOTH, NO, CENTER, X
 from tkinter.ttk import Treeview
 
 def _maketree(parent_tree, wallpapers, conf):
@@ -17,14 +17,14 @@ def _maketree(parent_tree, wallpapers, conf):
             i += 1
             index = str(i)
             tree.insert('', 'end', index, text=wallpaper_file)
-    tree.pack()
+    tree.pack(side=TOP, expand=YES, fill=BOTH)
 
 def makemainwindow(parent, wallpapers, conf):
     main_window = Frame(parent)
     tree_window = Frame(main_window)
     image_window = Frame(main_window)
 
-    main_window.pack(side=TOP, fill=BOTH, expand=YES)
-    image_window.pack(side=TOP, fill=Y)
-    tree_window.pack(side=LEFT, fill=BOTH, expand=YES)
+    main_window.pack(side=TOP, expand=YES, fill=BOTH)
+    tree_window.pack(side=TOP, expand=YES, fill=BOTH)
+    image_window.pack(side=TOP, expand=YES, fill=BOTH)
     _maketree(tree_window, wallpapers, conf)
