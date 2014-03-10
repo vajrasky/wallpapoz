@@ -26,15 +26,15 @@
 ## The gui menu commands
 
 from tkinter import *
-from tkinter import ttk
+from tkinter import filedialog, ttk
 
 from lib.gettext import _
 
-import os.path
 import os
 import locale
 from PIL import ImageTk, Image
 import subprocess
+
 
 def launch_help_window():
     lang_code, _ = locale.getlocale()
@@ -77,7 +77,7 @@ def launch_license_window():
     with open(license_file) as lf:
         license_content = lf.read()
     t = Text(license_win, width=80, height=40)
-    t.insert(END, "(c) 2013 Vajrasky Kok\n" + license_content)
+    t.insert(END, "(c) 2014 Vajrasky Kok\n" + license_content)
     t.configure(state='disabled')
     t.pack()
     license_win.title(_("Wallpapoz License"))
@@ -134,3 +134,7 @@ def menu_command_about():
     about_win.title(_('About Wallpapoz'))
     about_win.focus_set()
     about_win.grab_set()
+
+def add_files():
+    filename = filedialog.askopenfilenames()
+    print(filename)
