@@ -27,6 +27,7 @@
 
 from tkinter import *
 from tkinter import filedialog, ttk
+from tkinter.messagebox import showerror
 
 from lib.gettext import _
 
@@ -137,4 +138,12 @@ def menu_command_about():
 
 def add_files():
     filename = filedialog.askopenfilenames()
-    print(filename)
+    from wallpapoz_gui.wallpapoz_main_window import tree
+    tree_selection = tree.selection()
+    if tree_selection == '':
+        showerror(_("Empty tree parent selection"), _("Must choose at least one tree parent."))
+    else:
+        for selection in tree_selection:
+            if '_' not in selection:
+                n = len(tree.get_children(selection))
+                tree.insert(selection, 'end', selection + '_' + str(n+1), text=filename)

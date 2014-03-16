@@ -1,7 +1,10 @@
 from tkinter import Frame, TOP, LEFT, Y, YES, BOTH, NO, CENTER, X
 from tkinter.ttk import Treeview
 
+tree = None
+
 def _maketree(parent_tree, wallpapers, conf):
+    global tree
     tree = Treeview(parent_tree)
     i = 0
     if conf['type'] == 'workspace':
