@@ -16,7 +16,7 @@ def makemenu(parent):
     fbutton.pack(side=LEFT)
     menu = Menu(fbutton, tearoff=False)
     menu.add_command(label=_('Add Wallpapers (File)'), command=add_files)
-    menu.add_command(label=_('Add Wallpapers (Directory)'), command=notdone)
+    menu.add_command(label=_('Add Wallpapers (Directory)'), command=add_directory)
     menu.add_command(label=_('Save'), command=notdone)
     menu.add_separator()
     menu.add_command(label=_('Quit'), command=notdone)

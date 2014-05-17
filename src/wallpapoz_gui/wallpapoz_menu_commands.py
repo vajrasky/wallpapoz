@@ -35,6 +35,7 @@ import os
 import locale
 from PIL import ImageTk, Image
 import subprocess
+import imghdr
 
 
 def launch_help_window():
@@ -136,16 +137,41 @@ def menu_command_about():
     about_win.focus_set()
     about_win.grab_set()
 
+def _is_valid_image(img_path):
+    if imghdr.what(img_path) in ('jpeg', 'tif', 'gif', 'bmp', 'png'):
+        return True
+    return False
+
 def add_files():
     filenames = filedialog.askopenfilenames()
     from wallpapoz_gui.wallpapoz_main_window import tree
     tree_selection = tree.selection()
-    if tree_selection == '':
+    if '_' in tree_selection[0]:
         showerror(_("Empty tree parent selection"), _("Must choose at least one tree parent."))
     else:
         for selection in tree_selection:
             if '_' not in selection:
                 n = len(tree.get_children(selection))
                 for filename in filenames:
-                    tree.insert(selection, 'end', selection + '_' + str(n+1), text=filename)
-                    n += 1
+                    if _is_valid_image(filename):
+                        tree.insert(selection, 'end', selection + '_' + str(n+1), text=filename)
+                        n += 1
+
+def add_directory():
+    directory = filedialog.askdirectory()
+    if not directory:
+        return
+    from wallpapoz_gui.wallpapoz_main_window import tree
+    tree_selection = tree.selection()
+    if '_' in tree_selection[0]:
+        showerror(_("Empty tree parent selection"), _("Must choose at least one tree parent."))
+    else:
+        for selection in tree_selection:
+            n = len(tree.get_children(selection))
+            for root, dirs, filenames in os.walk(directory):
+                for filename in filenames:
+                    image_path = root + '/' + filename
+                    if _is_valid_image(image_path):
+                        tree.insert(selection, 'end', selection + '_' + str(n+1), text=image_path)
+                        n += 1
+
