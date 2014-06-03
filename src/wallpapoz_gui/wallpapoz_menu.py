@@ -19,7 +19,7 @@ def makemenu(parent):
     menu.add_command(label=_('Add Wallpapers (Directory)'), command=add_directory)
     menu.add_command(label=_('Save'), command=notdone)
     menu.add_separator()
-    menu.add_command(label=_('Quit'), command=notdone)
+    menu.add_command(label=_('Quit'), command=lambda: parent.quit())
     fbutton.config(menu=menu)
 
     fbutton = Menubutton(menubar, text=_('Edit'), underline=0)
