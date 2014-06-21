@@ -175,3 +175,11 @@ def add_directory():
                         tree.insert(selection, 'end', selection + '_' + str(n+1), text=image_path)
                         n += 1
 
+def save_tree_to_conf():
+    from wallpapoz_gui.wallpapoz_main_window import tree
+    for index in tree.get_children(''):
+        workspace = tree.item(index)
+        print(workspace['text'])
+        for workspace_index in tree.get_children(index):
+            wallpaper = tree.item(workspace_index)
+            print(wallpaper['text'])
