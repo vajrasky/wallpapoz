@@ -1,4 +1,5 @@
 from xml.dom import minidom
+from xml.etree import ElementTree
 
 
 def parse_wallpapoz_file(wallpapoz_setting_file):
@@ -40,3 +41,26 @@ def parse_wallpapoz_file(wallpapoz_setting_file):
         return files, conf
 
     return None
+
+def save_treeview_to_wallpapoz_file(f, type, elements, *, interval, random, style):
+    root = ElementTree.Element("wallpapoz")
+    root.set("interval", interval)
+    root.set("random", random)
+    root.set("style", style)
+    if type=="workspace":
+        id = 1
+        for key, files in elements.items():
+            workspace_elem = ElementTree.SubElement(root, "workspace")
+            workspace_elem.set("name", key)
+            workspace_elem.set("id", str(id))
+            id += 1
+            for file in files:
+                file_elem = ElementTree.SubElement(workspace_elem, "file")
+                file_elem.text = file
+    elif type=="desktop":
+        doc = ElementTree.SubElement(root, "desktop")
+        for file in elements:
+            file_elem = ElementTree.SubElement(doc, "file")
+            file_elem.text = file
+    tree = ElementTree.ElementTree(root)
+    tree.write(f, "utf-8", True)

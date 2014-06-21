@@ -2,11 +2,12 @@ import os
 import unittest
 
 from os.path import realpath, sep, dirname
+from collections import OrderedDict
 
 parentdir = dirname(dirname(os.path.abspath(__file__)))
 os.sys.path.insert(0, parentdir)
 
-from lib.xml_parser import parse_wallpapoz_file
+from lib.xml_parser import parse_wallpapoz_file, save_treeview_to_wallpapoz_file
 
 tests_dir = dirname(realpath(__file__))
 
@@ -39,6 +40,30 @@ class WallpapozXmlParsingTests(unittest.TestCase):
                                  '/home/sky/wallpapers with space/café.jpg',
                                  '/home/sky/unicode/漢語.png',
                                  '/home/sky/unicode/日本語.png'])
+
+
+class WallpapozTreeviewToXmlTests(unittest.TestCase):
+
+    def test_save_treeview_to_xml_workspaces_type(self):
+        expected_path = os.path.join(tests_dir, 'wallpapoz_save_to_xml_workspace_type.xml')
+        file_path = os.path.join(tests_dir, 'test_file.xml')
+        elements = OrderedDict(sorted({
+            'workspace_one': ['one', 'two', 'three'],
+            'workspace_two': ['beach', 'mountain', 'sunshine'],
+        }.items(), key=lambda t: t[0]))
+        save_treeview_to_wallpapoz_file(file_path, "workspace", elements,
+                                        interval="5",
+                                        random="0",
+                                        style="2")
+        f = open(file_path)
+        try:
+            result = f.read().rstrip()
+            with open(expected_path) as expected_f:
+                expected = expected_f.read().rstrip()
+                self.assertEqual(expected, result)
+        finally:
+            f.close()
+            os.remove(file_path)
 
 
 if __name__ == '__main__':
