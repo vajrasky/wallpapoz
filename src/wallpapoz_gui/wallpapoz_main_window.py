@@ -1,4 +1,5 @@
-from tkinter import Frame, TOP, LEFT, Y, YES, BOTH, NO, CENTER, X, END, Label, Text, BOTTOM
+from tkinter import (Frame, TOP, LEFT, Y, YES, BOTH, NO, CENTER, X, END,
+                     Label, Text, BOTTOM, Checkbutton)
 from tkinter.ttk import Treeview
 
 from lib.gettext import _
@@ -29,6 +30,16 @@ def _makesetting(setting_window, conf):
                           text=_('Setting'),
                           font=('courier', 20, 'bold'))
     setting_label.pack()
+    random_container = Frame(setting_window)
+    random_container.pack(side=BOTTOM)
+    random_label = Label(random_container,
+                         text=_('Choose wallpaper randomly? '),
+                         font=('courier', 15, 'bold'))
+    random_label.pack(side=LEFT)
+    random_checkbutton = Checkbutton(random_container)
+    random_checkbutton.pack(side=LEFT)
+    if conf['random'] == "1":
+        random_checkbutton.select()
     interval_container = Frame(setting_window)
     interval_container.pack(side=BOTTOM)
     interval_label = Label(interval_container,
@@ -39,7 +50,7 @@ def _makesetting(setting_window, conf):
     interval_text.insert(END, conf['interval'])
     interval_text.pack(side=LEFT)
     minute_label = Label(interval_container,
-                         text=_(' minutes'),
+                         text=_(' minutes.'),
                          font=('courier', 15, 'bold'))
     minute_label.pack(side=LEFT)
 
