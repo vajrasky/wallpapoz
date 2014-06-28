@@ -1,2 +1,2 @@
 <?xml version='1.0' encoding='utf-8'?>
-<wallpapoz interval="5" random="0" style="2"><workspace id="1" name="workspace_one"><file>one</file><file>two</file><file>three</file></workspace><workspace id="2" name="workspace_two"><file>beach</file><file>mountain</file><file>sunshine</file></workspace></wallpapoz>
+<wallpapoz interval="5" random="0" style="2" type="workspace"><workspace id="1" name="workspace_one"><file>one</file><file>two</file><file>three</file></workspace><workspace id="2" name="workspace_two"><file>beach</file><file>mountain</file><file>sunshine</file></workspace></wallpapoz>

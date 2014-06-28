@@ -44,7 +44,18 @@ class WallpapozXmlParsingTests(unittest.TestCase):
 
 class WallpapozTreeviewToXmlTests(unittest.TestCase):
 
-    def test_save_treeview_to_xml_workspaces_type(self):
+    def _check_file(self, file_path, expected_path):
+        f = open(file_path)
+        try:
+            result = f.read().rstrip()
+            with open(expected_path) as expected_f:
+                expected = expected_f.read().rstrip()
+                self.assertEqual(expected, result)
+        finally:
+            f.close()
+            os.remove(file_path)
+
+    def test_save_treeview_to_xml_workspace_type(self):
         expected_path = os.path.join(tests_dir, 'wallpapoz_save_to_xml_workspace_type.xml')
         file_path = os.path.join(tests_dir, 'test_file.xml')
         elements = OrderedDict(sorted({
@@ -55,15 +66,17 @@ class WallpapozTreeviewToXmlTests(unittest.TestCase):
                                         interval="5",
                                         random="0",
                                         style="2")
-        f = open(file_path)
-        try:
-            result = f.read().rstrip()
-            with open(expected_path) as expected_f:
-                expected = expected_f.read().rstrip()
-                self.assertEqual(expected, result)
-        finally:
-            f.close()
-            os.remove(file_path)
+        self._check_file(file_path, expected_path)
+
+    def test_save_treeview_to_xml_desktop_type(self):
+        expected_path = os.path.join(tests_dir, 'wallpapoz_save_to_xml_desktop_type.xml')
+        file_path = os.path.join(tests_dir, 'test_file.xml')
+        elements = ['one', 'two', 'three']
+        save_treeview_to_wallpapoz_file(file_path, "desktop", elements,
+                                        interval="5",
+                                        random="0",
+                                        style="2")
+        self._check_file(file_path, expected_path)
 
 
 if __name__ == '__main__':
