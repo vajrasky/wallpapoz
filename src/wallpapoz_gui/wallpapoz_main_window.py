@@ -1,6 +1,6 @@
 from tkinter import (Frame, TOP, LEFT, Y, YES, BOTH, NO, CENTER, X, END,
                      Label, Text, BOTTOM, Checkbutton)
-from tkinter.ttk import Treeview
+from tkinter.ttk import Treeview, Combobox
 
 from lib.gettext import _
 
@@ -29,9 +29,23 @@ def _makesetting(setting_window, conf):
     setting_label = Label(setting_window,
                           text=_('Setting'),
                           font=('courier', 20, 'bold'))
-    setting_label.pack()
+    setting_label.pack(side=TOP)
+
+    style_container = Frame(setting_window)
+    style_container.pack(side=TOP)
+    style_label = Label(style_container,
+                        text=_('Display wallpaper in style: '),
+                        font=('courier', 15, 'bold'))
+    style_label.pack(side=LEFT)
+    style_combobox = Combobox(style_container)
+    available_style = {'3': 'zoom', '2': 'scaled', '1': 'stretched', '0': 'centered', '4': 'wallpaper'}
+    style_combobox['value'] = (_('centered'), _('stretched'), _('scaled'), _('zoom'), _('wallpaper'))
+    style_combobox.state(['readonly'])
+    style_combobox.current(int(conf['style']))
+    style_combobox.pack(side=LEFT)
+
     random_container = Frame(setting_window)
-    random_container.pack(side=BOTTOM)
+    random_container.pack(side=TOP)
     random_label = Label(random_container,
                          text=_('Choose wallpaper randomly? '),
                          font=('courier', 15, 'bold'))
@@ -40,8 +54,9 @@ def _makesetting(setting_window, conf):
     random_checkbutton.pack(side=LEFT)
     if conf['random'] == "1":
         random_checkbutton.select()
+
     interval_container = Frame(setting_window)
-    interval_container.pack(side=BOTTOM)
+    interval_container.pack(side=TOP)
     interval_label = Label(interval_container,
                            text=_('Change wallpaper every '),
                            font=('courier', 15, 'bold'))
@@ -53,6 +68,7 @@ def _makesetting(setting_window, conf):
                          text=_(' minutes.'),
                          font=('courier', 15, 'bold'))
     minute_label.pack(side=LEFT)
+
 
 def makemainwindow(parent, wallpapers, conf):
     main_window = Frame(parent)
