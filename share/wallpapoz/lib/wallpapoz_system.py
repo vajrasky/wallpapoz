@@ -58,7 +58,7 @@ class WallpapozSystem:
       self.window_manager = 'XFCE4'
     elif wm_name=='Fluxbox':
       self.window_manager = 'Fluxbox'
-    elif wm_name=='Marco':
+    elif wm_name=='Marco' or wm_name=='Metacity (Marco)':
       self.window_manager = 'MATE'
     elif wm_name=='Mutter (Muffin)':
       self.window_manager = 'CINNAMON'
