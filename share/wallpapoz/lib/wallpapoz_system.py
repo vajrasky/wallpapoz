@@ -62,6 +62,8 @@ class WallpapozSystem:
       self.window_manager = 'MATE'
     elif wm_name=='Mutter (Muffin)':
       self.window_manager = 'CINNAMON'
+    elif wm_name=='Mutter(Budgie)':
+      self.window_manager = 'Gnome3'
     else:
       output = os.popen("gnome-session --version")
       result = output.readlines()
