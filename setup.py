@@ -132,10 +132,8 @@ def check_gnome():
         assert gnome._gnome.__version__ > 1
     except ImportError:
         print
-        print _("Gnome Python is not found. Wallpapoz still could be used ",
-                "and it has been installed.")
-        print _("But it means you can not access help documentation in your ",
-                "native language if it is available.")
+        print _("Gnome Python is not found. Wallpapoz still could be used and it has been installed.")
+        print _("But it means you can not access help documentation in your native language if it is available.")
         print
     except AssertionError:
         print
