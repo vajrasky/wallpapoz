@@ -79,7 +79,7 @@ class WallpapozSystem:
       self.total_workspaces = int(os.popen("xprop -root _NET_NUMBER_OF_DESKTOPS").read()[36:38])
     except:
       self.total_workspaces = 1
-      
+
   ## class method to find how many rows and columns of workspaces
   def finding_row_and_column(self):
     self.row_workspaces = self.geometry_height / self.screen_height
@@ -103,6 +103,7 @@ class WallpapozSystem:
         self.wallpaper_style)
     elif self.window_manager == "Gnome3":
       os.system("gsettings set org.gnome.desktop.background picture-uri 'file://" + wallpaper + "'")
+      os.system("gsettings set org.gnome.desktop.background picture-uri-dark 'file://" + wallpaper + "'")
       os.system("gsettings set org.gnome.desktop.background picture-options " + self.wallpaper_style)
     elif self.window_manager == "MATE":
       os.system('gsettings set org.mate.background picture-filename ' + wallpaper)
