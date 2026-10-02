@@ -83,25 +83,31 @@ def run_workspace_mode(system, workspaces, style, delay, random_order):
 
     indexes = [-1] * len(workspace_files)
     previous_workspace = None
-    previous_change = 0
+    previous_changes = [None] * len(workspace_files)
 
     while True:
         current_workspace = system.current_workspace()
-        if current_workspace >= len(workspace_files):
+        if not 0 <= current_workspace < len(workspace_files):
+            previous_workspace = None
             time.sleep(1)
             continue
 
-        should_change = current_workspace != previous_workspace or time.monotonic() - previous_change >= delay
-        if should_change:
+        now = time.monotonic()
+        previous_change = previous_changes[current_workspace]
+        expired = previous_change is None or now - previous_change >= delay
+        if expired:
             indexes[current_workspace], filename = choose_next(
                 workspace_files[current_workspace],
                 indexes[current_workspace],
                 random_order,
             )
-            if filename:
-                system.set_wallpaper(filename, style)
-                previous_change = time.monotonic()
-                previous_workspace = current_workspace
+        else:
+            filename = workspace_files[current_workspace][indexes[current_workspace]]
+        if filename and (expired or current_workspace != previous_workspace):
+            system.set_wallpaper(filename, style)
+            if expired:
+                previous_changes[current_workspace] = now
+        previous_workspace = current_workspace
         time.sleep(1)
 
 

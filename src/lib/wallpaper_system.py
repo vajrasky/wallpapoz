@@ -1,3 +1,4 @@
+import json
 import os
 import re
 import subprocess
@@ -5,6 +6,7 @@ from pathlib import Path
 
 
 STYLE_BY_DESKTOP = {
+    "kde": {"3": 2, "2": 1, "1": 0, "0": 6, "4": 3},
     "gnome": {"3": "zoom", "2": "scaled", "1": "stretched", "0": "centered", "4": "wallpaper"},
     "mate": {"3": "zoom", "2": "scaled", "1": "stretched", "0": "centered", "4": "wallpaper"},
     "cinnamon": {"3": "zoom", "2": "scaled", "1": "stretched", "0": "centered", "4": "wallpaper"},
@@ -22,6 +24,8 @@ class WallpaperSystem:
         session = os.environ.get("DESKTOP_SESSION", "").lower()
         combined = f"{current} {session}"
 
+        if "kde" in combined or "plasma" in combined:
+            return "kde"
         if "xfce" in combined:
             return "xfce"
         if "mate" in combined:
@@ -32,25 +36,77 @@ class WallpaperSystem:
             return "fluxbox"
         return "gnome"
 
+    def _workspace_state(self):
+        properties = (
+            "_NET_NUMBER_OF_DESKTOPS", "_NET_CURRENT_DESKTOP",
+            "_NET_DESKTOP_GEOMETRY", "_NET_DESKTOP_VIEWPORT",
+        )
+        output = self._run_output(["xprop", "-root", *properties])
+        values = {}
+        for line in output.splitlines():
+            match = re.fullmatch(
+                r"(_NET_\w+)\([^)]*\)\s*=\s*(\d+(?:\s*,\s*\d+)*)\s*", line
+            )
+            if match:
+                values[match.group(1)] = [int(v) for v in match.group(2).split(",")]
+        count = max(values.get(properties[0], [1])[0], 1)
+        current = values.get(properties[1], [0])[0]
+        geometry = values.get(properties[2], [])
+        viewports = values.get(properties[3], [])
+        if len(geometry) != 2 or len(viewports) < 2 * (current + 1):
+            return count, current
+
+        # Compiz represents its workspace grid as viewports on a large desktop.
+        # Use the whole X screen, including all monitors, as the viewport size.
+        dimensions = self._run_output(["xwininfo", "-root"])
+        width = re.search(r"Width:\s*(\d+)", dimensions)
+        height = re.search(r"Height:\s*(\d+)", dimensions)
+        if not width or not height:
+            return count, current
+        width, height = int(width.group(1)), int(height.group(1))
+        if not width or not height:
+            return count, current
+        if geometry[0] % width or geometry[1] % height:
+            return count, current
+        columns, rows = geometry[0] // width, geometry[1] // height
+        if columns < 1 or rows < 1:
+            return count, current
+        x, y = viewports[2 * current:2 * current + 2]
+        if not (0 <= x < geometry[0] and 0 <= y < geometry[1]):
+            return count, current
+        cells = columns * rows
+        return count * cells, current * cells + (y // height) * columns + x // width
+
     def total_workspaces(self):
-        output = self._run_output(["xprop", "-root", "_NET_NUMBER_OF_DESKTOPS"])
-        match = re.search(r"=\s*(\d+)", output)
-        if not match:
-            return 1
-        return max(int(match.group(1)), 1)
+        return self._workspace_state()[0]
 
     def current_workspace(self):
-        output = self._run_output(["xprop", "-root", "_NET_CURRENT_DESKTOP"])
-        match = re.search(r"=\s*(\d+)", output)
-        if not match:
-            return 0
-        return int(match.group(1))
+        return self._workspace_state()[1]
 
     def set_wallpaper(self, filename, style_key):
         filename = str(Path(filename).expanduser())
         style = STYLE_BY_DESKTOP.get(self.desktop, STYLE_BY_DESKTOP["gnome"]).get(style_key, "scaled")
 
-        if self.desktop == "gnome":
+        if self.desktop == "kde":
+            # Serialize data before embedding it in Plasma's JavaScript API.
+            uri = json.dumps(Path(filename).absolute().as_uri())
+            fill_mode = STYLE_BY_DESKTOP["kde"].get(style_key, 1)
+            script = f"""
+                var allDesktops = desktopsForActivity(currentActivity());
+                for (var i = 0; i < allDesktops.length; i++) {{
+                    var d = allDesktops[i];
+                    d.wallpaperPlugin = "org.kde.image";
+                    d.currentConfigGroup = ["Wallpaper", "org.kde.image", "General"];
+                    d.writeConfig("Image", {uri});
+                    d.writeConfig("FillMode", {fill_mode});
+                }}
+            """
+            subprocess.run([
+                "gdbus", "call", "--session", "--dest", "org.kde.plasmashell",
+                "--object-path", "/PlasmaShell", "--method",
+                "org.kde.PlasmaShell.evaluateScript", script,
+            ], check=True, stdout=subprocess.DEVNULL)
+        elif self.desktop == "gnome":
             uri = Path(filename).absolute().as_uri()
             self._run(["gsettings", "set", "org.gnome.desktop.background", "picture-uri", uri])
             self._run(["gsettings", "set", "org.gnome.desktop.background", "picture-uri-dark", uri])

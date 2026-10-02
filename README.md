@@ -16,9 +16,15 @@ The GTK 4 app can:
 - preview selected wallpaper files
 - save interval, random order, workspace mode, and style settings
 
-The Python 3 daemon supports GNOME, MATE, Cinnamon, XFCE, and Fluxbox through
-their existing desktop command-line tools. On GNOME Wayland, workspace detection
-depends on what the session exposes through X11 compatibility tools.
+The Python 3 daemon supports GNOME, MATE, Cinnamon, XFCE, Fluxbox, and KDE Plasma.
+KDE uses `gdbus` to update wallpapers on all screens in the current activity.
+Workspace detection supports X11 desktops and Compiz viewport grids, using the
+actual screen size. On Wayland, workspace detection depends on what the session
+exposes through X11 compatibility tools.
+
+Each workspace keeps its selected image until its own interval expires. Switching
+away and back restores that image, including in random mode, without resetting
+the timer. An expired workspace advances when it is next visited.
 
 ## Dependencies
 
@@ -49,6 +55,9 @@ Optional desktop integration tools:
 ```sh
 sudo apt install x11-utils
 ```
+
+For KDE Plasma, also install `libglib2.0-bin` to provide `gdbus` on Debian/Ubuntu.
+The Plasma shell must be running in the same user session.
 
 ## Development Setup
 
